@@ -3,7 +3,6 @@
 
 #include <cmath>
 #include "Element.h"
-#include "Particule.h"
 
 class Courbe : public Element
 {

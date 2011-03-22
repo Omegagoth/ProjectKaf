@@ -5,23 +5,31 @@ int main()
 {
     Vecteur3D x2(3.00984, -0.391837, 0);
     Vecteur3D x3(2.99016, -0.391837, 0);
-    Vecteur3D d(0,0,0);
+    Vecteur3D d1(-7.99e-4,-1,0);
+    Vecteur3D d2(7.99e-4,-1,0);
     Vecteur3D p(1,0,0);
     Vecteur3D B(0,0,7);
     double dt(1e-11);
 
-    Particule p1;
-    Particule p2(x2, 2, d, 0.938272, 1.60217653e-19);
-    Particule p3(x3, 2, d, 0.938272, 1.60217653e-19);
-    p3.ajoute_forcemagn(B,dt);
+    //Particule p1;
+    Particule p2(x2, 2, d1, 0.938272, 1.60217653e-19);
+    Particule p3(x3, 2, d2, 0.938272, 1.60217653e-19);
 
-    cout << p1 << endl
+    cout /*<< p1 << endl*/
     << p2 << endl
     << p3 << endl;
 
-    p3.bouger(1e-11);
+    p2.ajoute_forcemagn(B,dt);
+    p3.ajoute_forcemagn(B,dt);
 
-    cout << p3 ;
+    cout << p2 << endl
+    << p3 << endl;
+
+    p2.bouger(dt);
+    p3.bouger(dt);
+
+    cout << p2 << endl
+    << p3 << endl;
 
     return 0;
 }

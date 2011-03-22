@@ -35,11 +35,6 @@ bool Courbe::touche_bord(Particule const& p) const
     return (X - 1/abs(courbure)*(~(X - X.getx()*E3))).norme_carre() > rayon;
 }
 
-bool Courbe::passe_suivant(Particule const& p) const
-{
-    return prod_mixte(E3, p.getposition(), sortie) > 0;
-}
-
 //---------------------------------------------------------------------------------------------------------------
 
 //définition des méthodes privées

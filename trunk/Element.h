@@ -2,6 +2,7 @@
 #define ELEMENT_H
 
 #include "Vecteur3D.h"
+#include "Particule.h"
 #include <iostream>
 
 using namespace std;
@@ -32,6 +33,8 @@ class Element
         Element& operator+=(Element&); //surcharge permettant de signifier a un élément l'élément qui le suit par : e1 += e2 ainsi le pointeur suivant de e1 pointera sur e2
 
 //---------------------------------------------------------------------------------------------------------------
+
+        bool passe_suivant(Particule const&) const; //détermine si la particule à dépasser la sortie de l'élément
 
     protected :
 

@@ -50,6 +50,13 @@ Element& Element::operator+=(Element& e)
 
 //---------------------------------------------------------------------------------------------------------------
 
+bool Courbe::passe_suivant(Particule const& p) const
+{
+    return (prod_mixte(E3, p.getposition(), sortie) > 0);
+}
+
+//---------------------------------------------------------------------------------------------------------------
+
 //défintion des méthodes privées
 Vecteur3D Element::getdirection() const
 {

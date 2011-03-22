@@ -2,7 +2,6 @@
 #define DROIT_H
 
 #include "Element.h"
-#include "Particule.h"
 
 class Droit : public Element
 {
