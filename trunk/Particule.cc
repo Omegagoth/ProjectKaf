@@ -28,7 +28,7 @@ double Particule::getcharge() const
 
 double Particule::getenergie() const
 {
-    return masse/(1 - vitesse*vitesse/(C*C));
+    return masse/sqrt(1 - vitesse*vitesse/(C*C));
 }
 
 double Particule::getgamma() const

@@ -34,7 +34,10 @@ class Element
 
 //---------------------------------------------------------------------------------------------------------------
 
+        //prototypage des méthodes
         bool passe_suivant(Particule const&) const; //détermine si la particule à dépasser la sortie de l'élément
+
+//---------------------------------------------------------------------------------------------------------------
 
     protected :
 
@@ -48,13 +51,6 @@ class Element
 
         //prototypage des méthodes privée
         Vecteur3D getdirection() const; //donne la direction moyenne de l'élément
-
-//---------------------------------------------------------------------------------------------------------------
-
-        /*//définition des constantes importantes
-        static Vecteur3D const E1(1,0,0);
-        static Vecteur3D const E2(0,1,0);
-        static Vecteur3D const E3(0,0,1);*/
 
 };
 
