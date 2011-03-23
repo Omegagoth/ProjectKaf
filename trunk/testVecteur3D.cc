@@ -41,7 +41,7 @@ int main()
 
     a1 = v1 + v2;
     a = a1;
-    a1 += v2;
+    a += v2;
     b = v1 - v2;
     c = 3*v1;
     c1 = v1*3;
