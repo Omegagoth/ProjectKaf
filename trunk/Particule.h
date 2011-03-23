@@ -7,7 +7,7 @@
 
 using namespace std;
 
-double const C(3*pow(10.,8));
+double const C(299792458);
 
 class Particule
 {

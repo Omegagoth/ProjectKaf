@@ -5,8 +5,8 @@ int main()
 {
     Vecteur3D x2(3.00984, -0.391837, 0);
     Vecteur3D x3(2.99016, -0.391837, 0);
-    Vecteur3D d1(-7.99e-4,-1,0);
-    Vecteur3D d2(7.99e-4,-1,0);
+    Vecteur3D d1(-210200,-2.64754e8,0);
+    Vecteur3D d2(210200,-2.64754e8,0);
     Vecteur3D p(1,0,0);
     Vecteur3D B(0,0,7);
     double dt(1e-11);

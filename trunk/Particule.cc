@@ -111,7 +111,8 @@ void Particule::bouger(double dt)
 {
     if(dt != 0)
     {
-        vitesse += (dt*C*C/((*this).getgamma()*masse*1e9))*force;
+        double e(1.60217653e-19);
+        vitesse += (dt*C*C/(getgamma()*e*masse*1e9))*force; cout << C*C/(getgamma()*masse*1e9)*force << endl;
         position += dt*vitesse;
         force.setx(0);
         force.sety(0);
