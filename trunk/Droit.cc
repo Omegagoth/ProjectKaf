@@ -39,4 +39,6 @@ ostream& operator<<(ostream& out, Droit const& d)
     out << "Entrée : " << d.getentree() << endl
     << "Sortie : " << d.getsortie() << endl
     << "Section : " << d.getrayon() << endl;
+
+    return out;
 }

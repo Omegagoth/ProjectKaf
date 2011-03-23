@@ -3,24 +3,24 @@
 using namespace std;
 
 //definition des fonctions get
-vector<Particule> Accelerateur::getparticules() const
+vector<Particule*> Accelerateur::getparticules() const
 {
     return particules;
 }
 
 Particule Accelerateur::getparticule(unsigned int i) const
 {
-    return particules[i-1];
+    return *particules[i-1];
 }
 
-vector<Element> Accelerateur::getelements() const
+vector<Element*> Accelerateur::getelements() const
 {
     return elements;
 }
 
 Element Accelerateur::getelement(unsigned int i) const
 {
-    return elements[i-1];
+    return *elements[i-1];
 }
 
 //---------------------------------------------------------------------------------------------------------------
@@ -32,29 +32,43 @@ Accelerateur::Accelerateur()
 
 }
 
+Accelerateur::~Accelerateur()
+{
+    particules.clear();
+    elements.clear();
+}
+
 //---------------------------------------------------------------------------------------------------------------
 
 //définition des méthodes
-void Accelerateur::ajoute_particule(Particule const& p)
+Accelerateur& Accelerateur::ajoute_particule(Particule const& p)
 {
-    particules.push_back(p);
-    //return (*this);
+    particules.push_back(new Particule(p));
+    return (*this);
 }
 
-void Accelerateur::ajoute_element(Element const& e)
+Accelerateur& Accelerateur::ajoute_element(Element const& e)
 {
-    elements.push_back(e);
-    //return (*this);
+    elements.push_back(new Element(e));
+    return (*this);
 }
 
 Accelerateur& Accelerateur::clear_particules()
 {
+    for (int i(0); i<particules.size(); ++i)
+    {
+        delete particules[i];
+    }
     particules.clear();
     return (*this);
 }
 
 Accelerateur& Accelerateur::clear_elements()
 {
+    for (int i(0); i<elements.size(); ++i)
+    {
+        delete elements[i];
+    }
     elements.clear();
     return (*this);
 }
