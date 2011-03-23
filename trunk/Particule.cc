@@ -102,8 +102,9 @@ void Particule::ajoute_forcemagn(Vecteur3D const& B, double dt)
 {
     if (dt != 0)
     {
+        double e(1.60217653e-19);
         Vecteur3D f(charge*vitesse^B);
-        force = f.rotation(vitesse^f, asin(dt*f.norme()*C*C / (2 * masse * 1e9 * (*this).getgamma() * vitesse.norme()) ) );
+        force = f.rotation(vitesse^f, asin(dt*f.norme()*C*C / (2 * masse *e * 1e9 * (*this).getgamma() * vitesse.norme()) ) );
     }
 }
 
