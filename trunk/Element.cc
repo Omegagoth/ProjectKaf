@@ -36,7 +36,12 @@ Element::Element()
 Element::Element(Vecteur3D e, Vecteur3D s, double r)
 : entree(e), sortie(s), rayon(r), suivant(0)
 {
-
+    if (prod_mixte(E3, entree, sortie) > 0)
+    {
+        Vecteur3D a(entree);
+        entree = sortie;
+        sortie = a;
+    }
 }
 
 //---------------------------------------------------------------------------------------------------------------

@@ -35,6 +35,7 @@ class Element
 //---------------------------------------------------------------------------------------------------------------
 
         //prototypage des méthodes
+        virtual bool touche_bord(Particule const&) const = 0; //détermine si la particule a ou non heurté le bord de l'élément
         bool passe_suivant(Particule const&) const; //détermine si la particule à dépasser la sortie de l'élément
 
 //---------------------------------------------------------------------------------------------------------------
@@ -51,6 +52,7 @@ class Element
 
         //prototypage des méthodes privée
         Vecteur3D getdirection() const; //donne la direction moyenne de l'élément
+        virtual Vecteur3D getpos_relative(Particule const&) const = 0; //donne la position relative d'une particule par rapport à l'entrer de l'élément
 
 };
 

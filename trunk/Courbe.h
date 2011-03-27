@@ -21,8 +21,7 @@ class Courbe : public Element
 //---------------------------------------------------------------------------------------------------------------
 
         //prototypage des méthodes
-        bool touche_bord(Particule const&) const; //détermine si la particule a ou non heurté le bord de l'élément
-        bool passe_suivant(Particule const&) const; //détermine si la particule à dépasser la sortie de l'élément
+        virtual bool touche_bord(Particule const&) const; //détermine si la particule a ou non heurté le bord de l'élément
 
 //---------------------------------------------------------------------------------------------------------------
 
@@ -34,7 +33,7 @@ class Courbe : public Element
 //---------------------------------------------------------------------------------------------------------------
 
         //prototypage des méthodes privée
-        Vecteur3D getpos_relative(Particule const&) const; //donne la position relative d'une particule par rapport au centre de courbure de l'élément : X = positon - centre de courbure
+        virtual Vecteur3D getpos_relative(Particule const&) const; //donne la position relative d'une particule par rapport au centre de courbure de l'élément : X = positon - centre de courbure
 
 };
 
@@ -42,5 +41,33 @@ class Courbe : public Element
 
 //prototypage des surcharges externes
 ostream& operator<<(ostream& out, Courbe const&); //surcharge de l'opérateur << permettant d'afficher un Courbe dans le terminal
+
+//---------------------------------------------------------------------------------------------------------------
+
+class Dipole : public Courbe
+{
+    public :
+
+        //prototypage des méthodes get
+        double getchamps() const; //retourne la valeurs du champs magnétique des dipoles
+
+//---------------------------------------------------------------------------------------------------------------
+
+        //prototypage des constructeurs
+        Dipole(); //constructeur par défaut
+        Dipole(Vecteur3D, Vecteur3D, double, double, double); //constructeur qui prend en argument le vecteur d'entrée, de sortie, le rayon de l'élément, de courbure, et la valeurs du champs magnétique verticale
+
+//---------------------------------------------------------------------------------------------------------------
+
+    protected :
+
+        //définitions des attributs
+        double champs;
+
+};
+
+//---------------------------------------------------------------------------------------------------------------
+
+ostream& operator<<(ostream&, Dipole const&); //surcharge de l'opérateur << permettant d'afficher un Dipole dans le terminal
 
 #endif

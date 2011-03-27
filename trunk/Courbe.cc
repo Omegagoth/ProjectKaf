@@ -56,3 +56,37 @@ ostream& operator<< (ostream& out, Courbe const& c)
 
     return out;
 }
+
+//---------------------------------------------------------------------------------------------------------------
+
+//définition des méthodes get
+double Dipole::getchamps() const
+{
+    return champs;
+}
+
+//---------------------------------------------------------------------------------------------------------------
+
+//défintion des constructeurs
+Dipole::Dipole()
+: Courbe(), champs(0)
+{
+
+}
+
+Dipole::Dipole(Vecteur3D re, Vecteur3D rs, double R, double k, double b)
+:Courbe(re,rs,R,k), champs (0)
+{
+
+}
+
+//---------------------------------------------------------------------------------------------------------------
+
+ostream& operator<<(ostream& out, Dipole const& d)
+{
+    out << d <<endl
+    << "Champs magnétique :" << d.getchamps() << endl;
+
+    return out;
+}
+

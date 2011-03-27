@@ -14,15 +14,14 @@ class Droit : public Element
 //---------------------------------------------------------------------------------------------------------------
 
         //prototypage des méthodes
-        bool touche_bord(Particule const&) const; //détermine si la particule a ou non heurté le bord de l'élément
-        bool passe_suivant(Particule const&) const; //détermine si la particule à dépasser la sortie de l'élément
+        virtual bool touche_bord(Particule const&) const; //détermine si la particule a ou non heurté le bord de l'élément
 
 //---------------------------------------------------------------------------------------------------------------
 
     protected :
 
         //prototypage des méthodes privées
-        Vecteur3D getpos_relative(Particule const&) const; //donne la position relative d'une particule par rapport à l'entrer de l'élément
+        virtual Vecteur3D getpos_relative(Particule const&) const; //donne la position relative d'une particule par rapport à l'entrer de l'élément
 
 };
 
