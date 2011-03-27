@@ -55,7 +55,7 @@ Accelerateur& Accelerateur::ajoute_element(Element const& e)
 
 Accelerateur& Accelerateur::clear_particules()
 {
-    for (int i(0); i<particules.size(); ++i)
+    for (int unsigned i(0); i<particules.size(); ++i)
     {
         delete particules[i];
     }
@@ -65,7 +65,7 @@ Accelerateur& Accelerateur::clear_particules()
 
 Accelerateur& Accelerateur::clear_elements()
 {
-    for (int i(0); i<elements.size(); ++i)
+    for (int unsigned i(0); i<elements.size(); ++i)
     {
         delete elements[i];
     }
@@ -95,7 +95,7 @@ ostream& operator<<(ostream& out, Accelerateur const& a)
     {
         out << "L'accélérateur est constituer des " << (a.getelements()).size() << " éléments suivants :" << endl;
 
-        for (int i(0); i<(a.getelements()).size(); ++i)
+        for (int unsigned i(0); i<(a.getelements()).size(); ++i)
         {
             out << a.getelement(i+1);
         }
@@ -110,7 +110,7 @@ ostream& operator<<(ostream& out, Accelerateur const& a)
     {
         out << "L'accélérateur contient les " << (a.getparticules()).size() << " particules suivantes :" << endl;
 
-        for (int i(0); i<(a.getparticules()).size(); ++i)
+        for (int unsigned i(0); i<(a.getparticules()).size(); ++i)
         {
             out << a.getparticule(i+1);
         }

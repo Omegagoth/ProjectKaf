@@ -5,6 +5,8 @@
 #include <vector>
 #include "Particule.h"
 #include "Element.h"
+#include "Courbe.h"
+#include "Droit.h"
 
 using namespace std;
 
