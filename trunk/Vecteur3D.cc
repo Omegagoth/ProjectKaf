@@ -65,7 +65,7 @@ Vecteur3D& Vecteur3D::operator+=(Vecteur3D const& v)
     y += v.gety();
     z += v.getz();
 
-    return *this;
+    return (*this);
 }
 
 Vecteur3D Vecteur3D::operator+(Vecteur3D const& v) const
@@ -104,7 +104,7 @@ Vecteur3D Vecteur3D::operator^(Vecteur3D const& v) const
 
 Vecteur3D Vecteur3D::operator~() const
 {
-    double n(sqrt(this->norme_carre()));
+    double n(this->norme());
     return Vecteur3D(x/n, y/n, z/n);
 }
 
@@ -117,7 +117,7 @@ double Vecteur3D::norme_carre() const
 
 double Vecteur3D::norme() const
 {
-    return sqrt((*this).norme_carre());   // utilisation du produit scalaire pour définir le carré de la norme.
+    return sqrt((*this).norme_carre());   // utilisation du carré de la norme pour définir la norme
 }
 
 Vecteur3D Vecteur3D::rotation(Vecteur3D u, double const& angle) const

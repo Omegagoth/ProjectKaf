@@ -2,7 +2,8 @@
 
 using namespace std;
 
-//definition des fonctions get
+//--------définition des méthodes get----------------------------------------------------------------------------
+
 vector<Particule*> Accelerateur::getparticules() const
 {
     return particules;
@@ -23,9 +24,8 @@ Element Accelerateur::getelement(unsigned int i) const
     return *elements[i-1];
 }
 
-//---------------------------------------------------------------------------------------------------------------
+//--------définition des constructeurs---------------------------------------------------------------------------
 
-//définition des constructeurs
 Accelerateur::Accelerateur()
 :particules(), elements()
 {
@@ -38,9 +38,8 @@ Accelerateur::~Accelerateur()
     elements.clear();
 }
 
-//---------------------------------------------------------------------------------------------------------------
+//--------définition des méthodes--------------------------------------------------------------------------------
 
-//définition des méthodes
 Accelerateur& Accelerateur::ajoute_particule(Particule const& p)
 {
     particules.push_back(new Particule(p));
@@ -73,9 +72,8 @@ Accelerateur& Accelerateur::clear_elements()
     return (*this);
 }
 
-//---------------------------------------------------------------------------------------------------------------
+//--------définition des constructeurs/surcharges privée---------------------------------------------------------
 
-//définition des constructeurs/surcharges privée
 Accelerateur::Accelerateur(Accelerateur const& a)
 {
 
@@ -86,9 +84,8 @@ Accelerateur& Accelerateur::operator=(Accelerateur const& a)
 
 }
 
-//---------------------------------------------------------------------------------------------------------------
+//--------définition des surcharges externes---------------------------------------------------------------------
 
-//definition des surcharges externes
 ostream& operator<<(ostream& out, Accelerateur const& a)
 {
     if((a.getelements()).size() != 1)
