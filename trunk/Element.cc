@@ -3,7 +3,8 @@
 
 using namespace std;
 
-//définition des méthodes get
+//--------définition des méthodes get----------------------------------------------------------------------------
+
 Vecteur3D Element::getentree() const
 {
     return entree;
@@ -19,9 +20,9 @@ double Element::getrayon() const
     return rayon;
 }
 
-Element Element::getsuivant() const
+Element* Element::getsuivant() const
 {
-    return *suivant;
+    return suivant;
 }
 
 //---------------------------------------------------------------------------------------------------------------
