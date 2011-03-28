@@ -7,11 +7,12 @@
 #include "Element.h"
 using namespace std;
 
-class Section_droite : public Droit : public Dessinable					//  HELP  //
+class Section_droite : public Droit										//  A FAIRE  //
 {
 	Section_droite();
 	Section_droite(Vecteur3D, Vecteur3D, double);	// constructeurs.
 	Section_droite(Section_droite const&);
+	~Section_droite();
 	
 };
 

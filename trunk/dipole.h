@@ -8,7 +8,7 @@
 using namespace std;
 
 
-class Dipole : public Courbe, Dessinable										//  HELP  //
+class Dipole : public Courbe									//  HELP  //	
 {
 	
 	protected :

@@ -34,5 +34,5 @@ double Dipole::getchamps_vertical()
 void Dipole::setchamps_vertical(double d)
 {champs_vertical = d;}
 
-virtual void dessine(Dipole const& d)         //  A FAIRE  //
-{}
+//  virtual void dessine(Dipole const& d)         //  A FAIRE  //
+//  {}
