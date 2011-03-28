@@ -1,102 +1,112 @@
 #include <iostream>
 #include "Element.h"
 #include <cmath>
+
 using namespace std;
 
-
-
-
-//-------Element------constructeurs/destructeurs-----------------------------------------------------------------
-
-Vecteur3D Element::e3(0,0,1);
-
-Element::Element()
-: re(), rs(), Re(0), Element_suivant(0)
-{}
-
-
-
-Element::Element(Vecteur3D e, Vecteur3D s, double R)
-: re(e), rs(s), Re(R), Element_suivant(0)
-{}
-
-
-
-Element::~Element()
-{}
-
-
-
-//---------------Element-----get----------------------------------------------------------
-
-
+//--------définition des méthodes get----------------------------------------------------------------------------
 
 Vecteur3D Element::getre() const
-{ return re; }
+{
+    return re;
+}
 
 
 Vecteur3D Element::getrs() const
-{ return rs; }
+{
+    return rs;
+}
 
 
 double Element::getRe() const
-{ return Re; }
+{
+    return Re;
+}
 
 
 Element* Element::getElement_suivant() const
-{return Element_suivant; }
+{
+    return Element_suivant;
+}
 
 
-
-//----------------Element--------set------------------------------------------------------
-
-
+//--------définition des méthodes set----------------------------------------------------------------------------
 
 void Element::setre(Vecteur3D const& v)
-{	re.setx(v.getx());
+{
+    re.setx(v.getx());
 	re.sety(v.gety());
-	re.setz(v.getz());	}
-
-
-
+	re.setz(v.getz());
+}
 
 void Element::setrs(Vecteur3D const& v)
-{	rs.setx(v.getx());
+{
+    rs.setx(v.getx());
 	rs.sety(v.gety());
-	rs.setz(v.getz());	}
-
-
-
+	rs.setz(v.getz());
+}
 
 void Element::setRe(double const& d)
-{Re = d;}
+{
+    Re = d;
+}
 
 
 
 void Element::setElement_suivant(Element& v)
-{Element_suivant = &v;}
+{
+    Element_suivant = &v;
+}
 
+//--------définition des constructeurs/destructeurs--------------------------------------------------------------
 
+Element::Element()
+: re(), rs(), Re(0), Element_suivant(0)
+{
+
+}
+
+Element::Element(Vecteur3D e, Vecteur3D s, double R)
+: re(e), rs(s), Re(R), Element_suivant(0)
+{
+
+}
+
+Element::~Element()
+{
+
+}
+
+//--------définition des méthodes--------------------------------------------------------------------------------
 
 bool Element::passe_suivant(Particule const& p)
 {
-	return prod_mixte(e3, p.getposition(), rs) > 0;	
+	return prod_mixte(e3, p.getposition(), rs) > 0;
 }
 
-//----------Element-----protected----------------------------------------------------------------------------------
+//--------donne les valeurs aux static-----------------------------------------------------------------------------
 
+Vecteur3D Element::E1(1,0,0);
+Vecteur3D Element::E2(0,1,0);
+Vecteur3D Element::E3(0,0,1);
 
+//--------définition des méthodes privée-------------------------------------------------------------------------------------------------------
 
 Vecteur3D Element::getdirection() const		// methode qui renvoie la direction.
 {
     return ~(rs - re);
 }
 
+//--------définition des surcharges externes---------------------------------------------------------------------
 
-Vecteur3D Element::getpos_relative(Particule const& p) const 
-{ return p.getposition() - re; }
+ostream& operator<<(ostream& out, Element const& e)
+{
+    out << "Entrée : " << e.getre() << endl
+    << "Sortie : " << e.getrs() << endl
+    << "Section : " << e.getRe() << endl;
 
-
+    return out;
+}
 
 
 //------------Droit--------------------------------------------------------------------------------------------
@@ -129,13 +139,13 @@ bool Droit::heurte_bord(Particule const& p)
 {
 	Vecteur3D d((*this).getdirection());
     Vecteur3D X((*this).getpos_relative(p));
-	
+
     return (X-(X*d)*d).norme_carre() > Re;
 }
 
 
 double Droit::getlongueur() const
-{return (rs - re).norme();}												
+{return (rs - re).norme();}
 
 
 //----------Courbe----------------------------------------------------------------------------------------------

@@ -7,10 +7,15 @@ class Droit : public Element
 {
     public :
 
-//--------prototypage des constructeurs--------------------------------------------------------------------------
+//--------prototypage des méthodes get---------------------------------------------------------------------------
 
-        Droit(); //constructeur par défaut qui initalise a 0
+
+
+//--------prototypage des constructeurs/destructeur--------------------------------------------------------------
+
+        Droit();                             //constructeur par défaut qui initalise a 0
         Droit(Vecteur3D, Vecteur3D, double); //constructeur qui prend en argument le vecteur d'entrée, de sortie et le rayon de l'élément
+        ~Droit();                            //destructeur
 
 //--------prototypage des méthodes-------------------------------------------------------------------------------
 

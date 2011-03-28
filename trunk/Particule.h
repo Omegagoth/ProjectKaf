@@ -13,9 +13,6 @@ class Particule
 {
     public :
 
-        /*//définition de constante importante
-        static double const C(3*pow(10,8));*/
-
 //--------prototypage des méthodes get---------------------------------------------------------------------------
 
         Vecteur3D getposition() const;

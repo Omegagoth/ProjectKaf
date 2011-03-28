@@ -1,15 +1,10 @@
 #ifndef ELEMENT_H
 #define ELEMENT_H
 
-#include "Vecteur3D.h"
 #include "Particule.h"
 #include <iostream>
 
 using namespace std;
-
-/*Vecteur3D const E1(1,0,0);
-Vecteur3D const E2(0,1,0);
-Vecteur3D const E3(0,0,1);*/
 
 class Element
 {

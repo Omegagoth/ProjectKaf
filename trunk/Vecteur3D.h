@@ -57,13 +57,12 @@ class Vecteur3D
 
 };
 
-//---------------------------------------------------------------------------------------------------------------
+//--------prototypage des fonctions------------------------------------------------------------------------------
 
 double prod_mixte(Vecteur3D, Vecteur3D, Vecteur3D); //renvoie le produit mixte : v = v1*(v2^v3)
 
-//---------------------------------------------------------------------------------------------------------------
+//--------prototypage des surcharges externes--------------------------------------------------------------------
 
-//surcharge des opérateurs en externe
 Vecteur3D operator*(double const&, Vecteur3D const&); //surcharge la multiplication par un scalaire a gauche
 Vecteur3D operator*(Vecteur3D const&, double const&); //surcharge la multiplication par un scalaire a droite
 ostream& operator<<(ostream&, Vecteur3D const&); //surcharge de l'opérateur <<
