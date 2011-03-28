@@ -16,8 +16,8 @@ class Particule
         /*//définition de constante importante
         static double const C(3*pow(10,8));*/
 
-//---------------------------------------------------------------------------------------------------------------
-        //prototypage des méthodes get
+//--------prototypage des méthodes get---------------------------------------------------------------------------
+
         Vecteur3D getposition() const;
         Vecteur3D getvitesse() const;
         double getmasse() const;
@@ -26,30 +26,27 @@ class Particule
         double getgamma() const;
         Vecteur3D getforce() const;
 
-//---------------------------------------------------------------------------------------------------------------
+//--------prototypage des méthodes set---------------------------------------------------------------------------
 
-        //prototypage des fonctions set
         void setposition(Vecteur3D const&);
         void setvitesse(Vecteur3D const&);
         void setmasse(double const&);
         void setcharge(double const&);
 
-//---------------------------------------------------------------------------------------------------------------
+//--------prototypage des constructeurs--------------------------------------------------------------------------
 
-        //prototypage des constructeurs
         Particule(); //constructeur par défaut
         Particule(Vecteur3D position, Vecteur3D quantite_mouv, double masse, double charge); //construit un vecteur a partir de sa position, quantité de mouvement, masse et charge
         Particule(Vecteur3D, double, Vecteur3D, double, double); //construit un vecteur a partir de sa position, energie, direction de sa vitesse, masse et charge
 
-//---------------------------------------------------------------------------------------------------------------
+//--------prototypage des méthodes-------------------------------------------------------------------------------
 
-        //protoypage des méthodes
         void ajoute_forcemagn(Vecteur3D const&, double); //ajoute une force en prenant un vecteur B du champ magnétique et un intervalle de temps dt
         void bouger(double); //mets a jour la position et la vistesse de la particule pour un pas de temps donné
 
-//---------------------------------------------------------------------------------------------------------------
-
     protected :
+
+//--------définition des attributs-------------------------------------------------------------------------------
 
         Vecteur3D position;
         Vecteur3D vitesse;
@@ -58,7 +55,7 @@ class Particule
         Vecteur3D force;
 };
 
-//---------------------------------------------------------------------------------------------------------------
+//--------prototypage des surcharges externes--------------------------------------------------------------------
 
 ostream& operator<<(ostream&, Particule); //permet l'affichage par cout des particules
 

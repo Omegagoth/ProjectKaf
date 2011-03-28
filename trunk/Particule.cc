@@ -4,7 +4,7 @@
 
 using namespace std;
 
-//---------------------------------------------------------------------------------------------------------------
+//--------définition des méthodes get----------------------------------------------------------------------------
 
 Vecteur3D Particule::getposition() const
 {
@@ -41,7 +41,7 @@ Vecteur3D Particule::getforce() const
     return force;
 }
 
-//---------------------------------------------------------------------------------------------------------------
+//--------définition des méthodes set----------------------------------------------------------------------------
 
 void Particule::setposition(Vecteur3D const& x)
 {
@@ -67,7 +67,7 @@ void Particule::setcharge(double const& c)
     charge = c;
 }
 
-//---------------------------------------------------------------------------------------------------------------
+//--------définition des constructeurs---------------------------------------------------------------------------
 
 Particule::Particule()
 : position(), vitesse(), masse(0), charge(0),force()
@@ -96,7 +96,7 @@ Particule::Particule(Vecteur3D x, double e, Vecteur3D d, double m, double c)
     vitesse.setz(v.getz()*n);
 }
 
-//---------------------------------------------------------------------------------------------------------------
+//--------définition des méthodes--------------------------------------------------------------------------------
 
 void Particule::ajoute_forcemagn(Vecteur3D const& B, double dt)
 {
@@ -104,7 +104,7 @@ void Particule::ajoute_forcemagn(Vecteur3D const& B, double dt)
     {
         double e(1.60217653e-19);
         Vecteur3D f(charge*vitesse^B);
-        force = f.rotation(vitesse^f, asin(dt*f.norme()*C*C / (2 * masse *e * 1e9 * (*this).getgamma() * vitesse.norme()) ) );
+        force = f.rotation(vitesse^f, asin(dt*f.norme()*C*C / (2 * masse *e * 1e9 * getgamma() * vitesse.norme()) ) );
     }
 }
 
@@ -121,7 +121,7 @@ void Particule::bouger(double dt)
     }
 }
 
-//---------------------------------------------------------------------------------------------------------------
+//--------définition des surcharges externes---------------------------------------------------------------------
 
 ostream& operator<<(ostream& out, Particule p)
 {
