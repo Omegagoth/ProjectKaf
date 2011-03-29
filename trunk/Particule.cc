@@ -91,9 +91,7 @@ Particule::Particule(Vecteur3D x, double e, Vecteur3D d, double m, double c)
     Vecteur3D v(~d);
 
     double n(C*sqrt(1-m*m/(e*e)));
-    vitesse.setx(v.getx()*n);
-    vitesse.sety(v.gety()*n);
-    vitesse.setz(v.getz()*n);
+    vitesse = n*v;
 }
 
 //--------définition des méthodes--------------------------------------------------------------------------------
@@ -104,7 +102,7 @@ void Particule::ajoute_forcemagn(Vecteur3D const& B, double dt)
     {
         double e(1.60217653e-19);
         Vecteur3D f(charge*vitesse^B);
-        force = f.rotation(vitesse^f, asin(dt*f.norme()*C*C / (2 * masse *e * 1e9 * getgamma() * vitesse.norme()) ) );
+        force += f.rotation(vitesse^f, asin(dt*f.norme()*C*C / (2 * masse *e * 1e9 * getgamma() * vitesse.norme()) ) );
     }
 }
 
@@ -113,7 +111,7 @@ void Particule::bouger(double dt)
     if(dt != 0)
     {
         double e(1.60217653e-19);
-        vitesse += (dt*C*C/(getgamma()*e*masse*1e9))*force; cout << C*C/(getgamma()*masse*1e9)*force << endl;
+        vitesse += (dt*C*C/(getgamma()*e*masse*1e9))*force;
         position += dt*vitesse;
         force.setx(0);
         force.sety(0);
