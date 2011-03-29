@@ -21,12 +21,13 @@ void Quadrupole::setintensite(double const& d)
 
 Vecteur3D Quadrupole::coordonnees_locales(Particule const& p) const
 {
-	return ( getpos_relative(p) - ((getpos_relative(p) * getdirection()) * getdirection()) );
+	return getpos_relative(p) - (getpos_relative(p)*getdirection())*getpos_relative(p);
 }
 
 
 Vecteur3D Quadrupole::getchamps_magnetique(Particule const& p) const
 {
-	return intensite * (( coordonnees_locales(p) * (E3^(this*).getdirection())) * E3 + (p.getposition().getz() * (E3^(this*).getdirection())));
+    Vecteur3D u(E3^getdirection());
+	return intensite*((coordonnees_locales(p)*u)*E3 + (p.getposition()).getz() * getdirection());
 }
 

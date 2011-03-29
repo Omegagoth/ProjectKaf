@@ -29,7 +29,7 @@ class Element
 
         Element ();	                            //constructeur par défaut qui initialise l'élément a 0
         Element (Vecteur3D, Vecteur3D, double);	//constructeur qui prend en argument le vecteur d'entrée, de sortie et le rayon de l'élément
-        ~Element();	                            //destructeur
+        virtual ~Element();	                    //destructeur
 
 //--------prototypage des méthodes-------------------------------------------------------------------------------
 

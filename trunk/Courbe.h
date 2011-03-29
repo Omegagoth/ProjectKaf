@@ -22,7 +22,7 @@ class Courbe : public Element
         Courbe(); //constructeur par défaut qui initialise à 0
         Courbe(Vecteur3D, Vecteur3D, double, double); //constructeur qui prend en argument le vecteur d'entrée, de sortie, la section et l'inverse du rayon de courbure orienter
         Courbe(const Courbe &);                       //constructeur de copie
-        ~Courbe();                                    //destructeur
+        virtual ~Courbe();                            //destructeur
 
 //--------prototypage des méthodes-------------------------------------------------------------------------------
 

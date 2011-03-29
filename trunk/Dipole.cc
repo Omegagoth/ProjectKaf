@@ -9,8 +9,9 @@ using namespace std;
 
 //-----------Dipole------Constructeur/destructeur----------------------------------------------------
 
+double Dipole::intensite(0);
 
-Dipole::Dipole() 
+Dipole::Dipole()
 : Courbe() {}
 
 Dipole::Dipole(Vecteur3D v1, Vecteur3D v2, double d1, double d2)

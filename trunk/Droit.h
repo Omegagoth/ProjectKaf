@@ -16,7 +16,7 @@ class Droit : public Element
         Droit();                             //constructeur par défaut qui initalise a 0
         Droit(Vecteur3D, Vecteur3D, double); //constructeur qui prend en argument le vecteur d'entrée, de sortie et le rayon de l'élément
         Droit(Droit const&);                 //constructeur de copie
-        ~Droit();                            //destructeur
+        virtual ~Droit();                    //destructeur
 
 //--------prototypage des méthodes-------------------------------------------------------------------------------
 
