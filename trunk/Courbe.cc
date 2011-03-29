@@ -47,7 +47,7 @@ Courbe::~Courbe()
 
 //--------définition des méthodes--------------------------------------------------------------------------------
 
-bool Courbe::touche_bord(Particule const& p) const
+bool Courbe::heurte_bord(Particule const& p) const
 {
     Vecteur3D X(p.getposition() - getcentre());
     return (X - 1/abs(courbure)*(~(X - X.getx()*E3))).norme_carre() > Re*Re;

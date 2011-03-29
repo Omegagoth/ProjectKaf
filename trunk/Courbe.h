@@ -26,7 +26,7 @@ class Courbe : public Element
 
 //--------prototypage des méthodes-------------------------------------------------------------------------------
 
-        virtual bool touche_bord(Particule const&) const; //détermine si la particule a ou non heurté le bord de l'élément
+        virtual bool heurte_bord(Particule const&) const; //détermine si la particule a ou non heurté le bord de l'élément
 
 
 
