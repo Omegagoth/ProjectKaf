@@ -3,36 +3,38 @@
 
 #include <iostream>
 #include "Courbe.h"
-
 using namespace std;
 
 
-class Dipole : public Courbe
+class Dipole : public Courbe									//  A FAIRE  //	
 {
-
+	
 	protected :
-	static double champs_vertical;		// Champs magnétique vertical.
-
-
+	static double intensite;		// Intensité du champs magnétique vertical.
+	
+	
 	//-------------------------------------------------------------------------------------------------------
-
-
+	
+	
 	public :
-
+	
 	Dipole();														// constructeur par défault sans arguments
-	Dipole(Vecteur3D, Vecteur3D, double, Vecteur3D, double);		// constructeur avec arguments
+	Dipole(Vecteur3D, Vecteur3D, double, double);					// constructeur avec arguments
 	Dipole(const Dipole &);											// constructeur de copie
 	~Dipole();														// destructeur
-
-
+	
+	
 	//-------------------------------------------------------------------------------------------------------
-
-
-	double getchamps_vertical();			// méthodes get/set
-	void setchamps_vertical(double);
-
+	
+	
+	double getintensite() const;				// méthodes get/set
+	void setintensite(double);
+	
+	Vecteur3D getchamps_magnetique() const;		// méthode renvoyant le champs magnétique sous forme de vecteur.
+	
+	
 	virtual void dessine(Dipole const&) const;
-
+	
 };
 
 #endif

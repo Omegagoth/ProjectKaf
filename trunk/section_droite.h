@@ -2,9 +2,7 @@
 #define SECTION_DROITE_H
 
 #include <iostream>
-#include "Vecteur3D.h"
-#include "Particule.h"
-#include "Element.h"
+#include "Droit.h"
 using namespace std;
 
 class Section_droite : public Droit										//  A FAIRE  //

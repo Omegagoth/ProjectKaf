@@ -2,25 +2,28 @@
 #define QUADRUPOLE_H
 
 #include <iostream>
-#include "Vecteur3D.h"
-#include "Particule.h"
-#include "Element.h"
+#include "Droit.h"
 using namespace std;
 
 class Quadrupole : public Droit
 {
 	protected :
 	
-	double champs_magnetique;
+	double intensite;
 	
 	public :
 	
 	Quadrupole();
 	Quadrupole(Vecteur3D, Vecteur3D, double, double);
 	Quadrupole(Quadrupole const&);
+	~Quadrupole();
 	
-	double getchamps_magnetique() const;
-	void setchamps_magnetique(double const&);
+	double getintensite() const;
+	void setintensite(double const&);
+	
+	Vecteur3D coordonnees_locales(Particule const& p) const;
+	
+	Vecteur3D getchamps_magnetique(Particule const& p) const;
 	
 	virtual void dessine(Quadrupole const&) const;
 	

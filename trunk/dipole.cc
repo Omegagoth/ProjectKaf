@@ -27,12 +27,15 @@ Dipole::~Dipole()
 //-----------Dipole------get/set---------------------------------------------------------------------
 
 
-double Dipole::getchamps_vertical()
-{return champs_vertical;}
+double Dipole::getintensite() const
+{return intensite;}
 
 
-void Dipole::setchamps_vertical(double d)
-{champs_vertical = d;}
+void Dipole::setintensite(double d)
+{intensite = d;}
+
+Vecteur3D Dipole::getchamps_magnetique() const
+{return E3*intensite;}
 
 //  virtual void dessine(Dipole const& d)         //  A FAIRE  //
 //  {}
