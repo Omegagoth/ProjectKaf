@@ -9,7 +9,7 @@ double Courbe::getcourbure() const
 
 Vecteur3D Courbe::getcentre() const
 {
-    return 1./2*(entree + sortie) + 1/courbure *sqrt(1 - courbure*courbure*(sortie - entree).norme_carre()/4)*((*this).getdirection()^E3);
+    return 1./2*(re + rs) + 1/courbure *sqrt(1 - courbure*courbure*(rs - re).norme_carre()/4)*((*this).getdirection()^E3);
 }
 
 //--------définition des méthodes get----------------------------------------------------------------------------
@@ -50,7 +50,7 @@ Courbe::~Courbe()
 bool Courbe::touche_bord(Particule const& p) const
 {
     Vecteur3D X(p.getposition() - getcentre());
-    return (X - 1/abs(courbure)*(~(X - X.getx()*E3))).norme_carre() > rayon;
+    return (X - 1/abs(courbure)*(~(X - X.getx()*E3))).norme_carre() > Re*Re;
 }
 
 //--------définition des méthodes privées------------------------------------------------------------------------
@@ -64,9 +64,9 @@ Vecteur3D Courbe::getpos_relative(Particule const& p) const
 
 ostream& operator<< (ostream& out, Courbe const& c)
 {
-    out << "Entrée : " << c.getentree() << endl
-    << "Sortie : " << c.getsortie() << endl
-    << "Section : " << c.getrayon() << endl
+    out << "Entrée : " << c.getre() << endl
+    << "Sortie : " << c.getrs() << endl
+    << "Section : " << c.getRe() << endl
     << "Rayon de courbure : " << 1/c.getcourbure() << endl
     << "Centre de courbure : " << c.getcentre() << endl;
 

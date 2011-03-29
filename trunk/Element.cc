@@ -81,7 +81,7 @@ Element::~Element()
 
 bool Element::passe_suivant(Particule const& p)
 {
-	return prod_mixte(e3, p.getposition(), rs) > 0;
+	return prod_mixte(E3, p.getposition(), rs) > 0;
 }
 
 //--------donne les valeurs aux static-----------------------------------------------------------------------------
@@ -92,7 +92,7 @@ Vecteur3D Element::E3(0,0,1);
 
 //--------définition des méthodes privée-------------------------------------------------------------------------------------------------------
 
-Vecteur3D Element::getdirection() const		// methode qui renvoie la direction.
+Vecteur3D Element::getdirection() const
 {
     return ~(rs - re);
 }
@@ -107,101 +107,4 @@ ostream& operator<<(ostream& out, Element const& e)
 
     return out;
 }
-
-
-//------------Droit--------------------------------------------------------------------------------------------
-
-//------------Droit-----constructeurs/destructeurs-------------------------------------------------------------
-
-
-
-Droit::Droit()
-:Element() {}
-
-
-Droit::Droit(Vecteur3D v1, Vecteur3D v2, double d)
-:Element(v1, v2, d)  {}
-
-
-Droit::Droit(const Droit& d)
-:Element(d)   {}
-
-Droit::~Droit()
-{}
-
-
-
-//------------Droit-----public-------------------------------------------------------------
-
-
-
-bool Droit::heurte_bord(Particule const& p)
-{
-	Vecteur3D d((*this).getdirection());
-    Vecteur3D X((*this).getpos_relative(p));
-
-    return (X-(X*d)*d).norme_carre() > Re;
-}
-
-
-double Droit::getlongueur() const
-{return (rs - re).norme();}
-
-
-//----------Courbe----------------------------------------------------------------------------------------------
-
-//----------Courbe------Constructeurs/destructeurs--------------------------------------------------------------
-
-
-
-Courbe::Courbe()
-:Element(), centre_courbure(), courbure(0)  {}
-
-
-Courbe::Courbe(Vecteur3D v1, Vecteur3D v2, double d1, double d2)
-:Element(v1, v2, d1), courbure(d2)  {}
-
-
-Courbe::Courbe(const Courbe& c)
-:Element(c), courbure(c.getcourbure())  {}
-
-
-Courbe::~Courbe()
-{}
-
-
-
-
-//----------Courbe------get----------------------------------------------------------------
-
-
-
-Vecteur3D Courbe::getcentre_courbure() const
-{return 1./2*(re + rs) + 1/courbure *sqrt(1 - courbure*courbure*(rs - re).norme_carre()/4)*((*this).getdirection()^e3);}
-
-
-double Courbe::getcourbure() const
-{return courbure;}
-
-
-
-//----------Courbe-------set-------------------------------------------------------------
-
-
-void Courbe::setcourbure(double const& d)
-{courbure = d;}
-
-
-
-//-----------Courbe------public-------------------------------------------------------------
-
-
-
-bool Courbe::heurte_bord(Particule const& p)
-{
-	Vecteur3D X (p.getposition() - (*this).getcentre_courbure());
-	return (X - 1/abs(courbure)*(~(X-X.getx()*e3))).norme_carre() > Re;
-}
-
-
 

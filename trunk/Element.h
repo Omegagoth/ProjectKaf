@@ -44,7 +44,6 @@ class Element
         Vecteur3D rs;					// postition de sortie.
         double Re;						// Rayon de la chambre à vide.
         Element* Element_suivant;		// pointeur qui envoie sur l'element suivant.
-        Vecteur3D getdirection() const;	// renvoie la direction d'un element
 
 //--------définition des statics---------------------------------------------------------------------------------
 

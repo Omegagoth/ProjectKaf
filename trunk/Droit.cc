@@ -34,7 +34,7 @@ Droit::~Droit()
 
 //--------définition des méthodes--------------------------------------------------------------------------------
 
-bool Droit::heurte_bord(Particule const& p)
+bool Droit::heurte_bord(Particule const& p) const
 {
 	Vecteur3D d(getdirection());
     Vecteur3D X(getpos_relative(p));
@@ -46,16 +46,16 @@ bool Droit::heurte_bord(Particule const& p)
 
 Vecteur3D Droit::getpos_relative(Particule const& p) const
 {
-    return p.getposition() - entree;
+    return p.getposition() - re;
 }
 
 //--------définition des surcharges externes---------------------------------------------------------------------
 
 ostream& operator<<(ostream& out, Droit const& d)
 {
-    out << "Entrée : " << d.getentree() << endl
-    << "Sortie : " << d.getsortie() << endl
-    << "Section : " << d.getrayon() << endl;
+    out << "Entrée : " << d.getre() << endl
+    << "Sortie : " << d.getrs() << endl
+    << "Section : " << d.getRe() << endl;
 
     return out;
 }
