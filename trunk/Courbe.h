@@ -13,14 +13,22 @@ class Courbe : public Element
         double getcourbure() const; //donne l'inverse du rayon de courbure de l'élément courbe
         Vecteur3D getcentre() const; //donne le centre de courbure de l'élément
 
+//--------prototypage des méthodes get---------------------------------------------------------------------------
+
+        void setcourbure(double const&); //permet de changer la valeur du rayon de courbure
+
 //--------prototypage des constructeurs--------------------------------------------------------------------------
 
-        Courbe(); //constructeur par défaut qui initialise a 0
+        Courbe(); //constructeur par défaut qui initialise à 0
         Courbe(Vecteur3D, Vecteur3D, double, double); //constructeur qui prend en argument le vecteur d'entrée, de sortie, la section et l'inverse du rayon de courbure orienter
+        Courbe(const Courbe &);                       //constructeur de copie
+        ~Courbe();                                    //destructeur
 
 //--------prototypage des méthodes-------------------------------------------------------------------------------
 
         virtual bool touche_bord(Particule const&) const; //détermine si la particule a ou non heurté le bord de l'élément
+
+
 
     protected :
 
@@ -34,37 +42,12 @@ class Courbe : public Element
 
 };
 
+
+
+
 //--------prototypage des surcharges externes--------------------------------------------------------------------
 
 ostream& operator<<(ostream& out, Courbe const&); //surcharge de l'opérateur << permettant d'afficher un Courbe dans le terminal
 
-
-//---------------------------------------------------------------------------------------------------------------
-//--------Classe Dipôle------------------------------------------------------------------------------------------
-
-class Dipole : public Courbe
-{
-    public :
-
-//--------prototypage des méthodes get---------------------------------------------------------------------------
-
-        double getchamps() const; //retourne la valeurs du champs magnétique des dipoles
-
-//--------prototypage des constructeurs--------------------------------------------------------------------------
-
-        Dipole(); //constructeur par défaut
-        Dipole(Vecteur3D, Vecteur3D, double, double, double); //constructeur qui prend en argument le vecteur d'entrée, de sortie, le rayon de l'élément, de courbure, et la valeurs du champs magnétique verticale
-
-    protected :
-
-//--------définition des attributs-------------------------------------------------------------------------------
-
-        double champs;
-
-};
-
-//--------prototypage des surcharges externes--------------------------------------------------------------------
-
-ostream& operator<<(ostream&, Dipole const&); //surcharge de l'opérateur << permettant d'afficher un Dipole dans le terminal
 
 #endif

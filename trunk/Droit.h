@@ -9,17 +9,21 @@ class Droit : public Element
 
 //--------prototypage des méthodes get---------------------------------------------------------------------------
 
-
+        double getlongueur() const; //retourne la longueur de l'élément
 
 //--------prototypage des constructeurs/destructeur--------------------------------------------------------------
 
         Droit();                             //constructeur par défaut qui initalise a 0
         Droit(Vecteur3D, Vecteur3D, double); //constructeur qui prend en argument le vecteur d'entrée, de sortie et le rayon de l'élément
+        Droit(Droit const&);                 //constructeur de copie
         ~Droit();                            //destructeur
 
 //--------prototypage des méthodes-------------------------------------------------------------------------------
 
-        virtual bool touche_bord(Particule const&) const; //détermine si la particule a ou non heurté le bord de l'élément
+        virtual bool heurte_bord(Particule const&) const; //détermine si la particule a ou non heurté le bord de l'élément
+
+
+
 
     protected :
 

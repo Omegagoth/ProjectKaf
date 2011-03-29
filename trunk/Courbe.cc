@@ -12,6 +12,13 @@ Vecteur3D Courbe::getcentre() const
     return 1./2*(entree + sortie) + 1/courbure *sqrt(1 - courbure*courbure*(sortie - entree).norme_carre()/4)*((*this).getdirection()^E3);
 }
 
+//--------définition des méthodes get----------------------------------------------------------------------------
+
+void Courbe::setcourbure(double const& d)
+{
+    courbure = d;
+}
+
 //--------définition des constructeurs---------------------------------------------------------------------------
 
 Courbe::Courbe()
@@ -22,6 +29,18 @@ Courbe::Courbe()
 
 Courbe::Courbe(Vecteur3D e, Vecteur3D s, double r, double k)
 : Element(e, s, r), courbure(k)
+{
+
+}
+
+Courbe::Courbe(const Courbe& c)
+:Element(c), courbure(c.getcourbure())
+{
+
+}
+
+
+Courbe::~Courbe()
 {
 
 }
@@ -50,40 +69,6 @@ ostream& operator<< (ostream& out, Courbe const& c)
     << "Section : " << c.getrayon() << endl
     << "Rayon de courbure : " << 1/c.getcourbure() << endl
     << "Centre de courbure : " << c.getcentre() << endl;
-
-    return out;
-}
-
-//---------------------------------------------------------------------------------------------------------------
-//--------Classe Dipôle------------------------------------------------------------------------------------------
-
-//définition des méthodes get
-double Dipole::getchamps() const
-{
-    return champs;
-}
-
-//---------------------------------------------------------------------------------------------------------------
-
-//défintion des constructeurs
-Dipole::Dipole()
-: Courbe(), champs(0)
-{
-
-}
-
-Dipole::Dipole(Vecteur3D re, Vecteur3D rs, double R, double k, double b)
-:Courbe(re,rs,R,k), champs (0)
-{
-
-}
-
-//---------------------------------------------------------------------------------------------------------------
-
-ostream& operator<<(ostream& out, Dipole const& d)
-{
-    out << d <<endl
-    << "Champs magnétique :" << d.getchamps() << endl;
 
     return out;
 }

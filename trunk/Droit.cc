@@ -1,5 +1,12 @@
 #include "Droit.h"
 
+//--------prototypage des méthodes get---------------------------------------------------------------------------
+
+double Droit::getlongueur() const
+{
+    return (rs - re).norme();
+}
+
 //--------définition des constructeurs---------------------------------------------------------------------------
 
 Droit::Droit()
@@ -14,14 +21,25 @@ Droit::Droit(Vecteur3D e, Vecteur3D s, double r)
 
 }
 
+Droit::Droit(const Droit& d)
+:Element(d)
+{
+
+}
+
+Droit::~Droit()
+{
+
+}
+
 //--------définition des méthodes--------------------------------------------------------------------------------
 
-bool Droit::touche_bord(Particule const& p) const
+bool Droit::heurte_bord(Particule const& p)
 {
-    Vecteur3D d(getdirection());
+	Vecteur3D d(getdirection());
     Vecteur3D X(getpos_relative(p));
 
-    return (X-(X*d)*d).norme_carre() > rayon;
+    return (X-(X*d)*d).norme_carre() > Re*Re;
 }
 
 //--------définition des méthodes privées------------------------------------------------------------------------
