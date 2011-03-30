@@ -28,6 +28,7 @@ Vecteur3D Quadrupole::coordonnees_locales(Particule const& p) const
 Vecteur3D Quadrupole::getchamps_magnetique(Particule const& p) const
 {
     Vecteur3D u(E3^getdirection());
-	return intensite*((coordonnees_locales(p)*u)*E3 + (p.getposition()).getz() * getdirection());
+	return intensite*((coordonnees_locales(p)*u)*E3 + (p.getposition()).getz() * u);
 }
+
 
