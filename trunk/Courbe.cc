@@ -22,7 +22,7 @@ void Courbe::setcourbure(double const& d)
 //--------définition des constructeurs---------------------------------------------------------------------------
 
 Courbe::Courbe()
-: Element(), courbure(1)
+: courbure(1)
 {
 
 }

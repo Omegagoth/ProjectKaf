@@ -70,13 +70,13 @@ void Particule::setcharge(double const& c)
 //--------définition des constructeurs---------------------------------------------------------------------------
 
 Particule::Particule()
-: position(), vitesse(), masse(0), charge(0),force()
+: masse(0), charge(0)
 {
 
 }
 
 Particule::Particule(Vecteur3D x, Vecteur3D p, double m, double c)
-: position(x), vitesse (), masse(m), charge(c), force()
+: position(x), masse(m), charge(c)
 {
     double n(p.norme_carre());
     double a(sqrt( (m*m + n/(C*C)) ));
@@ -86,7 +86,7 @@ Particule::Particule(Vecteur3D x, Vecteur3D p, double m, double c)
 }
 
 Particule::Particule(Vecteur3D x, double e, Vecteur3D d, double m, double c)
-: position(x), vitesse(), masse(m), charge(c), force()
+: position(x), masse(m), charge(c)
 {
     Vecteur3D v(~d);
 

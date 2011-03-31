@@ -12,7 +12,7 @@ using namespace std;
 double Dipole::intensite(0);
 
 Dipole::Dipole()
-: Courbe() {}
+{}
 
 Dipole::Dipole(Vecteur3D v1, Vecteur3D v2, double d1, double d2)
 : Courbe(v1, v2, d1, d2)  {}

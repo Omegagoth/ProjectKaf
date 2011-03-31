@@ -16,14 +16,13 @@ class Element
         Vecteur3D getrs() const;             //donne la sortie de l'élément
         double getRe() const;                //donne le rayon de l'élément
         Element* getElement_suivant() const; //donne l'élément qui suit l'élément courant
-//        double getlongueur() const;          //renvoie la longueur de l'element droit
 
 //--------prototypage des méthodes set---------------------------------------------------------------------------
 
-        void setre(Vecteur3D const&);      //permet de définir l'entrée de l'élément
-        void setrs(Vecteur3D const&);      //permet de définir la sortie de l'élément
-        void setRe(double const&);         //permet de définir le rayon de l'élément
-        void setElement_suivant(Element&); //permet de définir l'élément qui suit
+        void setre(Vecteur3D const&);              //permet de définir l'entrée de l'élément
+        void setrs(Vecteur3D const&);              //permet de définir la sortie de l'élément
+        void setRe(double const&);                 //permet de définir le rayon de l'élément
+        virtual void setElement_suivant(Element&); //permet de définir l'élément qui suit
 
 //--------prototypage des constructeurs/destructeur-------------------------------------------------------------
 
@@ -55,6 +54,7 @@ class Element
 
         virtual Vecteur3D getpos_relative(Particule const&) const = 0; //donne la position relative d'une particule par rapport à l'entrer de l'élément
         Vecteur3D getdirection() const;                                //donne la direction moyenne de l'élément
+        void orientation();                                            //vérifie que l'élément est correctement orienter (dans le sens horaire) sinon inverse les vecteurs re et rs
 
 };
 

@@ -10,7 +10,6 @@ double Droit::getlongueur() const
 //--------définition des constructeurs---------------------------------------------------------------------------
 
 Droit::Droit()
-: Element()
 {
 
 }

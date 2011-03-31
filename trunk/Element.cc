@@ -34,16 +34,14 @@ Element* Element::getElement_suivant() const
 
 void Element::setre(Vecteur3D const& v)
 {
-    re.setx(v.getx());
-	re.sety(v.gety());
-	re.setz(v.getz());
+    re = v;
+    orientation();
 }
 
 void Element::setrs(Vecteur3D const& v)
 {
-    rs.setx(v.getx());
-	rs.sety(v.gety());
-	rs.setz(v.getz());
+    rs = v;
+    orientation();
 }
 
 void Element::setRe(double const& d)
@@ -61,7 +59,7 @@ void Element::setElement_suivant(Element& v)
 //--------définition des constructeurs/destructeurs--------------------------------------------------------------
 
 Element::Element()
-: re(), rs(), Re(0), Element_suivant(0)
+: Re(0), Element_suivant(0)
 {
 
 }
@@ -69,7 +67,7 @@ Element::Element()
 Element::Element(Vecteur3D e, Vecteur3D s, double R)
 : re(e), rs(s), Re(R), Element_suivant(0)
 {
-
+    orientation();
 }
 
 Element::~Element()
@@ -95,6 +93,16 @@ Vecteur3D Element::E3(0,0,1);
 Vecteur3D Element::getdirection() const
 {
     return ~(rs - re);
+}
+
+void Element::orientation()
+{
+    if (prod_mixte(E3, re, rs) > 0)
+    {
+        Vecteur3D a(re);
+        re = rs;
+        rs = a;
+    }
 }
 
 //--------définition des surcharges externes---------------------------------------------------------------------

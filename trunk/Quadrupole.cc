@@ -3,7 +3,7 @@
 using namespace std;
 
 Quadrupole::Quadrupole()
-:Droit(), intensite(0)  {}
+: intensite(0)  {}
 
 Quadrupole::Quadrupole(Vecteur3D v1, Vecteur3D v2, double d1, double d2)
 :Droit(v1,v2, d1), intensite(d2)  {}
