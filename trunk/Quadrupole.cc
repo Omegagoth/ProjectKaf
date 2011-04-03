@@ -32,3 +32,8 @@ Vecteur3D Quadrupole::getchamps_magnetique(Particule const& p) const
 }
 
 
+Quadrupole* Quadrupole::copie() const
+{
+    return new Quadrupole(*this);
+}
+

@@ -40,3 +40,8 @@ Vecteur3D Dipole::getchamps_magnetique() const
 
 //  virtual void dessine(Dipole const& d)         //  A FAIRE  //
 //  {}
+
+Dipole* Dipole::copie() const
+{
+    return new Dipole(*this);
+}

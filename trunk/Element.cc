@@ -49,12 +49,12 @@ void Element::setRe(double const& d)
     Re = d;
 }
 
-
-
 void Element::setElement_suivant(Element& v)
 {
     Element_suivant = &v;
 }
+
+
 
 //--------définition des constructeurs/destructeurs--------------------------------------------------------------
 
@@ -82,13 +82,13 @@ bool Element::passe_suivant(Particule const& p)
 	return prod_mixte(E3, p.getposition(), rs) > 0;
 }
 
-//--------donne les valeurs aux static-----------------------------------------------------------------------------
+//--------donne les valeurs aux static----------------------------------------------------------------------------
 
 Vecteur3D Element::E1(1,0,0);
 Vecteur3D Element::E2(0,1,0);
 Vecteur3D Element::E3(0,0,1);
 
-//--------définition des méthodes privée-------------------------------------------------------------------------------------------------------
+//--------définition des méthodes privée--------------------------------------------------------------------------
 
 Vecteur3D Element::getdirection() const
 {

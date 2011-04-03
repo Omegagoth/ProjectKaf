@@ -4,9 +4,10 @@
 #include <iostream>
 #include <vector>
 #include "Particule.h"
-#include "Element.h"
-#include "Courbe.h"
-#include "Droit.h"
+#include "Dipole.h"
+#include "Quadrupole.h"
+#include "Section_droite.h"
+#include "Fodo.h"
 
 using namespace std;
 

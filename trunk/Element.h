@@ -17,23 +17,24 @@ class Element
         double getRe() const;                //donne le rayon de l'élément
         Element* getElement_suivant() const; //donne l'élément qui suit l'élément courant
 
-//--------prototypage des méthodes set---------------------------------------------------------------------------
+//--------prototypage des méthodes set----------------------------------------------------------------------------
 
         void setre(Vecteur3D const&);              //permet de définir l'entrée de l'élément
         void setrs(Vecteur3D const&);              //permet de définir la sortie de l'élément
         void setRe(double const&);                 //permet de définir le rayon de l'élément
         virtual void setElement_suivant(Element&); //permet de définir l'élément qui suit
 
-//--------prototypage des constructeurs/destructeur-------------------------------------------------------------
+//--------prototypage des constructeurs/destructeur---------------------------------------------------------------
 
         Element ();	                            //constructeur par défaut qui initialise l'élément a 0
         Element (Vecteur3D, Vecteur3D, double);	//constructeur qui prend en argument le vecteur d'entrée, de sortie et le rayon de l'élément
         virtual ~Element();	                    //destructeur
 
-//--------prototypage des méthodes-------------------------------------------------------------------------------
+//--------prototypage des méthodes--------------------------------------------------------------------------------
 
         bool passe_suivant(Particule const&);		          //détermine si la particule à dépasser la sortie de l'élément
         virtual bool heurte_bord(Particule const&) const = 0; //détermine si la particule a ou non heurté le bord de l'élément
+        virtual Element* copie() const = 0;                   //méthode abstraite de copie polymorphique
 
 	protected :
 
@@ -58,7 +59,9 @@ class Element
 
 };
 
+//--------prototypage des surcharges externes--------------------------------------------------------------------
 
+ostream& operator<<(ostream&, Element const&);
 
 
 #endif

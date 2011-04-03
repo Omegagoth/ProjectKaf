@@ -21,7 +21,7 @@ class Droit : public Element
 //--------prototypage des méthodes-------------------------------------------------------------------------------
 
         virtual bool heurte_bord(Particule const&) const; //détermine si la particule a ou non heurté le bord de l'élément
-
+        virtual Droit* copie() const;                     //méthode de copie polymorphique
 
 
 

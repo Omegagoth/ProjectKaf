@@ -14,3 +14,9 @@ Section_droite::Section_droite(Section_droite const& s)
 :Droit(s)  {}
 
 Section_droite::~Section_droite()  {}
+
+
+Section_droite* Section_droite::copie() const
+{
+    return new Section_droite(*this);
+}
