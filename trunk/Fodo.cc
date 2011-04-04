@@ -24,6 +24,11 @@ Element* Fodo::getmaille(unsigned int i) const
     return maille[i];
 }
 
+double Fodo::getlongueur_quadrupole() const
+{
+    return getlongueur()/2 - longueur_droit;
+}
+
 
 
 //--------définition des méthodes set----------------------------------------------------------------------------
@@ -57,7 +62,7 @@ Fodo::Fodo()
 Fodo::Fodo(Vecteur3D e, Vecteur3D s, double r, double l, double i)
 : Droit(e,s,r), longueur_droit(l), intensite(i)
 {
-    Vecteur3D a(re + getlongueur()*getdirection());
+    Vecteur3D a(re + getlongueur_quadrupole()*getdirection());
     maille.push_back(new Quadrupole(e, a, r, i));
     maille.push_back(new Section_droite(a, a + getlongueur_droit()*getdirection(), r));
     maille.push_back(new Quadrupole(a + getlongueur_droit()*getdirection(), rs - getlongueur_droit()*getdirection(), r, -i));
@@ -95,13 +100,19 @@ bool Fodo::heurte_bord(Particule const& p) const
     return (*maille[0]).heurte_bord(p) && (*maille[1]).heurte_bord(p) && (*maille[2]).heurte_bord(p) && (*maille[3]).heurte_bord(p);
 }
 
-void Fodo::affiche(ostream& out)
+Fodo* Fodo::copie() const
 {
-    out << "Entrée : " << getre() << endl
+    return new Fodo(*this);
+}
+
+void Fodo::affiche(ostream& out) const
+{
+    out << "    Maille Fodo :" << endl
+    << "Entrée : " << getre() << endl
     << "Sortie : " << getrs() << endl
     << "Rayon : " << getRe() << endl
     << "Longueur des sections droites : " << getlongueur_droit() << endl
-    << "Longueur des quadrupôles : " << getlongueur() << endl
+    << "Longueur des quadrupôles : " << getlongueur_quadrupole() << endl
     << "Intensité : " << getintensite() << endl;
 }
 
@@ -127,14 +138,6 @@ Fodo& Fodo::operator=(Fodo const& f)
 
 unsigned int Fodo::taille(4);
 
-
-
-//--------définition des méthodes privée--------------------------------------------------------------------------
-
-double Fodo::getlongueur() const
-{
-    return (getdirection()).norme()/2 - longueur_droit;
-}
 
 
 //--------définition des surcharges externes---------------------------------------------------------------------

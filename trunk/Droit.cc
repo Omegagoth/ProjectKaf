@@ -41,10 +41,10 @@ bool Droit::heurte_bord(Particule const& p) const
     return (X-(X*d)*d).norme_carre() > Re*Re;
 }
 
-Droit* Droit::copie() const
+/*Droit* Droit::copie() const
 {
     return new Droit(*this);
-}
+}*/
 
 //--------définition des méthodes privées------------------------------------------------------------------------
 

@@ -27,7 +27,7 @@ class Courbe : public Element
 //--------prototypage des méthodes-------------------------------------------------------------------------------
 
         virtual bool heurte_bord(Particule const&) const; //détermine si la particule a ou non heurté le bord de l'élément
-
+        virtual void affiche(ostream&) const = 0;         //méthode abstraite polymorphique d'affichage
 
 
     protected :

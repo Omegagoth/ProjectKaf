@@ -2,6 +2,8 @@
 
 using namespace std;
 
+
+
 //--------définition des méthodes get----------------------------------------------------------------------------
 
 vector<Particule*> Accelerateur::getparticules() const
@@ -9,9 +11,9 @@ vector<Particule*> Accelerateur::getparticules() const
     return particules;
 }
 
-Particule Accelerateur::getparticule(unsigned int i) const
+Particule* Accelerateur::getparticules(unsigned int i) const
 {
-    return *particules[i-1];
+    return particules[i-1];
 }
 
 vector<Element*> Accelerateur::getelements() const
@@ -19,15 +21,17 @@ vector<Element*> Accelerateur::getelements() const
     return elements;
 }
 
-Element Accelerateur::getelement(unsigned int i) const
+Element* Accelerateur::getelements(unsigned int i) const
 {
-    return *elements[i-1];
+    return elements[i-1];
 }
+
+
+
 
 //--------définition des constructeurs---------------------------------------------------------------------------
 
 Accelerateur::Accelerateur()
-:particules(), elements()
 {
 
 }
@@ -37,6 +41,9 @@ Accelerateur::~Accelerateur()
     particules.clear();
     elements.clear();
 }
+
+
+
 
 //--------définition des méthodes--------------------------------------------------------------------------------
 
@@ -48,7 +55,7 @@ Accelerateur& Accelerateur::ajoute_particule(Particule const& p)
 
 Accelerateur& Accelerateur::ajoute_element(Element const& e)
 {
-    elements.push_back(new Element(e));
+    elements.push_back(e.copie());
     return (*this);
 }
 
@@ -72,6 +79,9 @@ Accelerateur& Accelerateur::clear_elements()
     return (*this);
 }
 
+
+
+
 //--------définition des constructeurs/surcharges privée---------------------------------------------------------
 
 Accelerateur::Accelerateur(Accelerateur const& a)
@@ -84,39 +94,46 @@ Accelerateur& Accelerateur::operator=(Accelerateur const& a)
 
 }
 
+
+
+
 //--------définition des surcharges externes---------------------------------------------------------------------
 
 ostream& operator<<(ostream& out, Accelerateur const& a)
 {
     if((a.getelements()).size() != 1)
     {
-        out << "L'accélérateur est constituer des " << (a.getelements()).size() << " éléments suivants :" << endl;
+        out << "L'accélérateur est constituer des " << (a.getelements()).size() << " éléments suivants :" << endl << endl;
 
         for (int unsigned i(0); i<(a.getelements()).size(); ++i)
         {
-            out << a.getelement(i+1);
+            out << *a.getelements(i+1) << endl;
         }
     }
     else
     {
-        out << "L'accélérateur est composée de l'élément suivant :" << endl
-        << a.getelement(1);
+        out << "L'accélérateur est composée de l'élément suivant :" << endl << endl
+        << *a.getelements(1) << endl;
     }
+
+    out << endl;
 
     if((a.getparticules()).size() != 1)
     {
-        out << "L'accélérateur contient les " << (a.getparticules()).size() << " particules suivantes :" << endl;
+        out << "L'accélérateur contient les " << (a.getparticules()).size() << " particules suivantes :" << endl << endl;
 
         for (int unsigned i(0); i<(a.getparticules()).size(); ++i)
         {
-            out << a.getparticule(i+1);
+            out << *a.getparticules(i+1) << endl;
         }
     }
     else
     {
-        out << "L'accélérateur contient la particule suivante :" << endl
-        << a.getparticule(1);
+        out << "L'accélérateur contient la particule suivante :" << endl << endl
+        << *a.getparticules(1) << endl;
     }
+
+    out << endl;
 
     return out;
 }

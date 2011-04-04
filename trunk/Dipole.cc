@@ -9,16 +9,16 @@ using namespace std;
 
 //-----------Dipole------Constructeur/destructeur----------------------------------------------------
 
-double Dipole::intensite(0);
 
 Dipole::Dipole()
+: intensite(0)
 {}
 
-Dipole::Dipole(Vecteur3D v1, Vecteur3D v2, double d1, double d2)
-: Courbe(v1, v2, d1, d2)  {}
+Dipole::Dipole(Vecteur3D re, Vecteur3D rs, double Re, double k, double i)
+: Courbe(re, rs, Re, k), intensite(i)  {}
 
 Dipole::Dipole(const Dipole& d)
-:Courbe(d)  {}
+: Courbe(d), intensite(d.getintensite())  {}
 
 Dipole::~Dipole()
 {}
@@ -44,4 +44,15 @@ Vecteur3D Dipole::getchamps_magnetique() const
 Dipole* Dipole::copie() const
 {
     return new Dipole(*this);
+}
+
+void Dipole::affiche(ostream& out) const
+{
+    out << "    Dipôle :" << endl
+    << "Entrée : " << getre() << endl
+    << "Sortie : " << getrs() << endl
+    << "Rayon : " << getRe() << endl
+    << "Rayon de courbure : " << getcourbure() << endl
+    << "Centre de courbure : " << getcentre() << endl
+    << "Intensité : " << getintensite() << endl;
 }

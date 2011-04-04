@@ -37,3 +37,11 @@ Quadrupole* Quadrupole::copie() const
     return new Quadrupole(*this);
 }
 
+void Quadrupole::affiche(ostream& out) const
+{
+    out << "    Quadrupôle :" << endl
+    << "Entrée : " << getre() << endl
+    << "Sortie : " << getrs() << endl
+    << "Rayon : " << getRe() << endl
+    << "Intensité : " << getintensite() << endl;
+}

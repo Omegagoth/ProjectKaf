@@ -20,3 +20,12 @@ Section_droite* Section_droite::copie() const
 {
     return new Section_droite(*this);
 }
+
+void Section_droite::affiche(ostream& out) const
+{
+    out << "    Section droite :" << endl
+    << "Entrée : " << getre() << endl
+    << "Sortie : " << getrs() << endl
+    << "Rayon : " << getRe() << endl;
+}
+

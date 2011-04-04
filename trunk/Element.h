@@ -35,6 +35,7 @@ class Element
         bool passe_suivant(Particule const&);		          //détermine si la particule à dépasser la sortie de l'élément
         virtual bool heurte_bord(Particule const&) const = 0; //détermine si la particule a ou non heurté le bord de l'élément
         virtual Element* copie() const = 0;                   //méthode abstraite de copie polymorphique
+        virtual void affiche(ostream&) const = 0;             //méthode abstraite polymorphique d'affichage
 
 	protected :
 

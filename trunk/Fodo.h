@@ -16,6 +16,7 @@ class Fodo : public Droit
         double getintensite() const;                    //retourne l'intensité du champs magnétique des quadrupôles de la maille Fodo
         vector<Element*> getmaille() const;             //retourne un tableau de pointeur vers les éléments composant la maille Fodo
         virtual Element* getmaille(unsigned int) const; //retourne un pointeur vers le i-1 élément composant la maille Fodo
+        double getlongueur_quadrupole() const;          //retourne la longueur des quadrupôles de la maille Fodo
 
 //--------prototypage des méthodes set---------------------------------------------------------------------------
 
@@ -33,7 +34,8 @@ class Fodo : public Droit
 //--------prototypage des méthodes--------------------------------------------------------------------------------
 
         bool heurte_bord(Particule const&) const; //masquage de la fonction qui détermine si la particule à heurter le bord ou non
-        virtual void affiche(ostream&);                   //méthode polymorphique d'affichage des mailles Fodo
+        virtual Fodo* copie() const;              //méthode de copie polymorphique
+        virtual void affiche(ostream&) const;     //méthode polymorphique d'affichage des mailles Fodo
 
 //--------prototypage des surcharges d'opérateurs-----------------------------------------------------------------
 
@@ -51,9 +53,6 @@ class Fodo : public Droit
 
         static unsigned int taille;
 
-//--------prototypage des méthodes privée------------------------------------------------------------------------
-
-        double getlongueur() const;
 
 };
 

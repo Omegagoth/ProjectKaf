@@ -109,10 +109,11 @@ void Element::orientation()
 
 ostream& operator<<(ostream& out, Element const& e)
 {
-    out << "Entrée : " << e.getre() << endl
+    /*out << "Entrée : " << e.getre() << endl
     << "Sortie : " << e.getrs() << endl
-    << "Section : " << e.getRe() << endl;
+    << "Section : " << e.getRe() << endl;*/
 
+    e.affiche(out);
     return out;
 }
 
