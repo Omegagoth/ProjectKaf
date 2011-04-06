@@ -15,6 +15,7 @@ class Section_droite : public Droit										//  A FAIRE  //
         virtual ~Section_droite();
         virtual Section_droite* copie() const;          //méthode de copie polymorphique
         virtual void affiche(ostream&) const;           //méthode polymorphique d'affichage
+		virtual Vecteur3D getchamps_magnetique(Particule const&) const; // mŽthode qui ne renvoie un vecteur nul
 
 };
 

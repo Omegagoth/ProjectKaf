@@ -41,6 +41,12 @@ Vecteur3D Particule::getforce() const
     return force;
 }
 
+Element* Particule::getappartient() const
+{
+	return appartient;
+}
+
+
 //--------définition des méthodes set----------------------------------------------------------------------------
 
 void Particule::setposition(Vecteur3D const& x)
@@ -67,16 +73,21 @@ void Particule::setcharge(double const& c)
     charge = c;
 }
 
+void Particule::setappartient(Element& e)
+{
+	appartient = &e;
+}
+
 //--------définition des constructeurs---------------------------------------------------------------------------
 
 Particule::Particule()
-: masse(0), charge(0)
+: masse(0), charge(0), appartient(0)
 {
 
 }
 
 Particule::Particule(Vecteur3D x, Vecteur3D p, double m, double c)
-: position(x), masse(m), charge(c)
+: position(x), masse(m), charge(c), appartient(0)
 {
     double n(p.norme_carre());
     double a(sqrt( (m*m + n/(C*C)) ));
@@ -86,7 +97,7 @@ Particule::Particule(Vecteur3D x, Vecteur3D p, double m, double c)
 }
 
 Particule::Particule(Vecteur3D x, double e, Vecteur3D d, double m, double c)
-: position(x), masse(m), charge(c)
+: position(x), masse(m), charge(c), appartient(0)
 {
     Vecteur3D v(~d);
 

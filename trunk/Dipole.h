@@ -31,7 +31,7 @@ class Dipole : public Courbe									//  A FAIRE  //
         double getintensite() const;				// méthodes get/set
         void setintensite(double);
 
-        Vecteur3D getchamps_magnetique() const;		// méthode renvoyant le champs magnétique sous forme de vecteur.
+        virtual Vecteur3D getchamps_magnetique() const;		// méthode renvoyant le champs magnétique sous forme de vecteur.
 
         virtual Dipole* copie() const;              //méthode de copie polymorphique
         virtual void affiche(ostream&) const;       //méthode polymorphique d'affichage

@@ -37,7 +37,10 @@ class Accelerateur
         Accelerateur& ajoute_particule(Particule const&); //méthode permettant de rajouter une particule à l'accélérateur
         Accelerateur& ajoute_element(Element const&);     //méthode permettant de rajouter un élément à l'accélérateur
         Accelerateur& clear_particules();                 //méthode permettant de supprimer toutes les particules de l'accélérateur
+		Accelerateur& clear_particules(int unsigned);	  //méthode permettant de supprimer la iéme particule de l'accélérateur
         Accelerateur& clear_elements();                   //méthode permettant de supprimer tout les élements de l'accélérateur
+		Accelerateur& affecte_element();				  //méthode permettant d'affecter un element ˆ chaque particule
+		Accelerateur& evolue(double);					  //méthode permettant de faire "bouger" toute les particules
 
     protected :
 

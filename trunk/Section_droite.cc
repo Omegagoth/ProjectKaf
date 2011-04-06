@@ -29,3 +29,8 @@ void Section_droite::affiche(ostream& out) const
     << "Rayon : " << getRe() << endl;
 }
 
+Vecteur3D Section_droite::getchamps_magnetique(Particule const& p) const
+{
+	return Vecteur3D(0,0,0);
+}
+

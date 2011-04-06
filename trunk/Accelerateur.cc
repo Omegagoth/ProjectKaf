@@ -69,6 +69,15 @@ Accelerateur& Accelerateur::clear_particules()
     return (*this);
 }
 
+
+Accelerateur& Accelerateur::clear_particules(int unsigned i)
+{
+	particules[i] = particules[particules.size()-1];
+	particules.pop_back();
+	return *this;
+}
+
+
 Accelerateur& Accelerateur::clear_elements()
 {
     for (int unsigned i(0); i<elements.size(); ++i)
@@ -79,6 +88,45 @@ Accelerateur& Accelerateur::clear_elements()
     return (*this);
 }
 
+
+Accelerateur& Accelerateur::affecte_element()
+{
+	for (int unsigned i(particules.size()-1); i >= 0; --i) 
+	{
+		for (int unsigned j(0); j < elements.size() && particules[i]->getappartient() != 0; ++j) 
+		{
+			if (!(elements[j]->heurte_bord(*particules[i])) && !(elements[j]->passe_suivant(*particules[i]))) 
+			{
+				particules[i]->setappartient(*elements[j]);
+			}
+		}
+		if (particules[i]->getappartient() == 0) 
+		{
+			clear_particules(i);
+		}
+	}
+	return *this;
+}
+
+
+Accelerateur& Accelerateur::evolue(double dt)
+{
+	for (int unsigned i(0); i < particules.size(); ++i) 
+	{
+		particules[i]->ajoute_forcemagn(particules[i]->getappartient()->getchamps_magnetique(*particules[i]), dt);
+		particules[i]->bouger(dt);
+		
+		if (particules[i]->getappartient()->passe_suivant(*particules[i])) 
+		{
+			particules[i]->setappartient(*(particules[i]->getappartient()->getElement_suivant()));
+		}
+		
+		if (particules[i]->getappartient()->heurte_bord(*particules[i])) 
+		{
+			clear_particules(i);
+		}
+	}
+}
 
 
 

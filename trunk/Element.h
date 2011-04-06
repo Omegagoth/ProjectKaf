@@ -16,6 +16,7 @@ class Element
         Vecteur3D getrs() const;             //donne la sortie de l'élément
         double getRe() const;                //donne le rayon de l'élément
         Element* getElement_suivant() const; //donne l'élément qui suit l'élément courant
+		virtual Vecteur3D getchamps_magnetique(Particule const&) const = 0;	//méthode abstraite qui donne le champs magnetique de l'élément
 
 //--------prototypage des méthodes set----------------------------------------------------------------------------
 

@@ -23,7 +23,7 @@ class Quadrupole : public Droit
 
 	Vecteur3D coordonnees_locales(Particule const& p) const;
 
-	Vecteur3D getchamps_magnetique(Particule const& p) const;
+	virtual Vecteur3D getchamps_magnetique(Particule const& p) const;
 
 	virtual Quadrupole* copie() const;    //méthode de copie polymorphique
 	virtual void affiche(ostream&) const; //méthode polymorphique d'affichage

@@ -9,6 +9,8 @@ using namespace std;
 
 double const C(299792458);
 
+class Element;
+
 class Particule
 {
     public :
@@ -22,6 +24,7 @@ class Particule
         double getenergie() const;
         double getgamma() const;
         Vecteur3D getforce() const;
+		Element* getappartient() const;
 
 //--------prototypage des méthodes set---------------------------------------------------------------------------
 
@@ -29,6 +32,7 @@ class Particule
         void setvitesse(Vecteur3D const&);
         void setmasse(double const&);
         void setcharge(double const&);
+		void setappartient(Element&);
 
 //--------prototypage des constructeurs--------------------------------------------------------------------------
 
@@ -50,6 +54,7 @@ class Particule
         double masse;
         double charge;
         Vecteur3D force;
+		Element* appartient;
 };
 
 //--------prototypage des surcharges externes--------------------------------------------------------------------
