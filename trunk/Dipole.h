@@ -20,7 +20,7 @@ class Dipole : public Courbe									//  A FAIRE  //
 	public :
 
         Dipole();														// constructeur par défault sans arguments
-        Dipole(Vecteur3D, Vecteur3D, double, double,double);			// constructeur avec arguments
+        Dipole(Vecteur3D, Vecteur3D, double, double, double);			// constructeur avec arguments
         Dipole(const Dipole &);											// constructeur de copie
         virtual ~Dipole();												// destructeur
 
@@ -31,7 +31,7 @@ class Dipole : public Courbe									//  A FAIRE  //
         double getintensite() const;				// méthodes get/set
         void setintensite(double);
 
-        virtual Vecteur3D getchamps_magnetique() const;		// méthode renvoyant le champs magnétique sous forme de vecteur.
+        virtual Vecteur3D getchamps_magnetique(Particule const& p) const;		// méthode renvoyant le champs magnétique sous forme de vecteur.
 
         virtual Dipole* copie() const;              //méthode de copie polymorphique
         virtual void affiche(ostream&) const;       //méthode polymorphique d'affichage

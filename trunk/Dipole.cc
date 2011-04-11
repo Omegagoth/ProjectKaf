@@ -35,7 +35,7 @@ double Dipole::getintensite() const
 void Dipole::setintensite(double d)
 {intensite = d;}
 
-Vecteur3D Dipole::getchamps_magnetique() const
+Vecteur3D Dipole::getchamps_magnetique(Particule const&) const
 {return E3*intensite;}
 
 //  virtual void dessine(Dipole const& d)         //  A FAIRE  //
