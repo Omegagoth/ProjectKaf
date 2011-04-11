@@ -13,6 +13,11 @@ vector<Particule*> Accelerateur::getparticules() const
 
 Particule* Accelerateur::getparticules(unsigned int i) const
 {
+	if (i > particules.size()) 
+	{ 
+		cerr << "erreur getparticules(int)" << endl;                  //ERREUR A GERER//
+		return 0;
+	}
     return particules[i-1];
 }
 
@@ -23,6 +28,11 @@ vector<Element*> Accelerateur::getelements() const
 
 Element* Accelerateur::getelements(unsigned int i) const
 {
+	if (i > elements.size()) 
+	{ 
+		cerr << "erreur getelements(int)" << endl;                  //ERREUR A GERER//
+		return 0;
+	}
     return elements[i-1];
 }
 
@@ -56,6 +66,12 @@ Accelerateur& Accelerateur::ajoute_particule(Particule const& p)
 Accelerateur& Accelerateur::ajoute_element(Element const& e)
 {
     elements.push_back(e.copie());
+	if (elements.size() != 1 && e.getre() == elements[elements.size()-2]->getrs()) 
+	{
+		elements[elements.size()-2]->setElement_suivant(*elements[elements.size()-1]);
+		elements[elements.size()-1]->setElement_suivant(*elements[0]);
+	}
+
     return (*this);
 }
 
@@ -91,9 +107,9 @@ Accelerateur& Accelerateur::clear_elements()
 
 Accelerateur& Accelerateur::affecte_element()
 {
-	for (int unsigned i(particules.size()-1); i >= 0; --i) 
+	for (int i(particules.size()-1); i >= 0; --i) 
 	{
-		for (int unsigned j(0); j < elements.size() && particules[i]->getappartient() != 0; ++j) 
+		for (int unsigned j(0); j < elements.size() && particules[i]->getappartient() == 0; ++j) 
 		{
 			if (!(elements[j]->heurte_bord(*particules[i])) && !(elements[j]->passe_suivant(*particules[i]))) 
 			{
@@ -103,6 +119,7 @@ Accelerateur& Accelerateur::affecte_element()
 		if (particules[i]->getappartient() == 0) 
 		{
 			clear_particules(i);
+			cout << "la" << endl;
 		}
 	}
 	return *this;
