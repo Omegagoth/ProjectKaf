@@ -13,8 +13,8 @@ vector<Particule*> Accelerateur::getparticules() const
 
 Particule* Accelerateur::getparticules(unsigned int i) const
 {
-	if (i > particules.size()) 
-	{ 
+	if (i > particules.size())
+	{
 		cerr << "erreur getparticules(int)" << endl;                  //ERREUR A GERER//
 		return 0;
 	}
@@ -28,8 +28,8 @@ vector<Element*> Accelerateur::getelements() const
 
 Element* Accelerateur::getelements(unsigned int i) const
 {
-	if (i > elements.size()) 
-	{ 
+	if (i > elements.size())
+	{
 		cerr << "erreur getelements(int)" << endl;                  //ERREUR A GERER//
 		return 0;
 	}
@@ -66,7 +66,7 @@ Accelerateur& Accelerateur::ajoute_particule(Particule const& p)
 Accelerateur& Accelerateur::ajoute_element(Element const& e)
 {
     elements.push_back(e.copie());
-	if (elements.size() != 1 && e.getre() == elements[elements.size()-2]->getrs()) 
+	if (elements.size() != 1 && e.getre() == elements[elements.size()-2]->getrs())
 	{
 		elements[elements.size()-2]->setElement_suivant(*elements[elements.size()-1]);
 		elements[elements.size()-1]->setElement_suivant(*elements[0]);
@@ -107,19 +107,19 @@ Accelerateur& Accelerateur::clear_elements()
 
 Accelerateur& Accelerateur::affecte_element()
 {
-	for (int i(particules.size()-1); i >= 0; --i) 
+	for (int i(particules.size()-1); i >= 0; --i)
 	{
-		for (int unsigned j(0); j < elements.size() && particules[i]->getappartient() == 0; ++j) 
+		for (int unsigned j(0); j < elements.size() && particules[i]->getappartient() == 0; ++j)
 		{
-			if (!(elements[j]->heurte_bord(*particules[i])) && !(elements[j]->passe_suivant(*particules[i]))) 
+			if (!(elements[j]->heurte_bord(*particules[i])) && !(elements[j]->passe_suivant(*particules[i])))
 			{
 				particules[i]->setappartient(*elements[j]);
 			}
 		}
-		if (particules[i]->getappartient() == 0) 
+		if (particules[i]->getappartient() == 0)
 		{
 			clear_particules(i);
-			cout << "la" << endl;
+			cout << "Une particule a ete supprimer" << endl;
 		}
 	}
 	return *this;
@@ -128,17 +128,17 @@ Accelerateur& Accelerateur::affecte_element()
 
 Accelerateur& Accelerateur::evolue(double dt)
 {
-	for (int unsigned i(0); i < particules.size(); ++i) 
+	for (int unsigned i(0); i < particules.size(); ++i)
 	{
 		particules[i]->ajoute_forcemagn(particules[i]->getappartient()->getchamps_magnetique(*particules[i]), dt);
 		particules[i]->bouger(dt);
-		
-		if (particules[i]->getappartient()->passe_suivant(*particules[i])) 
+
+		if (particules[i]->getappartient()->passe_suivant(*particules[i]))
 		{
 			particules[i]->setappartient(*(particules[i]->getappartient()->getElement_suivant()));
 		}
-		
-		if (particules[i]->getappartient()->heurte_bord(*particules[i])) 
+
+		if (particules[i]->getappartient()->heurte_bord(*particules[i]))
 		{
 			clear_particules(i);
 		}
