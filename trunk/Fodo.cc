@@ -29,6 +29,19 @@ double Fodo::getlongueur_quadrupole() const
     return getlongueur()/2 - longueur_droit;
 }
 
+Vecteur3D Fodo::getchamps_magnetique(Particule const& p) const
+{
+    Vecteur3D m;
+
+    for (int i(0); i<maille.size(); ++i)
+    {
+        if (!(maille[i]->heurte_bord(p)) && !(maille[i]->passe_suivant(p)))
+        {
+            return maille[i]->getchamps_magnetique(p);
+        }
+    }
+}
+
 
 
 //--------définition des méthodes set----------------------------------------------------------------------------

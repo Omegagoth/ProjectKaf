@@ -9,7 +9,7 @@ double Courbe::getcourbure() const
 
 Vecteur3D Courbe::getcentre() const
 {
-    return 1./2*(re + rs) + 1/courbure *sqrt(1 - courbure*courbure*(rs - re).norme_carre()/4)*((*this).getdirection()^E3);
+    return 1./2*(re + rs) + 1/courbure *sqrt(1 - courbure*courbure*(rs - re).norme_carre()/4)*(getdirection()^E3);
 }
 
 //--------définition des méthodes get----------------------------------------------------------------------------
@@ -30,7 +30,10 @@ Courbe::Courbe()
 Courbe::Courbe(Vecteur3D e, Vecteur3D s, double r, double k)
 : Element(e, s, r), courbure(k)
 {
-
+    if(courbure*courbure*(rs-re).norme_carre()/4 > 1)
+    {
+        courbure = courbure*(rs-re).norme()/2/abs(courbure);
+    }
 }
 
 Courbe::Courbe(const Courbe& c)

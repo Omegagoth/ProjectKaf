@@ -7,8 +7,8 @@ int main()
 {
     Accelerateur a;
     Vecteur3D re(1,0,0);
-    Vecteur3D rs(0,0,1);
-    Dipole c(re,rs,1,2,2);
+    Vecteur3D rs(0,1,0);
+    Dipole c(re,rs,1,1,2);
     Particule p;
 
     a.ajoute_particule(p);

@@ -17,6 +17,7 @@ class Fodo : public Droit
         vector<Element*> getmaille() const;             //retourne un tableau de pointeur vers les éléments composant la maille Fodo
         virtual Element* getmaille(unsigned int) const; //retourne un pointeur vers le i-1 élément composant la maille Fodo
         double getlongueur_quadrupole() const;          //retourne la longueur des quadrupôles de la maille Fodo
+        virtual Vecteur3D getchamps_magnetique(Particule const&) const; //retourne le champs magnétique en fonction de la position de la particule
 
 //--------prototypage des méthodes set---------------------------------------------------------------------------
 
