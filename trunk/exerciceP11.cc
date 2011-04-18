@@ -95,15 +95,17 @@ int main()
 	    << *(acc.getparticules(i)->getappartient()) << endl;
 	}
 
-    acc.evolue(1e-11);
-
-    cout << "Après" << endl << endl;
-
-    for (int unsigned i(1); i <= acc.getparticules().size(); ++i)
+	for (int unsigned i(0); i < 20; ++i)
 	{
-	    cout << *acc.getparticules(i) << endl
-	    << *(acc.getparticules(i)->getappartient()) << endl;
-	}
+		acc.evolue(1e-11);
+	
+		cout << "Après" << endl << endl;
 
+		for (int unsigned i(1); i <= acc.getparticules().size(); ++i)
+		{
+			cout << *acc.getparticules(i) << endl
+			<< *(acc.getparticules(i)->getappartient()) << endl;
+		}
+	}
 	return 0;
 }
