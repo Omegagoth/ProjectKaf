@@ -17,7 +17,7 @@ Particule* Accelerateur::getparticules(unsigned int i) const
 	{
 		cerr << "erreur getparticules(int)" << endl;                  //ERREUR A GERER//
 		return 0;
-	}
+	}  
     return particules[i-1];
 }
 

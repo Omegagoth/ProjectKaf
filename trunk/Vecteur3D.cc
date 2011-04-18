@@ -59,6 +59,11 @@ bool Vecteur3D::operator==(Vecteur3D const& v) const
     return ( (x == v.getx()) && (y == v.gety()) && (z == v.getz()) );
 }
 
+bool Vecteur3D::operator!=(Vecteur3D const& v) const
+{
+	return !(*this == v);
+}
+
 //--------définition des surcharges d'opérateurs arithmétique----------------------------------------------------
 
 Vecteur3D& Vecteur3D::operator+=(Vecteur3D const& v)

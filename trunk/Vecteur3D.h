@@ -28,7 +28,8 @@ class Vecteur3D
 
 //--------prototypage des surcharges d'opérateurs----------------------------------------------------------------
 
-        bool operator==(Vecteur3D const&) const; //surcharge l'opérateur de test : a == b
+        bool operator==(Vecteur3D const&) const; //surcharge de l'opérateur qui test l'égalité : a == b
+        bool operator!=(Vecteur3D const&) const; //surchqrge de l'opérateur qui test la différence : a != b
 
 //--------prototypage des surcharges d'opérateurs arithmétique---------------------------------------------------
 

@@ -27,8 +27,8 @@ int main()
     Vecteur3D v19(1,3,0);
     Vecteur3D v20(2,3,0);
 
-    Vecteur3D vP1(3.01, -1e-11, 0);
-    Vecteur3D vP2(2.99, -1e-11, 0);
+    Vecteur3D vP1(3.01, 0, 0);
+    Vecteur3D vP2(2.99, 0, 0);
     Vecteur3D vv(0, -2.64754e+08, 0);
 
 	Accelerateur acc;
@@ -95,7 +95,7 @@ int main()
 	    << *(acc.getparticules(i)->getappartient()) << endl;
 	}
 
-    acc.evolue(1e-10);
+    acc.evolue(1e-11);
 
     cout << "Après" << endl << endl;
 
