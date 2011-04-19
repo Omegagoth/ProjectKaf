@@ -10,7 +10,7 @@ CXX = c++
 # LDFLAGS  += -pg                     # pour profiler
 CXXFLAGS += -O2                     # pour optimiser la vitesse
 
-all: exerciceP11
+all: exerciceP11bis
 
 Vecteur3D.o: Vecteur3D.cc Vecteur3D.h
 
@@ -28,9 +28,11 @@ Section_droite.o : Section_droite.cc Section_droite.h
 
 Quadrupole.o : Quadrupole.cc Quadrupole.h
 
+Fodo.o : Fodo.cc Fodo.h
+
 Accelerateur.o : Accelerateur.cc Accelerateur.h
 
-exerciceP11.o : exerciceP11.cc
+exerciceP11bis.o : exerciceP11bis.cc
 
-exerciceP11 : exerciceP11.o Accelerateur.o Quadrupole.o Section_droite.o Particule.o Vecteur3D.o Element.o Droit.o Courbe.o Dipole.o
+exerciceP11bis : exerciceP11bis.o Accelerateur.o Fodo.o Quadrupole.o Section_droite.o Particule.o Vecteur3D.o Element.o Droit.o Courbe.o Dipole.o
 
