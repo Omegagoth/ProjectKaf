@@ -21,7 +21,20 @@ vector<Element*> Fodo::getmaille() const
 
 Element* Fodo::getmaille(unsigned int i) const
 {
-    return maille[i];
+    if (i > maille.size() && maille.size() != 0)
+    {
+        cerr << "Erreur getmaille : le " << i << "eme terme n'existe pas" << endl;
+        return maille[maille.size()-1];
+    }
+    else if(maille.size() == 0)
+    {
+        cerr << "Erreur getmaille : la maille est vide" << endl;
+        return 0;
+    }
+    else
+    {
+        return maille[i-1];
+    }
 }
 
 double Fodo::getlongueur_quadrupole() const
@@ -40,6 +53,7 @@ Vecteur3D Fodo::getchamps_magnetique(Particule const& p) const
             return maille[i]->getchamps_magnetique(p);
         }
     }
+    return Vecteur3D(0,0,0);
 }
 
 
@@ -88,10 +102,11 @@ Fodo::Fodo(Vecteur3D e, Vecteur3D s, double r, double l, double i)
 }
 
 Fodo::Fodo(Fodo const& f)
+: Droit(f), longueur_droit(f.getlongueur_droit()), intensite(f.getintensite())
 {
     for (int unsigned i(0); i < taille; ++i)
     {
-        maille[i] = (*f.getmaille(i)).copie();
+        maille.push_back(f.getmaille(i+1)->copie());
     }
 }
 

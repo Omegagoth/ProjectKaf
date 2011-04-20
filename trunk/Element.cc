@@ -70,6 +70,10 @@ Element::Element(Vecteur3D e, Vecteur3D s, double R)
     orientation();
 }
 
+Element::Element(Element const& e)
+: re(e.getre()), rs(e.getrs()), Re(e.getRe()), Element_suivant(e.getElement_suivant())
+{}
+
 Element::~Element()
 {
 

@@ -17,7 +17,7 @@ Particule* Accelerateur::getparticules(unsigned int i) const
 	{
 		cerr << "erreur getparticules(int)" << endl;                  //ERREUR A GERER//
 		return 0;
-	}  
+	}
     return particules[i-1];
 }
 
@@ -31,9 +31,12 @@ Element* Accelerateur::getelements(unsigned int i) const
 	if (i > elements.size())
 	{
 		cerr << "erreur getelements(int)" << endl;                  //ERREUR A GERER//
-		return 0;
+		return elements[elements.size()-1];
 	}
-    return elements[i-1];
+	else
+	{
+        return elements[i-1];
+	}
 }
 
 

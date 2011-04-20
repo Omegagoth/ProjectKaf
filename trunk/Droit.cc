@@ -21,7 +21,7 @@ Droit::Droit(Vecteur3D e, Vecteur3D s, double r)
 }
 
 Droit::Droit(const Droit& d)
-:Element(d)
+: Element(d)
 {
 
 }
