@@ -119,6 +119,7 @@ Accelerateur& Accelerateur::affecte_element()
 		if (particules[i]->getappartient() == 0)
 		{
 			clear_particules(i);
+			cout << "Une particule a ete supprimer" << endl;
 		}
 	}
 	return *this;
