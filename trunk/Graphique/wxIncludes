@@ -1,0 +1,7 @@
+#ifndef WXINCLUDES
+#define WXINCLUDES
+ 
+#include "wx/wx.h"
+#include "wx/glcanvas.h"
+ 
+#endif
