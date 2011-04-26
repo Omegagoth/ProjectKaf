@@ -2,7 +2,10 @@
 #include <iostream>
 #include <cmath>
 
+
 using namespace std;
+
+
 
 //--------définition des méthodes get----------------------------------------------------------------------------
 
@@ -47,6 +50,8 @@ Element* Particule::getappartient() const
 }
 
 
+
+
 //--------définition des méthodes set----------------------------------------------------------------------------
 
 void Particule::setposition(Vecteur3D const& x)
@@ -78,13 +83,14 @@ void Particule::setappartient(Element& e)
 	appartient = &e;
 }
 
+
+
+
 //--------définition des constructeurs---------------------------------------------------------------------------
 
 Particule::Particule()
 : masse(0), charge(0), appartient(0)
-{
-
-}
+{}
 
 Particule::Particule(Vecteur3D x, Vecteur3D p, double m, double c)
 : position(x), masse(m), charge(c), appartient(0)
@@ -104,6 +110,9 @@ Particule::Particule(Vecteur3D x, double e, Vecteur3D d, double m, double c)
     double n(C*sqrt(1-m*m/(e*e)));
     vitesse = n*v;
 }
+
+
+
 
 //--------définition des méthodes--------------------------------------------------------------------------------
 
@@ -132,6 +141,10 @@ void Particule::bouger(double dt)
         force.setz(0);
     }
 }
+
+
+
+
 
 //--------définition des surcharges externes---------------------------------------------------------------------
 

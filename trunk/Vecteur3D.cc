@@ -4,6 +4,8 @@
 
 using namespace std;
 
+
+
 //--------définition des méthodes get----------------------------------------------------------------------------
 
 double Vecteur3D::getx() const
@@ -20,6 +22,9 @@ double Vecteur3D::getz() const
 {
     return z;
 }
+
+
+
 
 //--------définition des méthodes set----------------------------------------------------------------------------
 
@@ -38,19 +43,22 @@ void Vecteur3D::setz(double a)
     z = a;
 }
 
+
+
+
 //--------définition des constructeurs---------------------------------------------------------------------------
 
 Vecteur3D::Vecteur3D()
 : x(0), y(0), z(0)
-{
-
-}
+{}
 
 Vecteur3D::Vecteur3D(double a, double b, double c)
 : x(a), y(b), z(c)
-{
+{}
 
-}
+
+
+
 
 //--------définition des surcharges d'opérateurs-----------------------------------------------------------------
 
@@ -63,6 +71,9 @@ bool Vecteur3D::operator!=(Vecteur3D const& v) const
 {
 	return !(*this == v);
 }
+
+
+
 
 //--------définition des surcharges d'opérateurs arithmétique----------------------------------------------------
 
@@ -86,7 +97,7 @@ Vecteur3D& Vecteur3D::operator-=(Vecteur3D const& v)
     y -= v.gety();
     z -= v.getz();
 
-    return *this;
+    return (*this);
 }
 
 Vecteur3D Vecteur3D::operator-(Vecteur3D const& v) const
@@ -115,6 +126,10 @@ Vecteur3D Vecteur3D::operator~() const
     return Vecteur3D(x/n, y/n, z/n);
 }
 
+
+
+
+
 //--------définition des méthodes--------------------------------------------------------------------------------
 
 double Vecteur3D::norme_carre() const
@@ -133,12 +148,20 @@ Vecteur3D Vecteur3D::rotation(Vecteur3D u, double const& angle) const
     return cos(angle)*(*this) + ((1 - cos(angle))*((*this) * a))*a + sin(angle)*(a^(*this));
 }
 
+
+
+
+
 //--------définition des fonctions-------------------------------------------------------------------------------
 
 double prod_mixte(Vecteur3D a, Vecteur3D b, Vecteur3D c)
 {
 	return a*(b^c);
 }
+
+
+
+
 
 //--------définition des surcharges externes---------------------------------------------------------------------
 
@@ -158,4 +181,5 @@ ostream& operator<<(ostream& out, Vecteur3D const& v)
 
     return out;
 }
+
 

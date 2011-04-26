@@ -10,9 +10,9 @@ class Courbe : public Element
 
 //--------prototypage des méthodes get---------------------------------------------------------------------------
 
-        double getcourbure() const; //donne l'inverse du rayon de courbure de l'élément courbe
-        Vecteur3D getcentre() const; //donne le centre de courbure de l'élément
-		virtual Vecteur3D getchamps_magnetique(Particule const&) const = 0;	//mŽthode abstraite qui donne le champs magnetique de l'ŽlŽment
+        double getcourbure() const;                                         //donne l'inverse du rayon de courbure de l'élément courbe
+        Vecteur3D getcentre() const;                                        //donne le centre de courbure de l'élément
+		virtual Vecteur3D getchamps_magnetique(Particule const&) const = 0;	//methode abstraite qui donne le champs magnetique de l'element
 
 //--------prototypage des méthodes get---------------------------------------------------------------------------
 
@@ -20,15 +20,16 @@ class Courbe : public Element
 
 //--------prototypage des constructeurs--------------------------------------------------------------------------
 
-        Courbe(); //constructeur par défaut qui initialise à 0
-        Courbe(Vecteur3D, Vecteur3D, double, double); //constructeur qui prend en argument le vecteur d'entrée, de sortie, la section et l'inverse du rayon de courbure orienter
-        Courbe(const Courbe &);                       //constructeur de copie
+        Courbe();                                     //constructeur par défaut qui initialise à 0
+        Courbe(Vecteur3D, Vecteur3D, double, double); //constructeur qui prend en argument le vecteur d'entrée, de sortie, la section et l'inverse du rayon de courbure oriente
+        Courbe(const Courbe&);                       //constructeur de copie
         virtual ~Courbe();                            //destructeur
 
 //--------prototypage des méthodes-------------------------------------------------------------------------------
 
         virtual bool heurte_bord(Particule const&) const; //détermine si la particule a ou non heurté le bord de l'élément
         virtual void affiche(ostream&) const = 0;         //méthode abstraite polymorphique d'affichage
+        virtual Courbe* copie() const = 0;                //méthode abstraite de copie polymorphique
 
 
     protected :
@@ -40,7 +41,6 @@ class Courbe : public Element
 //--------prototypage des méthodes privée------------------------------------------------------------------------
 
         virtual Vecteur3D getpos_relative(Particule const&) const; //donne la position relative d'une particule par rapport au centre de courbure de l'élément : X = positon - centre de courbure
-        virtual Courbe* copie() const = 0;                         //méthode abstraite de copie polymorphique
 
 };
 

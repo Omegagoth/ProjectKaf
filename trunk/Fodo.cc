@@ -58,6 +58,7 @@ Vecteur3D Fodo::getchamps_magnetique(Particule const& p) const
 
 
 
+
 //--------définition des méthodes set----------------------------------------------------------------------------
 
 void Fodo::setlongueur_droit(double l)
@@ -75,6 +76,7 @@ void Fodo::setElement_suivant(Element& e)
     Element_suivant = &e;
     (*maille[taille-1]).setElement_suivant(e);
 }
+
 
 
 
@@ -145,6 +147,8 @@ void Fodo::affiche(ostream& out) const
 }
 
 
+
+
 //--------définition des surcharges d'opérateurs------------------------------------------------------------------
 
 Fodo& Fodo::operator=(Fodo const& f)
@@ -162,9 +166,12 @@ Fodo& Fodo::operator=(Fodo const& f)
 
 
 
+
+
 //--------donne les valeurs aux static----------------------------------------------------------------------------
 
 unsigned int Fodo::taille(4);
+
 
 
 

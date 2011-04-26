@@ -5,41 +5,51 @@ using namespace std;
 
 
 
-//-----------Dipole----------------------------------------------------------------------------------
+//--------définition des méthodes get----------------------------------------------------------------------------
 
-//-----------Dipole------Constructeur/destructeur----------------------------------------------------
+double Dipole::getintensite() const
+{
+    return intensite;
+}
 
+Vecteur3D Dipole::getchamps_magnetique(Particule const&) const
+{
+    return E3*intensite;
+}
+
+
+
+
+//--------définition des méthodes set----------------------------------------------------------------------------
+
+void Dipole::setintensite(double d)
+{
+    intensite = d;
+}
+
+
+
+//--------définition des constructeurs/destructeurs--------------------------------------------------------------
 
 Dipole::Dipole()
 : intensite(0)
 {}
 
 Dipole::Dipole(Vecteur3D re, Vecteur3D rs, double Re, double k, double i)
-: Courbe(re, rs, Re, k), intensite(i)  {}
+: Courbe(re, rs, Re, k), intensite(i)
+{}
 
 Dipole::Dipole(const Dipole& d)
-: Courbe(d), intensite(d.getintensite())  {}
+: Courbe(d), intensite(d.getintensite())
+{}
 
 Dipole::~Dipole()
 {}
 
 
 
-//-----------Dipole------get/set---------------------------------------------------------------------
 
-
-double Dipole::getintensite() const
-{return intensite;}
-
-
-void Dipole::setintensite(double d)
-{intensite = d;}
-
-Vecteur3D Dipole::getchamps_magnetique(Particule const&) const
-{return E3*intensite;}
-
-//  virtual void dessine(Dipole const& d)         //  A FAIRE  //
-//  {}
+//--------définition des méthodes--------------------------------------------------------------------------------
 
 Dipole* Dipole::copie() const
 {
@@ -56,3 +66,4 @@ void Dipole::affiche(ostream& out) const
     << "Centre de courbure : " << getcentre() << endl
     << "Intensité : " << getintensite() << endl;
 }
+

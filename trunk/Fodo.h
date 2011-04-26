@@ -6,17 +6,18 @@
 #include "Section_droite.h"
 #include "Quadrupole.h"
 
+
 class Fodo : public Droit
 {
     public :
 
 //--------prototypage des méthodes get---------------------------------------------------------------------------
 
-        double getlongueur_droit() const;               //retourne la longueur des sections droites de la maille Fodo
-        double getintensite() const;                    //retourne l'intensité du champs magnétique des quadrupôles de la maille Fodo
-        vector<Element*> getmaille() const;             //retourne un tableau de pointeur vers les éléments composant la maille Fodo
-        virtual Element* getmaille(unsigned int) const; //retourne un pointeur vers le i-1 élément composant la maille Fodo
-        double getlongueur_quadrupole() const;          //retourne la longueur des quadrupôles de la maille Fodo
+        double getlongueur_droit() const;                               //retourne la longueur des sections droites de la maille Fodo
+        double getintensite() const;                                    //retourne l'intensité du champs magnétique des quadrupôles de la maille Fodo
+        vector<Element*> getmaille() const;                             //retourne un tableau de pointeur vers les éléments composant la maille Fodo
+        virtual Element* getmaille(unsigned int) const;                 //retourne un pointeur vers le i-1 élément composant la maille Fodo
+        double getlongueur_quadrupole() const;                          //retourne la longueur des quadrupôles de la maille Fodo
         virtual Vecteur3D getchamps_magnetique(Particule const&) const; //retourne le champs magnétique en fonction de la position de la particule
 
 //--------prototypage des méthodes set---------------------------------------------------------------------------
@@ -42,6 +43,9 @@ class Fodo : public Droit
 
         Fodo& operator=(Fodo const&); //surcharge de l'opérateur = pour faire une copie profonde
 
+
+
+
     protected :
 
 //--------définition des attributs-------------------------------------------------------------------------------
@@ -53,12 +57,10 @@ class Fodo : public Droit
 //--------définition des statics---------------------------------------------------------------------------------
 
         static unsigned int taille;
-
-
 };
 
 //--------prototypage des surcharges externes--------------------------------------------------------------------
 
-ostream& operator<<(ostream&, Fodo&);
+ostream& operator<<(ostream&, Fodo&); //surcharge de l'opérateur << permettant d'afficher un Courbe dans le terminal
 
 #endif

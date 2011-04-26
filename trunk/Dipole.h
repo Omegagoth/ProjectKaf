@@ -3,40 +3,44 @@
 
 #include <iostream>
 #include "Courbe.h"
+
 using namespace std;
 
 
-class Dipole : public Courbe									//  A FAIRE  //
+class Dipole : public Courbe
 {
+	public :
+
+//--------prototypage des méthodes get---------------------------------------------------------------------------
+
+        double getintensite() const;                                      //methode renvoyant l'intensite du champs magnetique (= norme du vecteur champs de magnetique)
+        virtual Vecteur3D getchamps_magnetique(Particule const& p) const; //méthode renvoyant le champs magnétique sous forme de vecteur.
+
+//--------prototypage des méthodes set----------------------------------------------------------------------------
+
+        void setintensite(double);
+
+//--------prototypage des constructeurs/destructeur---------------------------------------------------------------
+
+        Dipole();											  // constructeur par défault sans arguments
+        Dipole(Vecteur3D, Vecteur3D, double, double, double); // constructeur avec arguments
+        Dipole(Dipole const&);								  // constructeur de copie
+        virtual ~Dipole();									  // destructeur
+
+//--------prototypage des méthodes--------------------------------------------------------------------------------
+
+        virtual Dipole* copie() const;        //méthode de copie polymorphique
+        virtual void affiche(ostream&) const; //méthode polymorphique d'affichage
+
+        //virtual void dessine(Dipole const&) const;
+
+
 
 	protected :
 
-	double intensite;		// Intensité du champs magnétique vertical.
+//--------définition des attributs-------------------------------------------------------------------------------
 
-
-	//-------------------------------------------------------------------------------------------------------
-
-
-	public :
-
-        Dipole();														// constructeur par défault sans arguments
-        Dipole(Vecteur3D, Vecteur3D, double, double, double);			// constructeur avec arguments
-        Dipole(const Dipole &);											// constructeur de copie
-        virtual ~Dipole();												// destructeur
-
-
-//-------------------------------------------------------------------------------------------------------
-
-
-        double getintensite() const;				// méthodes get/set
-        void setintensite(double);
-
-        virtual Vecteur3D getchamps_magnetique(Particule const& p) const;		// méthode renvoyant le champs magnétique sous forme de vecteur.
-
-        virtual Dipole* copie() const;              //méthode de copie polymorphique
-        virtual void affiche(ostream&) const;       //méthode polymorphique d'affichage
-
-	//virtual void dessine(Dipole const&) const;
+        double intensite; // Intensité du champs magnétique vertical.
 
 };
 

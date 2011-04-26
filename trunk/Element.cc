@@ -44,7 +44,7 @@ void Element::setrs(Vecteur3D const& v)
     orientation();
 }
 
-void Element::setRe(double const& d)
+void Element::setRe(double d)
 {
     Re = d;
 }
@@ -81,7 +81,7 @@ Element::~Element()
 
 //--------définition des méthodes--------------------------------------------------------------------------------
 
-bool Element::passe_suivant(Particule const& p)
+bool Element::passe_suivant(Particule const& p) const
 {
 	return prod_mixte(E3, p.getposition(), rs) > 0;
 }

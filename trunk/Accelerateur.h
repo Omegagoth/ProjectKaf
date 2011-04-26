@@ -17,9 +17,9 @@ class Accelerateur
 
 //--------prototypage des méthodes get---------------------------------------------------------------------------
 
-        vector<Particule*> getparticules() const;     //donne l'ensemble des particules de l'accélérateur sous forme de vector
+        vector<Particule*> getparticules() const;     //donne l'ensemble des particules de l'accélérateur sous forme de tableau dynamique de pointeur
         Particule* getparticules(unsigned int) const; //donne un pointeur vers la ième particule de l'accélérateur
-        vector<Element*> getelements() const;         //donne l'ensemble des éléments de l'accélérateur sous forme de vector
+        vector<Element*> getelements() const;         //donne l'ensemble des éléments de l'accélérateur sous forme de tableau dynamique de pointeur
         Element* getelements(unsigned int) const;     //donne un pointeur vers le ième élément de l'accélérateur
 
 //--------prototypage des méthodes set----------------------------------------------------------------------------
@@ -30,7 +30,7 @@ class Accelerateur
 //--------prototypage des constructeurs/destructeur--------------------------------------------------------------
 
         Accelerateur(); //constructeur par défaut qui initialise à vide
-        ~Accelerateur();//prototypage du destructeur
+        virtual ~Accelerateur();//prototypage du destructeur
 
 //--------prototypage des méthodes-------------------------------------------------------------------------------
 
@@ -46,8 +46,8 @@ class Accelerateur
 
 //--------définition des attributs-------------------------------------------------------------------------------
 
-        vector<Particule*> particules; //stockage des différentes particules dans un tableau a taille variable
-        vector<Element*> elements;     //stockage des différents élements de l'accélerateur dans un tableau a taille variable
+        vector<Particule*> particules; //stockage des différentes particules dans un tableau dynamique de pointeur
+        vector<Element*> elements;     //stockage des différents élements de l'accélerateur dans un tableau dynamique de pointeur
 
 //--------prototypage des constructeurs/surcharges privée--------------------------------------------------------
 

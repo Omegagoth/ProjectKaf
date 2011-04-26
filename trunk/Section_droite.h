@@ -3,20 +3,28 @@
 
 #include <iostream>
 #include "Droit.h"
+
 using namespace std;
 
-class Section_droite : public Droit										//  A FAIRE  //
+class Section_droite : public Droit
 {
 	public :
 
-        Section_droite();
-        Section_droite(Vecteur3D, Vecteur3D, double);	// constructeurs.
-        Section_droite(Section_droite const&);
-        virtual ~Section_droite();
-        virtual Section_droite* copie() const;          //méthode de copie polymorphique
-        virtual void affiche(ostream&) const;           //méthode polymorphique d'affichage
-		virtual Vecteur3D getchamps_magnetique(Particule const&) const; // mŽthode qui ne renvoie un vecteur nul
+//--------prototypage des méthodes get---------------------------------------------------------------------------
 
+        virtual Vecteur3D getchamps_magnetique(Particule const&) const; // methode qui renvoie un vecteur nul
+
+//--------prototypage des constructeurs/destructeur---------------------------------------------------------------
+
+        Section_droite();                             //constructeur oar defaut qui initialise a 0
+        Section_droite(Vecteur3D, Vecteur3D, double); //constructeur qui prend en argument le vecteur d'entree, de sortie et le rayon
+        Section_droite(Section_droite const&);        //constructeur de copie
+        virtual ~Section_droite();                    //destructeur
+
+//--------prototypage des méthodes--------------------------------------------------------------------------------
+
+        virtual Section_droite* copie() const; //méthode de copie polymorphique
+        virtual void affiche(ostream&) const;  //méthode polymorphique d'affichage
 };
 
 

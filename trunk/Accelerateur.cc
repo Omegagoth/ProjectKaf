@@ -45,9 +45,7 @@ Element* Accelerateur::getelements(unsigned int i) const
 //--------définition des constructeurs---------------------------------------------------------------------------
 
 Accelerateur::Accelerateur()
-{
-
-}
+{}
 
 Accelerateur::~Accelerateur()
 {
@@ -93,7 +91,7 @@ Accelerateur& Accelerateur::clear_particules(int unsigned i)
 {
 	particules[i] = particules[particules.size()-1];
 	particules.pop_back();
-	return *this;
+	return (*this);
 }
 
 
@@ -125,7 +123,7 @@ Accelerateur& Accelerateur::affecte_element()
 			cout << "Une particule a ete supprimer" << endl;
 		}
 	}
-	return *this;
+	return (*this);
 }
 
 
@@ -146,21 +144,19 @@ Accelerateur& Accelerateur::evolue(double dt)
 			clear_particules(i);
 		}
 	}
+	return (*this);
 }
+
 
 
 
 //--------définition des constructeurs/surcharges privée---------------------------------------------------------
 
 Accelerateur::Accelerateur(Accelerateur const& a)
-{
-
-}
+{}
 
 Accelerateur& Accelerateur::operator=(Accelerateur const& a)
-{
-
-}
+{}
 
 
 

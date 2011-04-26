@@ -1,5 +1,7 @@
 #include "Courbe.h"
 
+
+
 //--------définition des méthodes get----------------------------------------------------------------------------
 
 double Courbe::getcourbure() const
@@ -12,6 +14,9 @@ Vecteur3D Courbe::getcentre() const
     return 1./2*(re + rs) + 1/courbure *sqrt(1 - courbure*courbure*(rs - re).norme_carre()/4)*(getdirection()^E3);
 }
 
+
+
+
 //--------définition des méthodes get----------------------------------------------------------------------------
 
 void Courbe::setcourbure(double const& d)
@@ -19,13 +24,14 @@ void Courbe::setcourbure(double const& d)
     courbure = d;
 }
 
+
+
+
 //--------définition des constructeurs---------------------------------------------------------------------------
 
 Courbe::Courbe()
 : courbure(1)
-{
-
-}
+{}
 
 Courbe::Courbe(Vecteur3D e, Vecteur3D s, double r, double k)
 : Element(e, s, r), courbure(k)
@@ -38,15 +44,14 @@ Courbe::Courbe(Vecteur3D e, Vecteur3D s, double r, double k)
 
 Courbe::Courbe(const Courbe& c)
 :Element(c), courbure(c.getcourbure())
-{
-
-}
+{}
 
 
 Courbe::~Courbe()
-{
+{}
 
-}
+
+
 
 //--------définition des méthodes--------------------------------------------------------------------------------
 
@@ -56,12 +61,18 @@ bool Courbe::heurte_bord(Particule const& p) const
     return (X - 1/abs(courbure)*(~(X - X.getx()*E3))).norme_carre() > Re*Re;
 }
 
+
+
+
 //--------définition des méthodes privées------------------------------------------------------------------------
 
 Vecteur3D Courbe::getpos_relative(Particule const& p) const
 {
     return p.getposition() - getcentre();
 }
+
+
+
 
 //--------définition des surcharges externes---------------------------------------------------------------------
 
