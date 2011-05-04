@@ -7,7 +7,7 @@ FenetreGL::FenetreGL(wxString titre, wxSize taille)
     //On centre la fenêtre sur l'écran
     Center();
     //Et on l'affiche
-    Show();
+    Show(true);
     
     vueopengl->InitOpenGL();
 }

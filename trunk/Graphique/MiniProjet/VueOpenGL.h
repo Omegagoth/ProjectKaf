@@ -10,17 +10,18 @@ class VueOpenGL: public wxGLCanvas
 	public:
 		
 		VueOpenGL(wxWindow* parent, wxSize const& taille=wxDefaultSize, wxPoint const& position=wxDefaultPosition);
+		virtual ~VueOpenGL();
 
 		void InitOpenGL();
 		
-		void appuiTouche(wxKeyEvent&);
 		void dessineSol(double);
 
-	private:
+	protected:
 	
 		Camera camera;
 		
 		void dessine(wxPaintEvent& event);
+		void appuiTouche(wxKeyEvent&);
 };
 
 

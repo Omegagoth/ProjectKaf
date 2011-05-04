@@ -1,5 +1,9 @@
 #include "Camera.h"
 
+#define RAYON_DEFAUT 88
+#define PHI_DEFAUT 0.61
+#define THETA_DEFAUT 0.44
+
 double Camera::getRayon() const
 {
 	return Rayon;
@@ -41,9 +45,19 @@ void Camera::setVue()
 
 
 
-Camera::Camera(double r, double p = PHI_DEFAUT, double t = THETA_DEFAUT)
+Camera::Camera(double r, double p, double t)
 : Rayon(r), Phi(p), Theta(t)
 {}
 
+Camera::Camera()
+: Rayon(RAYON_DEFAUT), Phi(PHI_DEFAUT), Theta(THETA_DEFAUT)
+{}
+
+void Camera::resetVue()
+{
+	Rayon = RAYON_DEFAUT;
+	Phi = PHI_DEFAUT;
+	Theta = THETA_DEFAUT;
+}
 
 

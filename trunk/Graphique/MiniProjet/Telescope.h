@@ -13,7 +13,11 @@ class Telescope
 		void setRotation(double);
 		void setInclinaison(double);
 		
+		Telescope();
 		Telescope(double, double);
+		virtual ~Telescope();
+		
+		void dessine();
 	
 	protected :
 	

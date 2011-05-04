@@ -7,10 +7,6 @@
 
 using namespace std;
 
-double const RAYON_DEFAUT(88);
-double const PHI_DEFAUT(0.61);
-double const THETA_DEFAUT(0.44);
-
 class Camera
 {
 	public :
@@ -25,6 +21,9 @@ class Camera
 		void setVue();
 		
 		Camera(double, double, double);
+		Camera();
+		
+		void resetVue();
 	
 	protected :
 

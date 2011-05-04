@@ -1,4 +1,5 @@
 #include "VueOpenGL.h"
+#include "Application.h"
 
 VueOpenGL::VueOpenGL(wxWindow* parent, wxSize const& taille, wxPoint const& position)
 :wxGLCanvas(parent, wxID_ANY, position, taille, wxSUNKEN_BORDER), camera(5, 0.61, 0.44)
@@ -6,6 +7,9 @@ VueOpenGL::VueOpenGL(wxWindow* parent, wxSize const& taille, wxPoint const& posi
     Connect(wxEVT_PAINT, wxPaintEventHandler(VueOpenGL::dessine));
     Connect(wxEVT_KEY_DOWN, wxKeyEventHandler(VueOpenGL::appuiTouche));
 }
+
+VueOpenGL::~VueOpenGL()
+{}
 
 void VueOpenGL::InitOpenGL()
 {
@@ -19,6 +23,7 @@ void VueOpenGL::InitOpenGL()
 	// Fixe la perspective
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
+	
 	gluPerspective(65.0, 4./3., 1.0, 1000.0);
 	
 	// fixe le fond d'écran à noir
@@ -27,39 +32,6 @@ void VueOpenGL::InitOpenGL()
 	// prépare à travailler sur le modèle  
 	// (données de l'application)
 	glMatrixMode(GL_MODELVIEW);
-}
-
-void VueOpenGL::appuiTouche(wxKeyEvent& event)
-{
-    switch(event.GetKeyCode())
-    {
-         // décrémente l'angle phi de la caméra lorsque l'on appuie sur la flèche gauche
-        case WXK_LEFT:
-            camera.setPhi(camera.getPhi() - 0.1);
-            break;
-        // incrémente l'angle phi de la caméra lorsque l'on appuie sur la flèche droite      
-        case WXK_RIGHT:
-             camera.setPhi(camera.getPhi() + 0.1);
-             break;
-        // décrémente l'angle theta de la caméra lorsque l'on appuie sur la flèche haut       
-        case WXK_UP:
-            camera.setTheta(camera.getTheta() - 0.1);
-            break;
-        // incrémente l'angle theta de éa caméra lorsque l'on appuie sur la flèche bas     
-        case WXK_DOWN:
-            camera.setTheta(camera.getTheta() + 0.1);
-            break;
-        // diminue le rayon de la  caméra si on appuie sur 'W'
-        case 'W': //Attention
-            camera.setRayon(camera.getRayon() - 1);
-            break;
-        // augmente le rayon de la caméra si on appuie sur 'S'
-        case 'S':
-            camera.setRayon(camera.getRayon() + 1);
-            break;
-    }
-    
-    Refresh(false);
 }
 
 void VueOpenGL::dessineSol(double taille)
@@ -95,10 +67,9 @@ void VueOpenGL::dessine(wxPaintEvent& event)
 	glScaled(0.5,0.5,0.5);
 	
 	
+	glEnable(GL_LINE_SMOOTH);
 	
 	glBegin(GL_QUADS);
-	
-	glEnable(GL_LINE_SMOOTH);
 	
 	glColor3ub(255,0,0);
 	glVertex3d(1,1,1);
@@ -143,10 +114,44 @@ void VueOpenGL::dessine(wxPaintEvent& event)
 	
 	//dessineSol(100);
 	dessineRepere();
+	wxGetApp().dessine();
      
  
     // Finalement, envoi du dessin à l écran
     glFlush();
     SwapBuffers();
+}
+
+void VueOpenGL::appuiTouche(wxKeyEvent& event)
+{
+    switch(event.GetKeyCode())
+    {
+         // décrémente l'angle phi de la caméra lorsque l'on appuie sur la flèche gauche
+        case WXK_LEFT:
+            camera.setPhi(camera.getPhi() - 0.1);
+            break;
+        // incrémente l'angle phi de la caméra lorsque l'on appuie sur la flèche droite      
+        case WXK_RIGHT:
+             camera.setPhi(camera.getPhi() + 0.1);
+             break;
+        // décrémente l'angle theta de la caméra lorsque l'on appuie sur la flèche haut       
+        case WXK_UP:
+            camera.setTheta(camera.getTheta() - 0.1);
+            break;
+        // incrémente l'angle theta de éa caméra lorsque l'on appuie sur la flèche bas     
+        case WXK_DOWN:
+            camera.setTheta(camera.getTheta() + 0.1);
+            break;
+        // diminue le rayon de la  caméra si on appuie sur 'W'
+        case 'W': //Attention
+            camera.setRayon(camera.getRayon() - 1);
+            break;
+        // augmente le rayon de la caméra si on appuie sur 'S'
+        case 'S':
+            camera.setRayon(camera.getRayon() + 1);
+            break;
+    }
+    
+    Refresh(false);
 }
 

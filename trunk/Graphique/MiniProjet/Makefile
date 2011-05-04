@@ -11,4 +11,5 @@ FenetreGL.o: FenetreGL.cc FenetreGL.h
 Camera.o : Camera.cc Camera.h
 VueOpenGL.o: VueOpenGL.cc VueOpenGL.h
 GLUtils.o: GLUtils.cc GLUtils.h
-Application: Application.o FenetreGL.o VueOpenGL.o Camera.o GLUtils.o
+Telescope.o: Telescope.cc Telescope.h
+Application: Application.o FenetreGL.o VueOpenGL.o Camera.o GLUtils.o Telescope.o

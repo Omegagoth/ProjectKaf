@@ -26,6 +26,10 @@ void Telescope::setInclinaison(double i)
 
 
 
+Telescope::Telescope()
+: rotation(0), inclinaison(0)
+{}
+
 Telescope::Telescope(double r, double i)
 : rotation(r), inclinaison(i)
 {}
