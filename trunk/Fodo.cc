@@ -127,7 +127,7 @@ Fodo::~Fodo()
 
 bool Fodo::heurte_bord(Particule const& p) const
 {
-    return (*maille[0]).heurte_bord(p) && (*maille[1]).heurte_bord(p) && (*maille[2]).heurte_bord(p) && (*maille[3]).heurte_bord(p);
+    return maille[0]->heurte_bord(p) || maille[1]->heurte_bord(p) || maille[2]->heurte_bord(p) || maille[3]->heurte_bord(p);
 }
 
 Fodo* Fodo::copie() const

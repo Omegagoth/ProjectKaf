@@ -65,9 +65,9 @@ int main()
 
 	acc.ajoute_element(F1);
 
-	cout << "coucou" << endl;
+	/*cout << "coucou" << endl;
 
-	cout << acc.getelements(1) << endl;
+	cout << acc.getelements(1) << endl;*/
 
 	acc.ajoute_element(D1);
 	/*acc.ajoute_element(Q3);
@@ -97,8 +97,8 @@ int main()
 
 	cout << acc << endl;
 
-	cout << "Touche le bord "<< acc.getelements(8)->heurte_bord(P1) << endl
-	<< "Sortie? " << acc.getelements(8)->passe_suivant(P1) << endl;
+	/*cout << "Touche le bord "<< acc.getelements(8)->heurte_bord(P1) << endl
+	<< "Sortie? " << acc.getelements(8)->passe_suivant(P1) << endl;*/
 
 	acc.affecte_element();
 
@@ -110,18 +110,37 @@ int main()
 	    << *(acc.getparticules(i)->getappartient()) << endl;
 	}
 
-	for (int unsigned i(0); i < 20; ++i)
+	for (int i(0); i<100; i++)
 	{
-		acc.evolue(1e-11);
-
-		cout << "AprËs" << endl << endl;
-
-		for (int unsigned i(1); i <= acc.getparticules().size(); ++i)
-		{
-			cout << *acc.getparticules(i) << endl
-			<< *(acc.getparticules(i)->getappartient()) << endl;
-		}
+	    acc.evolue(1e-11);
 	}
+
+	cout << endl << endl << endl << endl << "Coucou" << endl;
+	for (int unsigned i(1); i <= acc.getparticules().size(); ++i)
+	{
+	    cout << *acc.getparticules(i) << endl
+	    << *(acc.getparticules(i)->getappartient()) << endl;
+	}
+
+    int n(100);
+
+	do
+	{
+		n +=1;
+		acc.evolue(1e-11);
+	}
+	while (acc.getparticules(1)->getposition().getx() < 0 || acc.getparticules(1)->getposition().gety() > 0
+	|| acc.getparticules(1)->getposition().gety() < -0.1);
+
+	cout << n << endl;
+
+	cout << "AprËs" << endl << endl;
+
+	for (int unsigned i(1); i <= acc.getparticules().size(); ++i)
+	{
+		cout << *acc.getparticules(i) << endl
+		<< *(acc.getparticules(i)->getappartient()) << endl;
+    }
 	return 0;
 }
 
