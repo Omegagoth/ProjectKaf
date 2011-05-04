@@ -2,7 +2,7 @@
 #include "Application.h"
 
 VueOpenGL::VueOpenGL(wxWindow* parent, wxSize const& taille, wxPoint const& position)
-:wxGLCanvas(parent, wxID_ANY, position, taille, wxSUNKEN_BORDER), camera(5, 0.61, 0.44)
+:wxGLCanvas(parent, wxID_ANY, position, taille, wxSUNKEN_BORDER), camera(88, 0.61, 0.44)
 {
     Connect(wxEVT_PAINT, wxPaintEventHandler(VueOpenGL::dessine));
     Connect(wxEVT_KEY_DOWN, wxKeyEventHandler(VueOpenGL::appuiTouche));
@@ -36,14 +36,27 @@ void VueOpenGL::InitOpenGL()
 
 void VueOpenGL::dessineSol(double taille)
 {
+	glEnable(GL_TEXTURE_2D);
+	
+	glBindTexture(GL_TEXTURE_2D, *wxGetApp().getTexture("texture/sol.jpg"));
+	
 	glBegin(GL_QUADS);
 	
+	glTexCoord2d(0,0);
 	glVertex3d(taille, taille, 0);
+	
+	glTexCoord2d(0,-4);
 	glVertex3d(taille, -taille, 0);
+	
+	glTexCoord2d(-4,-4);
 	glVertex3d(-taille, -taille, 0);
+	
+	glTexCoord2d(-4,0);
 	glVertex3d(-taille, taille, 0);
 	
 	glEnd();
+	
+	glDisable(GL_TEXTURE_2D);
 }
 
 void VueOpenGL::dessine(wxPaintEvent& event)
@@ -61,7 +74,7 @@ void VueOpenGL::dessine(wxPaintEvent& event)
     camera.setVue();
     
     //Commandes de dessin ici
-    glPushMatrix();
+    /*glPushMatrix();
 	glTranslated(1,1,1);
 	glRotated(-20,0,1,0);
 	glScaled(0.5,0.5,0.5);
@@ -110,9 +123,9 @@ void VueOpenGL::dessine(wxPaintEvent& event)
 	glEnd();
 	
 	
-	glPopMatrix();
+	glPopMatrix();*/
 	
-	//dessineSol(100);
+	dessineSol(100);
 	dessineRepere();
 	wxGetApp().dessine();
      

@@ -1,6 +1,9 @@
 #ifndef TELESCOPE_H
 #define TELESCOPE_H
 
+#include "wxIncludes"
+#include <vector>
+
 using namespace std;
 
 class Telescope

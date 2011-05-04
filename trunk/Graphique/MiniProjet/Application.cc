@@ -13,9 +13,15 @@ bool Application::OnInit()
     return (fenetreGL!=0);
 }
 
+GLuint* Application::getTexture(string fichier, bool mipmap)
+{
+    return texturemanager.getTexture(fichier, mipmap);
+}
+
 void Application::dessine()
 {
 	telescope.dessine();
+	ciel.dessine();
 }
 
 //Remplacement du main
