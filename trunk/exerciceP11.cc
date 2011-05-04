@@ -82,9 +82,6 @@ int main()
 	acc.ajoute_particule(P1);
 	acc.ajoute_particule(P2);
 
-	cout << "Touche le bord "<< acc.getelements(20)->heurte_bord(P1) << endl
-	<< "Sortie? " << acc.getelements(20)->passe_suivant(P1) << endl;
-
 	acc.affecte_element();
 
 	cout << "Avant" << endl << endl;
