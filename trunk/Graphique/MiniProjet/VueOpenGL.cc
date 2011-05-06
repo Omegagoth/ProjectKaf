@@ -6,6 +6,7 @@ VueOpenGL::VueOpenGL(wxWindow* parent, wxSize const& taille, wxPoint const& posi
 {
     Connect(wxEVT_PAINT, wxPaintEventHandler(VueOpenGL::dessine));
     Connect(wxEVT_KEY_DOWN, wxKeyEventHandler(VueOpenGL::appuiTouche));
+    Connect(wxEVT_RIGHT_DOWN, wxMouseEventHandler(VueOpenGL::bougeSouris));
 }
 
 VueOpenGL::~VueOpenGL()

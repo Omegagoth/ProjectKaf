@@ -46,7 +46,7 @@ Vecteur3D Fodo::getchamps_magnetique(Particule const& p) const
 {
     Vecteur3D m;
 
-    for (int i(0); i<maille.size(); ++i)
+    for (int unsigned i(0); i<maille.size(); ++i)
     {
         if (!(maille[i]->heurte_bord(p)) && !(maille[i]->passe_suivant(p)))
         {

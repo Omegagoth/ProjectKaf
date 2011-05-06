@@ -5,12 +5,12 @@ CXX = c++
 #                    en décommentant la/les lignes correspondantes
 #
 # CXXFLAGS += -ansi -pedantic -Wall   # pour les purs et durs
-# CXXFLAGS += -g                      # pour debugger
+CXXFLAGS += -g                      # pour debugger
 # CXXFLAGS += -pg                     # pour profiler
 # LDFLAGS  += -pg                     # pour profiler
 CXXFLAGS += -O2                     # pour optimiser la vitesse
 
-all: exerciceP11bis
+all: ExerciceP11bis
 
 Vecteur3D.o: Vecteur3D.cc Vecteur3D.h
 
@@ -32,7 +32,7 @@ Fodo.o : Fodo.cc Fodo.h
 
 Accelerateur.o : Accelerateur.cc Accelerateur.h
 
-exerciceP11bis.o : exerciceP11bis.cc
+ExerciceP11bis.o : ExerciceP11bis.cc
 
-exerciceP11bis : exerciceP11bis.o Accelerateur.o Fodo.o Quadrupole.o Section_droite.o Particule.o Vecteur3D.o Element.o Droit.o Courbe.o Dipole.o
+ExerciceP11bis : ExerciceP11bis.o Accelerateur.o Fodo.o Quadrupole.o Section_droite.o Particule.o Vecteur3D.o Element.o Droit.o Courbe.o Dipole.o
 

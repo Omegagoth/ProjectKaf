@@ -94,6 +94,8 @@ int main()
 
 	acc.ajoute_particule(P1);
 	acc.ajoute_particule(P2);
+	
+	cout << "Prod :::: " << prod_mixte(Vecteur3D(0,0,1), acc.getelements(1)->getre(), acc.getelements(1)->getrs()) << endl;
 
 	cout << acc << endl;
 
@@ -109,30 +111,38 @@ int main()
 	    cout << *acc.getparticules(i) << endl
 	    << *(acc.getparticules(i)->getappartient()) << endl;
 	}
+	int n(0);
+	int nb(0);
+	//for (int i(0); i<50; i++)
+	//{
+		for (int j(0); j<752; j++)
+		{
+			acc.evolue(1e-11);
+			n++;
+		}
 
-	for (int i(0); i<100; i++)
-	{
-	    acc.evolue(1e-11);
-	}
+		/*cout << endl << endl << endl << endl << "Coucou" << endl;
+		for (int unsigned i(1); i <= acc.getparticules().size(); ++i)
+		{
+			cout << *acc.getparticules(i) << endl
+			<< *(acc.getparticules(i)->getappartient()) << endl;
+		}*/
 
-	cout << endl << endl << endl << endl << "Coucou" << endl;
-	for (int unsigned i(1); i <= acc.getparticules().size(); ++i)
-	{
-	    cout << *acc.getparticules(i) << endl
-	    << *(acc.getparticules(i)->getappartient()) << endl;
-	}
+    
+	
+		/*do
+		{
+			n +=1;
+			acc.evolue(1e-11);
+		}
+		while (acc.getparticules(1)->getposition().getx() < 0 || acc.getparticules(1)->getposition().gety() > 0
+		|| acc.getparticules(1)->getposition().gety() < -0.1);
+		*/
+		nb++;
+	//}
 
-    int n(100);
-
-	do
-	{
-		n +=1;
-		acc.evolue(1e-11);
-	}
-	while (acc.getparticules(1)->getposition().getx() < 0 || acc.getparticules(1)->getposition().gety() > 0
-	|| acc.getparticules(1)->getposition().gety() < -0.1);
-
-	cout << n << endl;
+	cout << "Nombre d'iteration " << n << endl
+	<< "Nombre de tour " << nb << endl << endl << endl;
 
 	cout << "AprËs" << endl << endl;
 

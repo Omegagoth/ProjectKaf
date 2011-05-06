@@ -11,7 +11,7 @@ double Courbe::getcourbure() const
 
 Vecteur3D Courbe::getcentre() const
 {
-    return 1./2*(re + rs) + 1/courbure *sqrt(1 - courbure*courbure*(rs - re).norme_carre()/4)*(getdirection()^E3);
+    return 1./2*(re + rs) + 1./courbure *sqrt(1 - courbure*courbure*(rs - re).norme_carre()/4)*(getdirection()^E3);
 }
 
 
