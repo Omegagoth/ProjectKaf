@@ -2,11 +2,17 @@
 #include "Application.h"
 
 VueOpenGL::VueOpenGL(wxWindow* parent, wxSize const& taille, wxPoint const& position)
-:wxGLCanvas(parent, wxID_ANY, position, taille, wxSUNKEN_BORDER), camera(88, 0.61, 0.44)
+:wxGLCanvas(parent, wxID_ANY, position, taille, wxSUNKEN_BORDER), camera(88, 0.61, 0.44), x_souris(0), y_souris(0)
 {
     Connect(wxEVT_PAINT, wxPaintEventHandler(VueOpenGL::dessine));
     Connect(wxEVT_KEY_DOWN, wxKeyEventHandler(VueOpenGL::appuiTouche));
-    Connect(wxEVT_RIGHT_DOWN, wxMouseEventHandler(VueOpenGL::bougeSouris));
+    Connect(wxEVT_MOTION, wxMouseEventHandler(VueOpenGL::bougeSouris));
+    Connect(wxEVT_RIGHT_DOWN, wxMouseEventHandler(VueOpenGL::clicSouris));
+    Connect(wxEVT_MOUSEWHEEL, wxMouseEventHandler(VueOpenGL::moletteSouris));
+    
+    SetCursor(wxCURSOR_SIZENESW);
+    
+    SetFocus();
 }
 
 VueOpenGL::~VueOpenGL()
@@ -164,8 +170,39 @@ void VueOpenGL::appuiTouche(wxKeyEvent& event)
         case 'S':
             camera.setRayon(camera.getRayon() + 1);
             break;
+        case WXK_SPACE:
+			camera.resetVue();
+			break;
     }
     
     Refresh(false);
 }
+
+void VueOpenGL::bougeSouris(wxMouseEvent& event)
+{
+	if(event.RightIsDown())
+	{
+		int x(0), y(0);
+		event.GetPosition(&x,&y);
+		
+		camera.setPhi(camera.getPhi() - (x_souris-x)/20.);
+		camera.setTheta(camera.getTheta() + (y_souris-y)/20.);
+		
+		event.GetPosition(&x_souris, &y_souris);
+		
+		Refresh(false);
+	}
+}
+
+void VueOpenGL::clicSouris(wxMouseEvent& event)
+{
+	event.GetPosition(&x_souris, &y_souris);
+}
+
+void VueOpenGL::moletteSouris(wxMouseEvent& event)
+{
+	camera.setRayon(camera.getRayon() - event.GetWheelRotation()/60.);
+	Refresh(false);
+}
+
 

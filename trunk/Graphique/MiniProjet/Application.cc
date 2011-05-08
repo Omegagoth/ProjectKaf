@@ -7,6 +7,11 @@ bool Application::OnInit()
      
     //Définie comme fenêtre principale
     SetTopWindow(fenetreGL);
+    
+    Connect(wxID_ANY, wxEVT_TIMER, wxTimerEventHandler(Application::rotationCiel));
+    
+    timerCiel = new wxTimer(this);
+    timerCiel->Start(50);
      
     //La fonction doit retourner true si elle s'est bien initialisée
     //Si le pointeur est nul, la fenêtre n'a pas pu s'initialiser!
@@ -22,6 +27,17 @@ void Application::dessine()
 {
 	telescope.dessine();
 	ciel.dessine();
+}
+
+void Application::rotationCiel(wxTimerEvent& event)
+{
+	ciel.rotation();
+	rafraichir();
+}
+
+void Application::rafraichir()
+{
+	fenetreGL->rafraichir();
 }
 
 //Remplacement du main

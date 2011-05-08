@@ -23,6 +23,11 @@ class VueOpenGL: public wxGLCanvas
 		void dessine(wxPaintEvent& event);
 		void appuiTouche(wxKeyEvent&);
 		void bougeSouris(wxMouseEvent&);
+		void clicSouris(wxMouseEvent&);
+		void moletteSouris(wxMouseEvent&);
+		
+		int x_souris;
+		int y_souris;
 };
 
 
