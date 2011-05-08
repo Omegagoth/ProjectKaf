@@ -1,6 +1,9 @@
 CC  = c++
 CXX = c++
 
+CXXFLAGS += `wx-config --cxxflags`
+LDLIBS   = `wx-config --libs gl,core,base`
+
 # Partie commentée : choisissez les options que vous voulez avoir
 #                    en décommentant la/les lignes correspondantes
 #
@@ -31,6 +34,8 @@ Quadrupole.o : Quadrupole.cc Quadrupole.h
 Fodo.o : Fodo.cc Fodo.h
 
 Accelerateur.o : Accelerateur.cc Accelerateur.h
+
+Particule3D.o : Particule3D.cc Particule3D.h
 
 ExerciceP11bis.o : ExerciceP11bis.cc
 

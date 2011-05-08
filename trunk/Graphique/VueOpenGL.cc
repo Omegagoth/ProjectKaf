@@ -47,7 +47,7 @@ void VueOpenGL::dessine(wxPaintEvent& event)
                      
      
     //Commandes de dessin ici
-    glPushMatrix();
+    /*glPushMatrix();
 	glTranslated(1,1,1);
 	glRotated(-20,0,1,0);
 	glScaled(0.5,0.5,0.5);
@@ -95,7 +95,12 @@ void VueOpenGL::dessine(wxPaintEvent& event)
 	glEnd();
 	
 	
-	glPopMatrix();
+	glPopMatrix();*/
+	
+	glPushMatrix();
+	
+	glTranslated(3,2,0);
+	glRotated(90,1,0,0);
      
  
     // Finalement, envoi du dessin à l écran

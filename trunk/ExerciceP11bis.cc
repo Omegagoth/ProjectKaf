@@ -113,8 +113,8 @@ int main()
 	}
 	int n(0);
 	int nb(0);
-	//for (int i(0); i<50; i++)
-	//{
+	for (int i(0); i<75; i++)
+	{
 		for (int j(0); j<752; j++)
 		{
 			acc.evolue(1e-11);
@@ -130,16 +130,16 @@ int main()
 
     
 	
-		/*do
+		do
 		{
 			n +=1;
 			acc.evolue(1e-11);
 		}
 		while (acc.getparticules(1)->getposition().getx() < 0 || acc.getparticules(1)->getposition().gety() > 0
 		|| acc.getparticules(1)->getposition().gety() < -0.1);
-		*/
+		
 		nb++;
-	//}
+	}
 
 	cout << "Nombre d'iteration " << n << endl
 	<< "Nombre de tour " << nb << endl << endl << endl;
