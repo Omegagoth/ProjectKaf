@@ -13,7 +13,7 @@ CXXFLAGS += -g                      # pour debugger
 # LDFLAGS  += -pg                     # pour profiler
 CXXFLAGS += -O2                     # pour optimiser la vitesse
 
-all: ExerciceP11bis
+all: testFaisceau
 
 Vecteur3D.o: Vecteur3D.cc Vecteur3D.h
 
@@ -35,9 +35,11 @@ Fodo.o : Fodo.cc Fodo.h
 
 Accelerateur.o : Accelerateur.cc Accelerateur.h
 
-Particule3D.o : Particule3D.cc Particule3D.h
 
-ExerciceP11bis.o : ExerciceP11bis.cc
 
-ExerciceP11bis : ExerciceP11bis.o Accelerateur.o Fodo.o Quadrupole.o Section_droite.o Particule.o Vecteur3D.o Element.o Droit.o Courbe.o Dipole.o
+Faisceau.o : Faisceau.cc Faisceau.h
+
+testFaisceau.o : testFaisceau.cc
+
+testFaisceau : testFaisceau.o  Faisceau.o Accelerateur.o Fodo.o Quadrupole.o Section_droite.o Particule.o Vecteur3D.o Element.o Droit.o Courbe.o Dipole.o
 
