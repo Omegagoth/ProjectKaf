@@ -2,7 +2,7 @@ CC  = c++
 CXX = c++
 
 CXXFLAGS += `wx-config --cxxflags`
-LDLIBS   = `wx-config --libs gl,core,base`
+LDLIBS   += `wx-config --libs gl,core,base`
 
 # Partie commentée : choisissez les options que vous voulez avoir
 #                    en décommentant la/les lignes correspondantes
@@ -35,7 +35,7 @@ Fodo.o : Fodo.cc Fodo.h
 
 Accelerateur.o : Accelerateur.cc Accelerateur.h
 
-
+Particule3D.o : Particule3D.cc Particule3D.h
 
 Faisceau.o : Faisceau.cc Faisceau.h
 

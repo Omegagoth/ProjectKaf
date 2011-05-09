@@ -56,7 +56,7 @@ class Particule
         double masse;        //masse de la particule
         double charge;       //charge de la particule
         Vecteur3D force;     //vecteur de la somme des force appliquees de la particule
-		Element* appartient; //pointeur vers l'element dans lequel ce trouve la particule
+	Element* appartient; //pointeur vers l'element dans lequel ce trouve la particule
 };
 
 //--------prototypage des surcharges externes--------------------------------------------------------------------
