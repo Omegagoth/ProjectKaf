@@ -23,7 +23,7 @@ void Droit3D::dessine() const
 	gluQuadricDrawStyle(droit_ext, GLU_LINE);
 	gluQuadricDrawStyle(droit_int, GLU_FILL);
 	
-	glTranslated(re.getx(), re.gety(), re.getz());
+	glTranslated(10, re.gety(), re.getz());
 	
 	glRotated(90, (Vecteur3D(0,0,1)^getdirection()).getx(), (Vecteur3D(0,0,1)^getdirection()).gety(), (Vecteur3D(0,0,1)^getdirection()).getz());
 	
