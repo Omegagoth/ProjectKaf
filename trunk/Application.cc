@@ -1,31 +1,33 @@
 #include "Application.h"
-
-
-
-void Application::dessine() const
-{
-	droit.dessine();
-	particule.dessine();
-}
-
-
-
-
+ 
 bool Application::OnInit()
 {
-	//On alloue la fenêtre
-	fenetreGL = new FenetreGL(wxT("Accelerateur"), wxSize(640, 480));
-	
-	//On la défine comme fenêtre principale
-	SetTopWindow(fenetreGL);
-	
-	return (fenetreGL !=0 );
+    //On alloue la fenêtre
+    fenetreGL=new FenetreGL(wxT("Telescope"),wxSize(640, 480));
+     
+    //Définie comme fenêtre principale
+    SetTopWindow(fenetreGL);
+     
+    //La fonction doit retourner true si elle s'est bien initialisée
+    //Si le pointeur est nul, la fenêtre n'a pas pu s'initialiser!
+    return (fenetreGL!=0);
 }
 
-void Application::rafraichir() const
+GLuint* Application::getTexture(string fichier, bool mipmap)
+{
+    return texturemanager.getTexture(fichier, mipmap);
+}
+
+void Application::dessine()
+{
+	particule.dessine();
+	droit.dessine();
+}
+
+void Application::rafraichir()
 {
 	fenetreGL->rafraichir();
 }
 
-
+//Remplacement du main
 IMPLEMENT_APP(Application);

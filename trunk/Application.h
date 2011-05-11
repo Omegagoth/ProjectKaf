@@ -1,32 +1,34 @@
 #ifndef APPLICATION_H
-#define APPLICATOIN_H
-
+#define APPLICATION_H
+ 
+//Headers
 #include "wxIncludes.h"
 #include "FenetreGL.h"
+#include "TextureManager.h"
 #include "Particule3D.h"
 #include "Droit3D.h"
-
-using namespace std;
-
-class Application : public wxApp
+ 
+class Application : public wxApp //Héritage
 {
 	public :
 	
-		void dessine() const;
+		void dessine();
+		
+		GLuint* getTexture(string fichier, bool mipmap=true);
 	
 	protected :
 	
-		FenetreGL* fenetreGL;
-		Droit3D droit;
 		Particule3D particule;
-		
-		bool OnInit();
-		void rafraichir() const;
+		Droit3D droit;
+		TextureManager texturemanager;
+				
+		bool OnInit(); //La fonction OnInit est appelée lors de l'initialisation de l'application.
+		FenetreGL* fenetreGL; //On stocke un pointeur, voir remarque plus bas.
+		bool loaded;
+		void rafraichir();
 };
 
 DECLARE_APP(Application);
-
-
 
 #endif
 

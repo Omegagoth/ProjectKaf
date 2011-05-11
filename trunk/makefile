@@ -41,15 +41,17 @@ Droit3D.o : Droit3D.cc Droit3D.h
 
 Faisceau.o : Faisceau.cc Faisceau.h
 
-Application.o : Application.cc Application.h
+VueOpenGL.o: VueOpenGL.cc VueOpenGL.h
 
-VueOpenGL.o : VueOpenGL.cc VueOpenGL.h
+FenetreGL.o: FenetreGL.cc FenetreGL.h
 
-FenetreGL.o : FenetreGL.cc FenetreGL.h
+Camera.o: Camera.cc Camera.h
 
-Camera.o : Camera.cc Camera.h
+TextureManager.o: TextureManager.cc TextureManager.h
+
+GLUtils.o: GLUtils.cc GLUtils.h
 
 #testFaisceau.o : testFaisceau.cc
 
-Application : Application.o Accelerateur.o Fodo.o Quadrupole.o Section_droite.o Particule.o Vecteur3D.o Element.o Droit.o Courbe.o Dipole.o Particule3D.o Droit3D.o FenetreGL.o VueOpenGL.o Camera.o
+Application : Accelerateur.o Fodo.o Quadrupole.o Section_droite.o Particule.o Vecteur3D.o Element.o Droit.o Courbe.o Dipole.o Particule3D.o Droit3D.o Application.o VueOpenGL.o FenetreGL.o Camera.o TextureManager.o GLUtils.o
 

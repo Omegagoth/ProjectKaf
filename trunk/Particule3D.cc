@@ -3,7 +3,7 @@
 
 
 Particule3D::Particule3D()
-: Particule(Vecteur3D(1,0,0), Vecteur3D(0,0,0), 10, 2)
+: Particule(Vecteur3D(0,0,1), Vecteur3D(0,0,0), 10, 2)
 {}
 
 Particule3D::Particule3D(Vecteur3D position, Vecteur3D quantite_mouv, double masse, double charge)
@@ -18,13 +18,15 @@ void Particule3D::dessine() const
 {
 	glPushMatrix();
 	
-	glBegin(GL_POINTS);
+	GLUquadric* particule = gluNewQuadric();
 	
-	glPointSize(10);
+	glTranslated(position.getx(), position.gety(), position.getz());
 	
-	glVertex3d(position.getx(), position.gety(), position.getz());
+	gluQuadricDrawStyle(particule, GLU_FILL);
 	
-	glEnd();
+	gluSphere(particule, .05, 5,5);
+	
+	gluDeleteQuadric(particule);
 	
 	glPopMatrix();
 }
