@@ -17,7 +17,7 @@ bool Application::OnInit()
 	fenetreGL = new FenetreGL(wxT("Accelerateur"), wxSize(640, 480));
 	
 	//On la défine comme fenêtre principale
-	SetTopWindows(fenetreGL);
+	SetTopWindow(fenetreGL);
 	
 	return (fenetreGL !=0 );
 }

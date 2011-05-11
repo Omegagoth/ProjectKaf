@@ -3,7 +3,7 @@
 
 
 Droit3D::Droit3D()
-: Droit()
+: Droit(Vecteur3D(0,1,0), Vecteur3D(0,0,1), 0.1)
 {}
 
 Droit3D::Droit3D(Vecteur3D entree, Vecteur3D sortie, double rayon)
@@ -27,8 +27,8 @@ void Droit3D::dessine() const
 	
 	glRotated(90, (Vecteur3D(0,0,1)^getdirection()).getx(), (Vecteur3D(0,0,1)^getdirection()).gety(), (Vecteur3D(0,0,1)^getdirection()).getz());
 	
-	gluCylinder(droit_ext, rayon*100, 0, (re-rs).norme(), 20, 20);
-	gluCylinder(droit_ext, rayon, 0, (re-rs).norme(), 20, 20);
+	gluCylinder(droit_ext, Re*100, 0, (re-rs).norme(), 20, 20);
+	gluCylinder(droit_ext, Re, 0, (re-rs).norme(), 20, 20);
 	
 	gluDeleteQuadric(droit_ext);
 	gluDeleteQuadric(droit_int);

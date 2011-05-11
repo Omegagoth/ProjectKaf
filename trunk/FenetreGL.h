@@ -14,7 +14,7 @@ class FenetreGL : public wxFrame
 	
 	protected :
 	
-		VueOpenGl* vueopengl;
+		VueOpenGL* vueopengl;
 };
 
 

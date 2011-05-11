@@ -16,7 +16,7 @@ class Application : public wxApp
 	
 	protected :
 	
-		FenetreGl* fenetreGL;
+		FenetreGL* fenetreGL;
 		Droit3D droit;
 		Particule3D particule;
 		

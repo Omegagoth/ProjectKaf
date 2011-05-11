@@ -12,6 +12,11 @@ class Droit3D : public Droit
 		Droit3D(Vecteur3D, Vecteur3D, double);
 		
 		void dessine() const;
+		
+		
+		virtual Vecteur3D getchamps_magnetique(Particule const&) const{}
+		virtual Droit3D* copie() const{}
+		virtual void affiche(ostream&) const{}
 	
 	protected :
 	

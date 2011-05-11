@@ -2,23 +2,21 @@
 #define VUEOPENGL_H
 
 #include "wxIncludes.h"
-
-using namespace std;
+#include "Camera.h"
 
 class VueOpenGL : public wxGLCanvas
 {
 	public :
 	
-		VueOpenGL(wxWindow*, wxSize const&, wxPoint const&);
+		VueOpenGL(wxWindow* parent, wxSize const& taille=wxDefaultSize, wxPoint const& position=wxDefaultPosition);
 		virtual ~VueOpenGL();
 		
 		void InitOpenGL();
-	
-	protected :
+		
+	private :
 	
 		void dessine(wxPaintEvent&);
 };
-
 
 
 #endif

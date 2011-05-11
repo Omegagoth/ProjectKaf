@@ -13,7 +13,7 @@ CXXFLAGS += -g                      # pour debugger
 # LDFLAGS  += -pg                     # pour profiler
 CXXFLAGS += -O2                     # pour optimiser la vitesse
 
-all: testFaisceau
+all: Application
 
 Vecteur3D.o: Vecteur3D.cc Vecteur3D.h
 
@@ -37,9 +37,19 @@ Accelerateur.o : Accelerateur.cc Accelerateur.h
 
 Particule3D.o : Particule3D.cc Particule3D.h
 
+Droit3D.o : Droit3D.cc Droit3D.h
+
 Faisceau.o : Faisceau.cc Faisceau.h
 
-testFaisceau.o : testFaisceau.cc
+Application.o : Application.cc Application.h
 
-testFaisceau : testFaisceau.o  Faisceau.o Accelerateur.o Fodo.o Quadrupole.o Section_droite.o Particule.o Vecteur3D.o Element.o Droit.o Courbe.o Dipole.o
+VueOpenGL.o : VueOpenGL.cc VueOpenGL.h
+
+FenetreGL.o : FenetreGL.cc FenetreGL.h
+
+Camera.o : Camera.cc Camera.h
+
+#testFaisceau.o : testFaisceau.cc
+
+Application : Application.o Accelerateur.o Fodo.o Quadrupole.o Section_droite.o Particule.o Vecteur3D.o Element.o Droit.o Courbe.o Dipole.o Particule3D.o Droit3D.o FenetreGL.o VueOpenGL.o Camera.o
 
