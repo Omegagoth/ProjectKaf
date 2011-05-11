@@ -42,6 +42,12 @@ bool Droit::heurte_bord(Particule const& p) const
 }
 
 
+Vecteur3D Droit::getu(Particule const& p) const
+{
+	return E3 ^ getdirection();
+}
+
+
 
 
 //--------définition des méthodes privées------------------------------------------------------------------------

@@ -61,6 +61,10 @@ bool Courbe::heurte_bord(Particule const& p) const
     return (X - 1/abs(courbure)*(~(X - X.getz()*E3))).norme_carre() > Re*Re;
 }
 
+Vecteur3D Courbe::getu(Particule const& p) const
+{
+	return ~(getpos_relative(p) - (p.getposition().getz() * E3));
+}
 
 
 

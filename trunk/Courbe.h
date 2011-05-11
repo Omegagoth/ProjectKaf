@@ -14,7 +14,7 @@ class Courbe : public Element
         Vecteur3D getcentre() const;                                        //donne le centre de courbure de l'élément
 		virtual Vecteur3D getchamps_magnetique(Particule const&) const = 0;	//methode abstraite qui donne le champs magnetique de l'element
 
-//--------prototypage des méthodes get---------------------------------------------------------------------------
+//--------prototypage des méthodes set---------------------------------------------------------------------------
 
         void setcourbure(double const&); //permet de changer la valeur du rayon de courbure
 
@@ -30,6 +30,7 @@ class Courbe : public Element
         virtual bool heurte_bord(Particule const&) const; //détermine si la particule a ou non heurté le bord de l'élément
         virtual void affiche(ostream&) const = 0;         //méthode abstraite polymorphique d'affichage
         virtual Courbe* copie() const = 0;                //méthode abstraite de copie polymorphique
+		virtual Vecteur3D getu(Particule const&) const;   //mŽthode abstraite revoyant le vecteur u ( {X-x3e3}1 )
 
 
     protected :

@@ -23,6 +23,8 @@ int main()
 	cout << "lambda : " << fa.getlambda() << endl;
 	cout << "energie moyenne : " << fa.getenergie_moy() << endl;
 	cout << "emittance verticale : " << fa.getemittancevert() << endl;
+	cout << "coucou" << endl;
+	cout << "emittance horizontale : " << fa.getemittancehori() << endl;
 	
 	
 	return 0;

@@ -15,7 +15,7 @@ Faisceau::Faisceau()
 
 Faisceau::~Faisceau() {}
 
-
+//---------------------------------------------------------------
 
 void Faisceau::setreference(Particule const& p)
 {reference = p;}
@@ -23,14 +23,18 @@ void Faisceau::setreference(Particule const& p)
 void Faisceau::setlambda(double d)
 {lambda = d;}
 
+//---------------------------------------------------------------
+
 Particule Faisceau::getreference() const
 {return reference;}
 
 double Faisceau::getnb_particule() const
-{return Vpart.size();}
+{return lambda*Vpart.size();}
 
 double Faisceau::getlambda() const
 {return lambda;}
+
+//---------------------------------------------------------------
 
 vector<Particule*> Faisceau::getVpart() const
 {return Vpart;}
@@ -52,6 +56,9 @@ Faisceau& Faisceau::clear_Vpart()
 	return (*this);
 }
 
+//---------------------------------------------------------------
+
+
 double Faisceau::getenergie_moy() const
 {
 	double s(0);
@@ -62,15 +69,24 @@ double Faisceau::getenergie_moy() const
 	return s/Vpart.size();
 }
 
+
+//---------------------------------------------------------------
+
+
 double Faisceau::getemittancevert() const
 {
-	return ((*this).getposition2vert_moy()) * ((*this).getvitesse2vert_moy()) - pow((*this).getpositionvitessevert_moy(), 2);
+	return (getposition2vert_moy()) * (getvitesse2vert_moy()) - pow(getpositionvitessevert_moy(), 2);
 }
 
-//double Faisceau::getemittancehori() const
-//{
-	
-//}
+
+double Faisceau::getemittancehori() const
+{
+	return (getposition2hori_moy()) * (getvitesse2hori_moy()) - pow(getpositionvitessehori_moy(), 2);
+}
+
+
+//---------------------------------------------------------------
+
 
 double Faisceau::getposition2vert_moy() const
 {
@@ -109,4 +125,45 @@ double Faisceau::getpositionvitessevert_moy() const
 	return m/Vpart.size();
 }
 
+double Faisceau::getposition2hori_moy() const
 
+{
+	double m(0);
+	
+	
+		for (int i(0); i < Vpart.size(); ++i) 
+		{
+			m = m + pow( (Vpart[i]->getposition())*(Vpart[i]->getappartient()->getu(*Vpart[i])), 2);
+		}
+	
+	return m/Vpart.size();
+}
+
+
+double Faisceau::getvitesse2hori_moy() const
+{
+	double m(0);
+	
+	
+	for (int i(0); i < Vpart.size(); ++i) 
+	{
+		m = m + pow( (Vpart[i]->getvitesse())*(Vpart[i]->getappartient()->getu(*Vpart[i])), 2);
+	}
+	
+	return m/Vpart.size();
+	
+}
+
+double Faisceau::getpositionvitessehori_moy() const
+{
+	double m(0);
+	
+	
+	for (int i(0); i < Vpart.size(); ++i) 
+	{
+		m = m + (((Vpart[i]->getposition())*(Vpart[i]->getappartient()->getu(*Vpart[i]))) * ((Vpart[i]->getvitesse())*(Vpart[i]->getappartient()->getu(*Vpart[i]))));
+	}
+	
+	return m/Vpart.size();
+	
+}

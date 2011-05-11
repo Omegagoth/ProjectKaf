@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include "Particule.h"
+#include "Element.h"
 
 using namespace std;
 
@@ -21,30 +22,49 @@ class Faisceau
 	Faisceau();
 	~Faisceau();
 	
+	//---------------------------------------------------------------
+	
 	void setreference(Particule const&);
 	void setlambda(double);
 	
+	//---------------------------------------------------------------
 	
 	Particule getreference() const;
 	double getnb_particule() const;
 	double getlambda() const;
 	vector<Particule*> getVpart() const;
 	
+	//---------------------------------------------------------------
+	
 	Faisceau& ajoute_Vpart(Particule const&);
 	Faisceau& clear_Vpart();
 	
+	//---------------------------------------------------------------
+	
 	double getenergie_moy() const;
+	
+	//---------------------------------------------------------------
 	
 	double getemittancevert() const;
 	
-	//double getemittancehori() const;
+	double getemittancehori() const;
+	
+	//---------------------------------------------------------------
+	
+	
+	private :
 	
 	double getposition2vert_moy() const;
 	
 	double getvitesse2vert_moy() const;
-	
+
 	double getpositionvitessevert_moy() const;
 	
+	double getposition2hori_moy() const;
+	
+	double getvitesse2hori_moy() const;
+	
+	double getpositionvitessehori_moy() const;
 	
 	
 };

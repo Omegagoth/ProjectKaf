@@ -38,6 +38,7 @@ class Element
         virtual bool heurte_bord(Particule const&) const = 0; //détermine si la particule a ou non heurté le bord de l'élément
         virtual Element* copie() const = 0;                   //méthode abstraite de copie polymorphique
         virtual void affiche(ostream&) const = 0;             //méthode abstraite polymorphique d'affichage
+		virtual Vecteur3D getu(Particule const&) const = 0;	  //méthode abstraite retournant le vecteur u (complement mathematiques)
 
 
 
