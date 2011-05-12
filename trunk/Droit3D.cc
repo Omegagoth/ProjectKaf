@@ -34,10 +34,10 @@ void Droit3D::dessine() const
 	glRotated(90, -getdirection().gety()/abs(getdirection().gety())*1,0,0);
 	
 	glColor4d(1.0,0,1.0,0.5);
-	gluCylinder(droit_ext, Re*100, Re*100, (re-rs).norme()*10, 20, 20);
+	gluCylinder(droit_ext, Re*10, Re*10, (re-rs).norme(), 20, 20);
 	
 	glColor4d(1.0,0,0,1.0);
-	gluCylinder(droit_ext, Re*10, Re*10, (re-rs).norme()*10, 20, 20);
+	gluCylinder(droit_ext, Re, Re, (re-rs).norme(), 20, 20);
 	
 	gluDeleteQuadric(droit_ext);
 	gluDeleteQuadric(droit_int);

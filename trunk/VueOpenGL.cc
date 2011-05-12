@@ -133,7 +133,8 @@ void VueOpenGL::dessine(wxPaintEvent& event)
 	glPopMatrix();*/
 	
 	dessineRepere();
-	wxGetApp().dessine();
+	glutSolidTorus(10., 11., 20, 20);
+	//wxGetApp().dessine();
      
  
     // Finalement, envoi du dessin à l écran
