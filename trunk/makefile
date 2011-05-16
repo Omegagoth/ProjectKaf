@@ -3,6 +3,7 @@ CXX = c++
 
 CXXFLAGS += `wx-config --cxxflags`
 LDLIBS   += `wx-config --libs gl,core,base`
+LDLIBS   += -lglut -lGLU -lGL -lXmu -lXi
 
 # Partie commentée : choisissez les options que vous voulez avoir
 #                    en décommentant la/les lignes correspondantes
@@ -39,6 +40,8 @@ Particule3D.o : Particule3D.cc Particule3D.h
 
 Droit3D.o : Droit3D.cc Droit3D.h
 
+Courbe3D.o : Courbe3D.cc Courbe3D.h
+
 Faisceau.o : Faisceau.cc Faisceau.h
 
 VueOpenGL.o: VueOpenGL.cc VueOpenGL.h
@@ -53,5 +56,5 @@ GLUtils.o: GLUtils.cc GLUtils.h
 
 #testFaisceau.o : testFaisceau.cc
 
-Application : Accelerateur.o Fodo.o Quadrupole.o Section_droite.o Particule.o Vecteur3D.o Element.o Droit.o Courbe.o Dipole.o Particule3D.o Droit3D.o Application.o VueOpenGL.o FenetreGL.o Camera.o TextureManager.o GLUtils.o
+Application : Accelerateur.o Fodo.o Quadrupole.o Section_droite.o Particule.o Vecteur3D.o Element.o Droit.o Courbe.o Dipole.o Particule3D.o Droit3D.o Application.o VueOpenGL.o FenetreGL.o Camera.o TextureManager.o GLUtils.o Courbe3D.o
 

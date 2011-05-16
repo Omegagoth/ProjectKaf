@@ -134,7 +134,7 @@ void VueOpenGL::dessine(wxPaintEvent& event)
 	
 	dessineRepere();
 	glutSolidTorus(10., 11., 20, 20);
-	//wxGetApp().dessine();
+	wxGetApp().dessine();
      
  
     // Finalement, envoi du dessin à l écran

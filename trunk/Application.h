@@ -7,6 +7,7 @@
 #include "TextureManager.h"
 #include "Particule3D.h"
 #include "Droit3D.h"
+#include "Courbe3D.h"
  
 class Application : public wxApp //Héritage
 {
@@ -19,7 +20,8 @@ class Application : public wxApp //Héritage
 	protected :
 	
 		Particule3D particule;
-		Droit3D droit;
+		//Droit3D droit;
+		Courbe3D courbe;
 		TextureManager texturemanager;
 				
 		bool OnInit(); //La fonction OnInit est appelée lors de l'initialisation de l'application.

@@ -28,8 +28,6 @@ void Droit3D::dessine() const
 	
 	glTranslated(re.getx(), re.gety(), re.getz());
 	
-	//cout << -getdirection().gety()/abs(getdirection().gety()) << endl;
-	
 	glRotated(90-angle, 0,0,-getdirection().gety()/abs(getdirection().gety())*1);
 	glRotated(90, -getdirection().gety()/abs(getdirection().gety())*1,0,0);
 	
