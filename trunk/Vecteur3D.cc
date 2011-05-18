@@ -148,6 +148,24 @@ Vecteur3D Vecteur3D::rotation(Vecteur3D u, double const& angle) const
     return cos(angle)*(*this) + ((1 - cos(angle))*((*this) * a))*a + sin(angle)*(a^(*this));
 }
 
+double Vecteur3D::angle(Vecteur3D const& v) const
+{
+	int signe(0);
+	if (prod_mixte(Vecteur3D(0,0,1), *this, v) >= 0)
+	{
+		signe = 1;
+	}
+	else
+	{
+		signe = -1;
+	}
+	
+	cout << "	 interieur " << ((*this)*v)/v.norme()
+	<< " 	acos " << acos(((*this)*v)/v.norme()) << endl;
+	
+	return signe*acos(((*this)*v)/v.norme());
+}
+
 
 
 

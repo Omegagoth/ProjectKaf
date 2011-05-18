@@ -13,6 +13,7 @@ class Courbe : public Element
         double getcourbure() const;                                         //donne l'inverse du rayon de courbure de l'élément courbe
         Vecteur3D getcentre() const;                                        //donne le centre de courbure de l'élément
 		virtual Vecteur3D getchamps_magnetique(Particule const&) const = 0;	//methode abstraite qui donne le champs magnetique de l'element
+		double getangle() const;											//donne l'angle au centre de l'élément courbe
 
 //--------prototypage des méthodes set---------------------------------------------------------------------------
 

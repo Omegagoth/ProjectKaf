@@ -21,7 +21,7 @@ GLuint* Application::getTexture(string fichier, bool mipmap)
 void Application::dessine()
 {
 	particule.dessine();
-	//droit.dessine();
+	droit.dessine();
 	courbe.dessine();
 }
 

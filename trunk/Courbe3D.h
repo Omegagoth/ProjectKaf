@@ -3,6 +3,7 @@
 
 #include "wxIncludes.h"
 #include "Courbe.h"
+#include <vector>
 
 class Courbe3D : public Courbe
 {
@@ -19,6 +20,8 @@ class Courbe3D : public Courbe
 		virtual void affiche(ostream&) const{}
 	
 	protected :
+	
+		void partie_tore(double, Vecteur3D) const;
 	
 };
 

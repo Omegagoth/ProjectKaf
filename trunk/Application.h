@@ -20,7 +20,7 @@ class Application : public wxApp //Héritage
 	protected :
 	
 		Particule3D particule;
-		//Droit3D droit;
+		Droit3D droit;
 		Courbe3D courbe;
 		TextureManager texturemanager;
 				

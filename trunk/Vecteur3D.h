@@ -47,6 +47,7 @@ class Vecteur3D
         double norme_carre() const;                         //renvoie le carré de la norme du vecteur : n = v.norme_carre(); <=> n = x^2+y^2+z^2
         double norme() const;                               //renvoie la norme du vecteur : n = v.norme(); <=> n = sqrt(x^2+y^2+z^2)
         Vecteur3D rotation(Vecteur3D, double const&) const; //renvoie le vecteur tourné d'un angle t autour de l'axe v
+        double angle(Vecteur3D const&) const;				//renvoie l'angle en radian entre les deux vecteur
 
     protected :
 
