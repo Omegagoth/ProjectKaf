@@ -1,9 +1,8 @@
 CC  = c++
 CXX = c++
 
-CXXFLAGS += `wx-config --cxxflags`
-LDLIBS   += `wx-config --libs gl,core,base`
-LDLIBS   += -lglut -lGLU -lGL -lXmu -lXi
+#CXXFLAGS += `wx-config --cxxflags`
+#LDLIBS   = `wx-config --libs gl,core,base`
 
 # Partie commentée : choisissez les options que vous voulez avoir
 #                    en décommentant la/les lignes correspondantes
@@ -14,7 +13,7 @@ CXXFLAGS += -g                      # pour debugger
 # LDFLAGS  += -pg                     # pour profiler
 CXXFLAGS += -O2                     # pour optimiser la vitesse
 
-all: Application
+all: testFaccelerateur
 
 Vecteur3D.o: Vecteur3D.cc Vecteur3D.h
 
@@ -34,27 +33,13 @@ Quadrupole.o : Quadrupole.cc Quadrupole.h
 
 Fodo.o : Fodo.cc Fodo.h
 
-Accelerateur.o : Accelerateur.cc Accelerateur.h
-
-Particule3D.o : Particule3D.cc Particule3D.h
-
-Droit3D.o : Droit3D.cc Droit3D.h
-
-Courbe3D.o : Courbe3D.cc Courbe3D.h
+Particule.o : Particule.cc Particule.h
 
 Faisceau.o : Faisceau.cc Faisceau.h
 
-VueOpenGL.o: VueOpenGL.cc VueOpenGL.h
+Faccelerateur.o : Faccelerateur.cc Faccelerateur.h
 
-FenetreGL.o: FenetreGL.cc FenetreGL.h
+testFaccelerateur.o : testFaccelerateur.cc 
 
-Camera.o: Camera.cc Camera.h
-
-TextureManager.o: TextureManager.cc TextureManager.h
-
-GLUtils.o: GLUtils.cc GLUtils.h
-
-#testFaisceau.o : testFaisceau.cc
-
-Application : Accelerateur.o Fodo.o Quadrupole.o Section_droite.o Particule.o Vecteur3D.o Element.o Droit.o Courbe.o Dipole.o Particule3D.o Droit3D.o Application.o VueOpenGL.o FenetreGL.o Camera.o TextureManager.o GLUtils.o Courbe3D.o
+testFaccelerateur : testFaccelerateur.o Faccelerateur.o  Faisceau.o  Particule.o  Fodo.o Quadrupole.o Section_droite.o Particule.o Vecteur3D.o Element.o Droit.o Courbe.o Dipole.o
 
