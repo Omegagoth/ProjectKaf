@@ -84,9 +84,9 @@ int main()
 	}
 	int n(0);
 	int nb(0);
-	for (int i(0); i<50; i++)
+	for (int i(0); i<2; i++)
 	{
-		for (int j(0); j<752; j++)
+		for (int j(0); j<2; j++)
 		{
 			acc.evolue(1e-11);
 			n++;
@@ -101,14 +101,14 @@ int main()
 		
 		
 		
-		do
+		/*do
 		{
 			n +=1;
 			acc.evolue(1e-11);
 		}
 		while (acc.getfaisceaux()[0]->getVpart()[1]->getposition().getx() < 0 || acc.getfaisceaux()[0]->getVpart()[1]->getposition().gety() > 0
 			   || acc.getfaisceaux()[0]->getVpart()[1]->getposition().gety() < -0.1);
-		
+		*/
 		nb++;
 	}
 	
@@ -117,10 +117,11 @@ int main()
 	
 	cout << "AprËs" << endl << endl;
 	
-	for (int unsigned i(1); i <= acc.getfaisceaux().size(); ++i)
-	{
-		cout << *acc.getfaisceaux()[i] << endl
-		<< *(acc.getfaisceaux()[i]->getVpart()[0]->getappartient()) << endl;
+	for (int unsigned i(0); i < acc.getfaisceaux().size(); ++i)
+	{cout << "coucou" << endl;
+		cout << *acc.getfaisceaux()[i] << endl;
+		
+		cout << *(acc.getfaisceaux()[i]->getVpart()[0]->getappartient()) << endl;
     }
 	return 0;
 }
