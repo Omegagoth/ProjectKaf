@@ -132,6 +132,13 @@ Accelerateur& Accelerateur::evolue(double dt)
 	for (int unsigned i(0); i < particules.size(); ++i)
 	{
 		particules[i]->ajoute_forcemagn(particules[i]->getappartient()->getchamps_magnetique(*particules[i]), dt);
+		
+		for (int unsigned j(i+1); j < particules.size(); ++j) 
+		{
+			particules[j]->ajoute_forceinter(*particules[i]);
+			particules[i]->ajoute_forceinter(*particules[j]);
+		}
+		
 		particules[i]->bouger(dt);
 
 		if (particules[i]->getappartient()->passe_suivant(*particules[i]))

@@ -38,6 +38,8 @@ class Faisceau
 	
 	Faisceau& ajoute_Vpart(Particule const&);
 	Faisceau& clear_Vpart();
+	Faisceau& clear_Vpart(int i);
+
 	
 	//---------------------------------------------------------------
 	
@@ -48,6 +50,31 @@ class Faisceau
 	double getemittancevert() const;
 	
 	double getemittancehori() const;
+	
+	//---------------------------------------------------------------
+	
+	double getA11vert() const;
+	
+	double getA12vert() const;
+	
+	double getA22vert() const;
+	
+	double getA11hori() const;
+	
+	double getA12hori() const;
+	
+	double getA22hori() const;
+	
+	
+	
+	//---------------------------------------------------------------
+	
+	Faisceau& bouger(double);
+	
+	Faisceau& ajoute_forcemagn(double);
+	
+	Faisceau& ajoute_forceinter();
+	
 	
 	//---------------------------------------------------------------
 	
@@ -66,5 +93,10 @@ class Faisceau
 	
 	double getpositionvitessehori_moy() const;
 	
+	//---------------------------------------------------------------
 	
+		
 };
+
+
+ostream& operator<<(ostream&, Faisceau const&); //surcharge de l'opÈrateur << permettant l'affichage dans le terminale

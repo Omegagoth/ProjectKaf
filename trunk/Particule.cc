@@ -116,7 +116,7 @@ Particule::Particule(Vecteur3D x, double e, Vecteur3D d, double m, double c)
 
 //--------définition des méthodes--------------------------------------------------------------------------------
 
-void Particule::ajoute_forcemagn(Vecteur3D const& B, double dt)
+Particule& Particule::ajoute_forcemagn(Vecteur3D const& B, double dt)
 {
     if (dt != 0)
     {
@@ -127,9 +127,18 @@ void Particule::ajoute_forcemagn(Vecteur3D const& B, double dt)
 			force += f.rotation(vitesse^f, asin(dt*f.norme()*C*C / (2 * masse *e * 1e9 * getgamma() * vitesse.norme()) ) );
 		}
     }
+	return (*this);
 }
 
-void Particule::bouger(double dt)
+Particule& Particule::ajoute_forceinter(Particule const& p)
+{
+	Vecteur3D r(getposition()-p.getposition());
+	force += ((pow(p.getcharge(), 2) * pow(p.getgamma(), -2)) / ( 4 * M_PI * 8.85e-12 * pow(r.norme(), 3))) * r;
+	
+	return (*this);
+}
+
+Particule& Particule::bouger(double dt)
 {
     if(dt != 0)
     {
@@ -140,6 +149,7 @@ void Particule::bouger(double dt)
         force.sety(0);
         force.setz(0);
     }
+	return (*this);
 }
 
 

@@ -42,8 +42,9 @@ class Particule
 
 //--------prototypage des méthodes-------------------------------------------------------------------------------
 
-        void ajoute_forcemagn(Vecteur3D const&, double); //ajoute une force en prenant un vecteur B du champ magnétique et un intervalle de temps dt
-        void bouger(double);                             //mets a jour la position et la vistesse de la particule pour un pas de temps donné
+        Particule& ajoute_forcemagn(Vecteur3D const&, double); //ajoute une force en prenant un vecteur B du champ magnétique et un intervalle de temps dt
+		Particule& ajoute_forceinter(Particule const&);			   //ajoute la force inter-particules
+        Particule& bouger(double);                             //mets a jour la position et la vistesse de la particule pour un pas de temps donné
 
 
 
