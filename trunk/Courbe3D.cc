@@ -1,11 +1,5 @@
 #include "Courbe3D.h"
 
-#define DEFAUT_PRECISION 5
-#define COURBE_ROUGE 255
-#define COURBE_VERT 255
-#define COURBE_BLEU 255
-#define COURBE_TRANSPARENCE 255
-
 
 
 
@@ -26,12 +20,12 @@ void Courbe3D::setprecision(unsigned int p)
 
 
 Courbe3D::Courbe3D()
-: Element3D(Vecteur3D(3,2,0), Vecteur3D(2,-1,0), 0.1, COURBE_ROUGE, COURBE_VERT, COURBE_BLEU, COURBE_TRANSPARENCE), Courbe(Vecteur3D(3,2,0), Vecteur3D(2,-1,0), 0.1, 1./4), precision(DEFAUT_PRECISION)
+: Element(), Element3D(), Courbe(), precision(0)
 {}
 
-Courbe3D::Courbe3D(Vecteur3D re, Vecteur3D rs, double R, double k, unsigned int p = DEFAUT_PRECISION, unsigned int r = COURBE_ROUGE,
-					unsigned int v = COURBE_VERT, unsigned int b = COURBE_BLEU, unsigned int t = COURBE_TRANSPARENCE)
-: Element3D(re,rs,R,r,v,b,t), Courbe(re, rs, R, k), precision(p)
+Courbe3D::Courbe3D(Vecteur3D re, Vecteur3D rs, double R, double k, unsigned int p, unsigned int r,
+					unsigned int v, unsigned int b, unsigned int t)
+: Element(re,rs,R), Element3D(re,rs,R,r,v,b,t), Courbe(re, rs, R, k), precision(p)
 {}
 
 Courbe3D::Courbe3D(Courbe3D const& c)

@@ -24,7 +24,7 @@ void Element3D::setcouleurs(Couleurs const& c)
 
 
 Element3D::Element3D()
-: Element(), couleurs(ELEMENT_ROUGE, ELEMENT_VERT,ELEMENT_BLEU, ELEMENT_TRANSPARENCE)
+: Element(), couleurs()
 {}
 
 Element3D::Element3D(Vecteur3D re, Vecteur3D rs, double R, unsigned int r = ELEMENT_ROUGE, unsigned int v = ELEMENT_VERT,

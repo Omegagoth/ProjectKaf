@@ -6,6 +6,14 @@
 #include "Element3D.h"
 #include <vector>
 
+
+#define DEFAUT_PRECISION 5
+#define COURBE_ROUGE 255
+#define COURBE_VERT 255
+#define COURBE_BLEU 255
+#define COURBE_TRANSPARENCE 255
+
+
 class Courbe3D : public Element3D, virtual public Courbe
 {
 	public :
@@ -15,7 +23,8 @@ class Courbe3D : public Element3D, virtual public Courbe
 		void setprecision(unsigned int);
 	
 		Courbe3D();
-		Courbe3D(Vecteur3D, Vecteur3D, double, double, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
+		Courbe3D(Vecteur3D re, Vecteur3D rs, double R, double k, unsigned int p = DEFAUT_PRECISION, unsigned int r = COURBE_ROUGE,
+				unsigned int v = COURBE_VERT, unsigned int b = COURBE_BLEU, unsigned int t = COURBE_TRANSPARENCE);
 		Courbe3D(Courbe3D const&);
 		virtual ~Courbe3D();
 		

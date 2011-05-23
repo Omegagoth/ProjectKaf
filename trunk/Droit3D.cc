@@ -4,11 +4,11 @@
 
 
 Droit3D::Droit3D()
-: Element3D(), Droit(Vecteur3D(1,1,0), Vecteur3D(1,0,0), 0.1)
+: Element(), Element3D(), Droit()
 {}
 
-Droit3D::Droit3D(Vecteur3D re, Vecteur3D rs, double R, unsigned int r = 255, unsigned int v = 255, unsigned int b = 255, unsigned int t = 255)
-: Element3D(re,rs,R,r,v,b,t), Droit(re,rs,R)
+Droit3D::Droit3D(Vecteur3D re, Vecteur3D rs, double R, unsigned int r, unsigned int v, unsigned int b, unsigned int t)
+: Element(), Element3D(re,rs,R,r,v,b,t), Droit(re,rs,R)
 {}
 
 Droit3D::Droit3D(Droit3D const& d)

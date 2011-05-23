@@ -19,12 +19,14 @@ class Fodo : virtual public Droit
         virtual Element* getmaille(unsigned int) const;                 //retourne un pointeur vers le i-1 élément composant la maille Fodo
         double getlongueur_quadrupole() const;                          //retourne la longueur des quadrupôles de la maille Fodo
         virtual Vecteur3D getchamps_magnetique(Particule const&) const; //retourne le champs magnétique en fonction de la position de la particule
+        unsigned int gettaille() const;									//retourne le nombre d'enchainement de 4 éléments contenus dans chacune des mailles Fodo
 
 //--------prototypage des méthodes set---------------------------------------------------------------------------
 
         void setlongueur_droit(double);            //permet de modifier la longueur des sections droites de la maille Fodo
         void setintensite(double);                 //permet de modifier l'intensité du champ magnétique de la maille Fodo
         virtual void setElement_suivant(Element&); //masquage de la fonctions permettant de désigner l'élément qui suit la maille Fodo
+        void settaille(unsigned int);			   //permet de modifier le nombre d'enchainement de 4 élémentq que contient chacune des maille Fodo
 
 //--------prototypage des constructeurs/destructeur---------------------------------------------------------------
 
@@ -56,7 +58,11 @@ class Fodo : virtual public Droit
 
 //--------définition des statics---------------------------------------------------------------------------------
 
-        static unsigned int taille;
+        static unsigned int taille; //nombre d'enchainement de quatre élément que contient la maille Fodo
+
+//--------prototypage des méthodes privée------------------------------------------------------------------------
+
+		void clear();	//permet de supprimer tous ce que contient la maille Fodo et de vider le vecteur d'élément
 };
 
 //--------prototypage des surcharges externes--------------------------------------------------------------------

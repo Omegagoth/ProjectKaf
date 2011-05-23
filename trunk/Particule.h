@@ -43,7 +43,7 @@ class Particule
 //--------prototypage des méthodes-------------------------------------------------------------------------------
 
         Particule& ajoute_forcemagn(Vecteur3D const&, double); //ajoute une force en prenant un vecteur B du champ magnétique et un intervalle de temps dt
-		Particule& ajoute_forceinter(Particule const&);			   //ajoute la force inter-particules
+		Particule& ajoute_forceinter(Particule const&);		   //ajoute la force inter-particules
         Particule& bouger(double);                             //mets a jour la position et la vistesse de la particule pour un pas de temps donné
 
 
@@ -57,7 +57,7 @@ class Particule
         double masse;        //masse de la particule
         double charge;       //charge de la particule
         Vecteur3D force;     //vecteur de la somme des force appliquees de la particule
-	Element* appartient; //pointeur vers l'element dans lequel ce trouve la particule
+		Element* appartient; //pointeur vers l'element dans lequel ce trouve la particule
 };
 
 //--------prototypage des surcharges externes--------------------------------------------------------------------

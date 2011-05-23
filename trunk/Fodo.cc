@@ -39,7 +39,7 @@ Element* Fodo::getmaille(unsigned int i) const
 
 double Fodo::getlongueur_quadrupole() const
 {
-    return getlongueur()/2 - longueur_droit;
+    return getlongueur()/(taille*2) - longueur_droit;
 }
 
 Vecteur3D Fodo::getchamps_magnetique(Particule const& p) const
@@ -54,6 +54,11 @@ Vecteur3D Fodo::getchamps_magnetique(Particule const& p) const
         }
     }
     return Vecteur3D(0,0,0);
+}
+
+unsigned int Fodo::gettaille() const
+{
+	return taille;
 }
 
 
@@ -77,6 +82,11 @@ void Fodo::setElement_suivant(Element& e)
     (*maille[taille-1]).setElement_suivant(e);
 }
 
+void Fodo::settaille(unsigned int t)
+{
+	taille = t;
+}
+
 
 
 
@@ -91,11 +101,14 @@ Fodo::Fodo()
 Fodo::Fodo(Vecteur3D e, Vecteur3D s, double r, double l, double i)
 : Droit(e,s,r), longueur_droit(l), intensite(i)
 {
-    Vecteur3D a(re + getlongueur_quadrupole()*getdirection());
-    maille.push_back(new Quadrupole(e, a, r, i));
-    maille.push_back(new Section_droite(a, a + getlongueur_droit()*getdirection(), r));
-    maille.push_back(new Quadrupole(a + getlongueur_droit()*getdirection(), rs - getlongueur_droit()*getdirection(), r, -i));
-    maille.push_back(new Section_droite(rs - getlongueur_droit()*getdirection(), rs, r));
+	for (unsigned int i(0); i < taille; ++i)
+	{
+		Vecteur3D a(re + getlongueur_quadrupole()*getdirection());
+		maille.push_back(new Quadrupole(e, a, r, i));
+		maille.push_back(new Section_droite(a, a + getlongueur_droit()*getdirection(), r));
+		maille.push_back(new Quadrupole(a + getlongueur_droit()*getdirection(), rs - getlongueur_droit()*getdirection(), r, -i));
+		maille.push_back(new Section_droite(rs - getlongueur_droit()*getdirection(), rs, r));
+	}
 
     for (int unsigned j(0); j < maille.size()-1; ++j)
     {
@@ -106,7 +119,7 @@ Fodo::Fodo(Vecteur3D e, Vecteur3D s, double r, double l, double i)
 Fodo::Fodo(Fodo const& f)
 : Droit(f), longueur_droit(f.getlongueur_droit()), intensite(f.getintensite())
 {
-    for (int unsigned i(0); i < taille; ++i)
+    for (int unsigned i(0); i < maille.size(); ++i)
     {
         maille.push_back(f.getmaille(i+1)->copie());
     }
@@ -114,10 +127,7 @@ Fodo::Fodo(Fodo const& f)
 
 Fodo::~Fodo()
 {
-    for (int unsigned i(0); i < maille.size(); ++i)
-    {
-        delete maille[i];
-    }
+    clear();
 }
 
 
@@ -170,9 +180,18 @@ Fodo& Fodo::operator=(Fodo const& f)
 
 //--------donne les valeurs aux static----------------------------------------------------------------------------
 
-unsigned int Fodo::taille(4);
+unsigned int Fodo::taille(1);
 
+//--------définition des méthodes privée--------------------------------------------------------------------------
 
+void clear()
+{
+	for(unsigned int i(0); i < maille.size(); ++i)
+	{
+		delete maille[i];
+	}
+	maille.clear();
+}
 
 
 //--------définition des surcharges externes---------------------------------------------------------------------

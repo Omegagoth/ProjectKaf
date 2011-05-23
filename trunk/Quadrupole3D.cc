@@ -1,5 +1,11 @@
 #include "Quadrupole3D.h"
 
+#define QUADRUPOLE_ROUGE 74
+#define QUADRUPOLE_VERT 225
+#define QUADRUPOLE_BLEU 23
+#define QUADRUPOLE_TRANSPARENCE 255
+
+
 
 
 
