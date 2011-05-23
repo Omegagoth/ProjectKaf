@@ -2,12 +2,20 @@
 
 
 
+
 Droit3D::Droit3D()
-: Droit(Vecteur3D(1,1,0), Vecteur3D(1,0,0), 0.1)
+: Element3D(), Droit(Vecteur3D(1,1,0), Vecteur3D(1,0,0), 0.1)
 {}
 
-Droit3D::Droit3D(Vecteur3D entree, Vecteur3D sortie, double rayon)
-: Droit(entree, sortie, rayon)
+Droit3D::Droit3D(Vecteur3D re, Vecteur3D rs, double R, unsigned int r = 255, unsigned int v = 255, unsigned int b = 255, unsigned int t = 255)
+: Element3D(re,rs,R,r,v,b,t), Droit(re,rs,R)
+{}
+
+Droit3D::Droit3D(Droit3D const& d)
+: Element(d), Element3D(d), Droit(d)
+{}
+
+Droit3D::~Droit3D()
 {}
 
 
@@ -16,7 +24,6 @@ Droit3D::Droit3D(Vecteur3D entree, Vecteur3D sortie, double rayon)
 void Droit3D::dessine() const
 {
 	glPushMatrix();
-	cout << "droit " << endl;
 	Vecteur3D e1(1,0,0);
 	double angle(getdirection().angle(e1)*180/M_PI);
 	

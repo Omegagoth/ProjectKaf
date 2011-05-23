@@ -16,7 +16,6 @@ Vecteur3D Courbe::getcentre() const
 
 double Courbe::getangle() const
 {
-	cout << "		getangle courbe ";
 	return (re-getcentre()).angle(rs-getcentre());
 }
 
@@ -41,11 +40,10 @@ Courbe::Courbe()
 
 Courbe::Courbe(Vecteur3D e, Vecteur3D s, double r, double k)
 : Element(e, s, r), courbure(k)
-{cout << "			Courbure " << courbure << endl;
+{
     if(1/(courbure*courbure) < (rs-re).norme_carre()/4)
     {
-        courbure = (rs-re).norme()/(2*abs(courbure));
-        cout << "			if Courbure " << courbure << endl;
+        courbure = courbure*2/((rs-re).norme()*abs(courbure));
     }
 }
 

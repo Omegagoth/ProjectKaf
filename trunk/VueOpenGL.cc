@@ -70,7 +70,7 @@ void VueOpenGL::dessine(wxPaintEvent& event)
 {
     // indique que le code est relatif au contexte OPenGL courant
     SetCurrent();
-     //initialise les données liées à la gestion de la profondeur
+    //initialise les données liées à la couleur et à la gestion de la profondeur
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
      
     // initialise GL_MODELVIEW

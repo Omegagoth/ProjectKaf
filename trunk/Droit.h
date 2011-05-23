@@ -3,7 +3,7 @@
 
 #include "Element.h"
 
-class Droit : public Element
+class Droit : virtual public Element
 {
     public :
 

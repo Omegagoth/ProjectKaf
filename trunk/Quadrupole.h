@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class Quadrupole : public Droit
+class Quadrupole : virtual public Droit
 {
 	public :
 

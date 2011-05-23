@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class Section_droite : public Droit
+class Section_droite : virtual public Droit
 {
 	public :
 
@@ -16,7 +16,7 @@ class Section_droite : public Droit
 
 //--------prototypage des constructeurs/destructeur---------------------------------------------------------------
 
-        Section_droite();                             //constructeur oar defaut qui initialise a 0
+        Section_droite();                             //constructeur par defaut qui initialise a 0
         Section_droite(Vecteur3D, Vecteur3D, double); //constructeur qui prend en argument le vecteur d'entree, de sortie et le rayon
         Section_droite(Section_droite const&);        //constructeur de copie
         virtual ~Section_droite();                    //destructeur

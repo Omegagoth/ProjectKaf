@@ -4,7 +4,7 @@
 #include <cmath>
 #include "Element.h"
 
-class Courbe : public Element
+class Courbe : virtual public Element
 {
     public :
 
@@ -23,7 +23,7 @@ class Courbe : public Element
 
         Courbe();                                     //constructeur par défaut qui initialise à 0
         Courbe(Vecteur3D, Vecteur3D, double, double); //constructeur qui prend en argument le vecteur d'entrée, de sortie, la section et l'inverse du rayon de courbure oriente
-        Courbe(const Courbe&);                       //constructeur de copie
+        Courbe(const Courbe&);                        //constructeur de copie
         virtual ~Courbe();                            //destructeur
 
 //--------prototypage des méthodes-------------------------------------------------------------------------------
@@ -31,7 +31,7 @@ class Courbe : public Element
         virtual bool heurte_bord(Particule const&) const; //détermine si la particule a ou non heurté le bord de l'élément
         virtual void affiche(ostream&) const = 0;         //méthode abstraite polymorphique d'affichage
         virtual Courbe* copie() const = 0;                //méthode abstraite de copie polymorphique
-		virtual Vecteur3D getu(Particule const&) const;   //mŽthode abstraite revoyant le vecteur u ( {X-x3e3}1 )
+		virtual Vecteur3D getu(Particule const&) const;   //méthode abstraite revoyant le vecteur u ( {X-x3e3}1 )
 
 
     protected :

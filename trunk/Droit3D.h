@@ -3,20 +3,19 @@
 
 #include "Droit.h"
 #include "wxIncludes.h"
+#include "Element3D.h"
 
-class Droit3D : public Droit
+class Droit3D : public Element3D, virtual public Droit
 {
 	public :
 	
 		Droit3D();
-		Droit3D(Vecteur3D, Vecteur3D, double);
+		Droit3D(Vecteur3D, Vecteur3D, double, unsigned int, unsigned int, unsigned int, unsigned int);
+		Droit3D(Droit3D const&);
+		virtual ~Droit3D();
 		
-		void dessine() const;
-		
-		
-		virtual Vecteur3D getchamps_magnetique(Particule const&) const{}
-		virtual Droit3D* copie() const{}
-		virtual void affiche(ostream&) const{}
+		virtual void dessine() const;
+		virtual Droit3D* copie() const = 0;
 	
 	protected :
 	

@@ -6,8 +6,9 @@
 #include "FenetreGL.h"
 #include "TextureManager.h"
 #include "Particule3D.h"
-#include "Droit3D.h"
-#include "Courbe3D.h"
+#include "Dipole3D.h"
+#include "Section_droite3D.h"
+#include "Accelerateur.h"
  
 class Application : public wxApp //Héritage
 {
@@ -19,9 +20,7 @@ class Application : public wxApp //Héritage
 	
 	protected :
 	
-		Particule3D particule;
-		Droit3D droit;
-		Courbe3D courbe;
+		Accelerateur acc;
 		TextureManager texturemanager;
 				
 		bool OnInit(); //La fonction OnInit est appelée lors de l'initialisation de l'application.

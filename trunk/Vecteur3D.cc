@@ -160,10 +160,7 @@ double Vecteur3D::angle(Vecteur3D const& v) const
 		signe = -1;
 	}
 	
-	cout << "	 interieur " << ((*this)*v)/v.norme()
-	<< " 	acos " << acos(((*this)*v)/v.norme()) << endl;
-	
-	return signe*acos(((*this)*v)/v.norme());
+	return signe*acos(((*this)*v)/(v.norme()*(*this).norme()));
 }
 
 

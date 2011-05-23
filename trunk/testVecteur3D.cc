@@ -66,6 +66,26 @@ int main()
    << i << endl
    << i.norme_carre() << endl
    << j << endl;
+   
+   cout << endl << endl << endl;
+   
+   cout << "Test angle()" << endl;
+   Vecteur3D u1(1,0,0);
+   Vecteur3D u2(0,1,0);
+   Vecteur3D u3(1,1,0);
+   Vecteur3D u4(-1,1,0);
+   Vecteur3D u5(-1,-1,0);
+   
+   cout << "angle (1,0,0) et (0,1,0) : " << u1.angle(u2) << endl
+   << "angle (1,0,0) et (1,1,0) : " << u1.angle(u3) << endl
+   << "angle (1,0,0) et (-1,1,0) : " << u1.angle(u4) << endl
+   << "angle (1,0,0) et (-1,-1,0) : " << u1.angle(u5) << endl
+   << "angle (-1,1,0) et (-1,-1,0) : " << u4.angle(u5) << endl
+   << "angle (-1,-1,0) et (-1,1,0) : " << u5.angle(u4) << endl << endl;
+   
+   cout << "angle (5,4,3) et (1,2,3) " << Vecteur3D(5,4,3).angle(Vecteur3D(1,2,3)) << endl
+   << "(5,4,3) . (1,1,1) " << Vecteur3D(5,4,3)*Vecteur3D(1,2,3) << endl
+   << "interieur " << (Vecteur3D(5,4,3)*Vecteur3D(1,2,3))/(Vecteur3D(5,4,3).norme()*Vecteur3D(1,2,3).norme()) << endl;
 
     return 0;
 }

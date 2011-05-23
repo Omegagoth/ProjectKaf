@@ -39,7 +39,7 @@ class Element
         virtual Element* copie() const = 0;                   //méthode abstraite de copie polymorphique
         virtual void affiche(ostream&) const = 0;             //méthode abstraite polymorphique d'affichage
 		virtual Vecteur3D getu(Particule const&) const = 0;	  //méthode abstraite retournant le vecteur u (complement mathematiques)
-
+		virtual void dessine() const = 0;
 
 
 

@@ -4,7 +4,6 @@
 #include "wxIncludes.h"
 #include "Camera.h"
 #include "GLUtils.h"
-#include <GL/glut.h>
  
 class VueOpenGL: public wxGLCanvas
 {

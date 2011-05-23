@@ -7,7 +7,7 @@
 #include "Quadrupole.h"
 
 
-class Fodo : public Droit
+class Fodo : virtual public Droit
 {
     public :
 

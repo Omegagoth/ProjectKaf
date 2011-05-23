@@ -154,6 +154,14 @@ Accelerateur& Accelerateur::evolue(double dt)
 	return (*this);
 }
 
+void Accelerateur::dessine() const
+{
+	for(int unsigned i(0); i < elements.size(); ++i)
+	{
+		elements[i]->dessine();
+	}
+}
+
 
 
 

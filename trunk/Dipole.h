@@ -7,7 +7,7 @@
 using namespace std;
 
 
-class Dipole : public Courbe
+class Dipole : virtual public Courbe
 {
 	public :
 

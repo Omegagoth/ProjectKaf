@@ -7,6 +7,16 @@ bool Application::OnInit()
      
     //Définie comme fenêtre principale
     SetTopWindow(fenetreGL);
+    
+    //On initialise l'accélérateur
+    acc.ajoute_element(Section_droite3D(Vecteur3D(2,1,0),Vecteur3D(2,-1,0),0.1,255,255,255,255));
+    acc.ajoute_element(Dipole3D(Vecteur3D(2,-1,0), Vecteur3D(1,-2,0), 0.1, 1.,5.,3,255,255,255,255));
+    acc.ajoute_element(Section_droite3D(Vecteur3D(1,-2,0), Vecteur3D(-1,-2,0),0.1,255,255,255,255));
+    acc.ajoute_element(Dipole3D(Vecteur3D(-1,-2,0), Vecteur3D(-2,-1,0),0.1,1.,5.,3,255,255,255,255));
+    acc.ajoute_element(Section_droite3D(Vecteur3D(-2,-1,0), Vecteur3D(-2,1,0),0.1,255,255,255,255));
+    acc.ajoute_element(Dipole3D(Vecteur3D(-2,1,0), Vecteur3D(-1,2,0),0.1,1.,5.,3,255,255,255,255));
+    acc.ajoute_element(Section_droite3D(Vecteur3D(-1,2,0), Vecteur3D(1,2,0),0.1,255,255,255,255));
+    acc.ajoute_element(Dipole3D(Vecteur3D(1,2,0), Vecteur3D(2,1,0), 0.1, 1.,5.,3,255,255,255,255));
      
     //La fonction doit retourner true si elle s'est bien initialisée
     //Si le pointeur est nul, la fenêtre n'a pas pu s'initialiser!
@@ -20,9 +30,7 @@ GLuint* Application::getTexture(string fichier, bool mipmap)
 
 void Application::dessine()
 {
-	particule.dessine();
-	droit.dessine();
-	courbe.dessine();
+	acc.dessine();
 }
 
 void Application::rafraichir()
