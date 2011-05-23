@@ -51,10 +51,10 @@ Dipole::~Dipole()
 
 //--------définition des méthodes--------------------------------------------------------------------------------
 
-Dipole* Dipole::copie() const
+/*Dipole* Dipole::copie() const
 {
     return new Dipole(*this);
-}
+}*/
 
 void Dipole::affiche(ostream& out) const
 {

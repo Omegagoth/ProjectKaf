@@ -33,10 +33,10 @@ Section_droite::~Section_droite()
 
 //--------définition des méthodes--------------------------------------------------------------------------------
 
-Section_droite* Section_droite::copie() const
+/*Section_droite* Section_droite::copie() const
 {
     return new Section_droite(*this);
-}
+}*/
 
 void Section_droite::affiche(ostream& out) const
 {

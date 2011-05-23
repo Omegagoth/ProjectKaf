@@ -33,7 +33,7 @@ Element3D::Element3D(Vecteur3D re, Vecteur3D rs, double R, unsigned int r = ELEM
 {}
 
 Element3D::Element3D(Element3D const& e)
-: Element(e)
+: Element(e), couleurs(e.getcouleurs())
 {}
 
 Element3D::~Element3D()

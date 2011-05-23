@@ -155,10 +155,10 @@ Accelerateur& Accelerateur::evolue(double dt)
 }
 
 void Accelerateur::dessine() const
-{
+{cout << "Commence a desiner" << endl;
 	for(int unsigned i(0); i < elements.size(); ++i)
-	{
-		elements[i]->dessine();
+	{cout << "Dessine " << *elements[i] << endl;
+		elements[i]->dessine(); cout << "A dessiner " << i << endl;
 	}
 }
 

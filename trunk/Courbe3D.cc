@@ -10,6 +10,21 @@
 
 
 
+unsigned int Courbe3D::getprecision() const
+{
+	return precision;
+}
+
+
+
+
+void Courbe3D::setprecision(unsigned int p)
+{
+	precision = p;
+}
+
+
+
 Courbe3D::Courbe3D()
 : Element3D(Vecteur3D(3,2,0), Vecteur3D(2,-1,0), 0.1, COURBE_ROUGE, COURBE_VERT, COURBE_BLEU, COURBE_TRANSPARENCE), Courbe(Vecteur3D(3,2,0), Vecteur3D(2,-1,0), 0.1, 1./4), precision(DEFAUT_PRECISION)
 {}
@@ -20,7 +35,7 @@ Courbe3D::Courbe3D(Vecteur3D re, Vecteur3D rs, double R, double k, unsigned int 
 {}
 
 Courbe3D::Courbe3D(Courbe3D const& c)
-: Element(c), Element3D(c), Courbe(c)
+: Element(c), Element3D(c), Courbe(c), precision(c.getprecision())
 {}
 
 Courbe3D::~Courbe3D()
@@ -31,7 +46,7 @@ Courbe3D::~Courbe3D()
 
 
 void Courbe3D::dessine() const //pour l'instant c'est le même que droit car je sais pas comment faire un tore
-{
+{cout << "dessine la courbe" << endl << precision << endl << endl;
 	Vecteur3D e1(1,0,0);
 	
 	glPushMatrix();//On stocker la matrice courante
@@ -42,7 +57,7 @@ void Courbe3D::dessine() const //pour l'instant c'est le même que droit car je 
 	{
 		positions.push_back((re-getcentre()).rotation(Vecteur3D(0,0,1), i*getangle()/precision));
 	}
-	
+	cout << "A initialiser le vecteur position" << endl;
 	//On crée la quadrique associer au dipole
 	GLUquadric* droit_ext=gluNewQuadric();
 	GLUquadric* droit_int=gluNewQuadric();
@@ -55,7 +70,7 @@ void Courbe3D::dessine() const //pour l'instant c'est le même que droit car je 
 	
 	
 	
-	
+	cout << "c'est translater au centre" << endl;
 	
 	//On trace le premier cylindre du tore
 	glPushMatrix();
@@ -107,14 +122,14 @@ void Courbe3D::dessine() const //pour l'instant c'est le même que droit car je 
 	glPopMatrix();
 	
 	
-	
+	cout << "a bien tracer le premier cylindre" << endl;
 	
 	
 	
 	
 	//On trace manière itérative les autres cylindres du tore sauf le dernier
 	for (int n(1); n<precision-1; n++)
-	{
+	{cout << n;
 		glPushMatrix();
 		
 		//calcul de l'équation du plan de coupure enpêchant de dépasser sur le cylindre suivant
@@ -147,6 +162,8 @@ void Courbe3D::dessine() const //pour l'instant c'est le même que droit car je 
 		
 		glDisable(GL_CLIP_PLANE0);
 		glPopMatrix();
+		
+		//cout << "A bien tracer le " << n << endl << endl;
 	}
 	
 	
@@ -191,34 +208,5 @@ void Courbe3D::dessine() const //pour l'instant c'est le même que droit car je 
 	gluDeleteQuadric(droit_int);
 	
 	glPopMatrix();
-}
-
-void Courbe3D::partie_tore(double angle, Vecteur3D position) const
-{
-	
-		GLUquadric* droit_ext=gluNewQuadric();
-		GLUquadric* droit_int=gluNewQuadric();
-		
-		gluQuadricDrawStyle(droit_ext, GLU_LINE);
-		gluQuadricDrawStyle(droit_int, GLU_FILL);
-		
-		glPushMatrix();
-		
-		glTranslated(position.getx(), position.gety(), position.getz());
-		
-		
-		glRotated(90-angle,0,0,1);
-		glRotated(90,1,0,0);
-		
-		glColor4d(1.0,0,1.0,0.5);
-		gluCylinder(droit_ext, Re*10, Re, (re-rs).norme(), 20, 20);
-		
-		glColor4d(1.0,0,0,1.0);
-		gluCylinder(droit_int, Re, Re, (re-rs).norme(), 20, 20);
-		
-		glPopMatrix();
-		
-		gluDeleteQuadric(droit_ext);
-		gluDeleteQuadric(droit_int);
 }
 

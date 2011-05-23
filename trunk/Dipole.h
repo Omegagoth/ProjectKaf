@@ -29,10 +29,8 @@ class Dipole : virtual public Courbe
 
 //--------prototypage des méthodes--------------------------------------------------------------------------------
 
-        virtual Dipole* copie() const;        //méthode de copie polymorphique
+        //virtual Dipole* copie() const;        //méthode de copie polymorphique
         virtual void affiche(ostream&) const; //méthode polymorphique d'affichage
-
-        //virtual void dessine(Dipole const&) const;
 
 
 

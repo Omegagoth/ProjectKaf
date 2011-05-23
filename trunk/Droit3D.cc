@@ -39,7 +39,7 @@ void Droit3D::dessine() const
 	glRotated(90,1,0,0);
 	
 	glColor4d(1.0,1.0,1.0,0.5);
-	gluCylinder(droit_ext, Re*10, Re, (re-rs).norme(), 20, 20);
+	//gluCylinder(droit_ext, Re*10, Re, (re-rs).norme(), 20, 20);
 	
 	glColor4d(1.0,0,0,1.0);
 	gluCylinder(droit_ext, Re, Re, (re-rs).norme(), 20, 20);

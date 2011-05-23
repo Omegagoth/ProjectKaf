@@ -10,6 +10,10 @@ class Courbe3D : public Element3D, virtual public Courbe
 {
 	public :
 	
+		unsigned int getprecision() const;
+		
+		void setprecision(unsigned int);
+	
 		Courbe3D();
 		Courbe3D(Vecteur3D, Vecteur3D, double, double, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
 		Courbe3D(Courbe3D const&);
@@ -21,9 +25,6 @@ class Courbe3D : public Element3D, virtual public Courbe
 	protected :
 	
 		int unsigned precision;
-	
-		void partie_tore(double, Vecteur3D) const;
-	
 };
 
 #endif

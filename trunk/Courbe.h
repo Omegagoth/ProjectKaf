@@ -32,7 +32,8 @@ class Courbe : virtual public Element
         virtual void affiche(ostream&) const = 0;         //méthode abstraite polymorphique d'affichage
         virtual Courbe* copie() const = 0;                //méthode abstraite de copie polymorphique
 		virtual Vecteur3D getu(Particule const&) const;   //méthode abstraite revoyant le vecteur u ( {X-x3e3}1 )
-
+		virtual void dessine() const = 0;
+		
 
     protected :
 

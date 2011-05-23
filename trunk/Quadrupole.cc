@@ -55,10 +55,10 @@ Vecteur3D Quadrupole::coordonnees_locales(Particule const& p) const
 	return getpos_relative(p) - (getpos_relative(p)*getdirection())*getpos_relative(p);
 }
 
-Quadrupole* Quadrupole::copie() const
+/*Quadrupole* Quadrupole::copie() const
 {
     return new Quadrupole(*this);
-}
+}*/
 
 void Quadrupole::affiche(ostream& out) const
 {

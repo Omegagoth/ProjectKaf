@@ -23,7 +23,7 @@ class Section_droite : virtual public Droit
 
 //--------prototypage des méthodes--------------------------------------------------------------------------------
 
-        virtual Section_droite* copie() const; //méthode de copie polymorphique
+        //virtual Section_droite* copie() const; //méthode de copie polymorphique
         virtual void affiche(ostream&) const;  //méthode polymorphique d'affichage
 };
 

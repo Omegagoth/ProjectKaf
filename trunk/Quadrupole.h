@@ -29,7 +29,7 @@ class Quadrupole : virtual public Droit
 //--------prototypage des méthodes--------------------------------------------------------------------------------
 
 	Vecteur3D coordonnees_locales(Particule const& p) const; //retourne le vecteur de position de la particule dans les coordonnees local (par rapport a la trajectoire ideal)
-	virtual Quadrupole* copie() const;                       //méthode de copie polymorphique
+	//virtual Quadrupole* copie() const;                       //méthode de copie polymorphique
 	virtual void affiche(ostream&) const;                    //méthode polymorphique d'affichage
 	//virtual void dessine(Quadrupole const&) const;
 
