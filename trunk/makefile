@@ -32,15 +32,15 @@ Dipole.o : Dipole.cc Dipole.h
 
 Section_droite.o : Section_droite.cc Section_droite.h
 
-#Quadrupole.o : Quadrupole.cc Quadrupole.h
+Quadrupole.o : Quadrupole.cc Quadrupole.h
 
-#Fodo.o : Fodo.cc Fodo.h
+Fodo.o : Fodo.cc Fodo.h
 
 Particule.o : Particule.cc Particule.h
 
-Faisceau.o : Faisceau.cc Faisceau.h
+#Faisceau.o : Faisceau.cc Faisceau.h
 
-Faccelerateur.o : Faccelerateur.cc Faccelerateur.h
+#Faccelerateur.o : Faccelerateur.cc Faccelerateur.h
 
 Particule3D.o : Particule3D.cc Particule3D.h
 
@@ -53,6 +53,10 @@ Droit3D.o : Droit3D.cc Droit3D.h
 Dipole3D.o : Dipole3D.cc Dipole3D.h
 
 Section_droite3D.o : Section_droite3D.cc Section_droite3D.h
+
+Quadrupole3D.o : Quadrupole3D.cc Quadrupole3D.h
+
+Fodo3D.o : Fodo3D.cc Fodo3D.h
 
 VueOpenGL.o : VueOpenGL.cc VueOpenGL.cc
 
@@ -70,7 +74,7 @@ Accelerateur.o : Accelerateur.cc Accelerateur.h
 
 Application.o : Application.cc Application.h
 
-Application : 	Application.o Accelerateur.o Faccelerateur.o  Faisceau.o  Particule.o 						 Section_droite.o Particule.o Vecteur3D.o Element.o Droit.o Courbe.o Dipole.o Particule3D.o Element3D.o Courbe3D.o Droit3D.o Dipole3D.o Section_droite3D.o VueOpenGL.o FenetreGL.o GLUtils.o TextureManager.o Camera.o Couleurs.o
+Application : 	Application.o Accelerateur.o                              Particule.o Fodo.o Quadrupole.o Section_droite.o Particule.o Vecteur3D.o Element.o Droit.o Courbe.o Dipole.o Particule3D.o Element3D.o Courbe3D.o Droit3D.o Dipole3D.o Section_droite3D.o Quadrupole3D.o Fodo3D.o VueOpenGL.o FenetreGL.o GLUtils.o TextureManager.o Camera.o Couleurs.o
 
 
 

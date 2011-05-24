@@ -14,8 +14,8 @@ class Element3D : virtual public Element
 	void setcouleurs(Couleurs const&);
 	
 	Element3D();
-	Element3D(Vecteur3D re, Vecteur3D rs, double R, unsigned int r = ELEMENT_ROUGE, unsigned int v = ELEMENT_VERT,
-			  unsigned int b = ELEMENT_BLEU, unsigned int t = ELEMENT_TRANSPARENCE);
+	Element3D(Vecteur3D re, Vecteur3D rs, double R, unsigned int r, unsigned int v,
+			  unsigned int b, unsigned int t);
 	Element3D(Element3D const&);
 	virtual ~Element3D();
 	

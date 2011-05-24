@@ -3,7 +3,7 @@
 
 
 Particule3D::Particule3D()
-: Particule(Vecteur3D(0,0,1), Vecteur3D(0,0,0), 10, 2)
+: Particule()
 {}
 
 Particule3D::Particule3D(Vecteur3D position, Vecteur3D quantite_mouv, double masse, double charge)
@@ -12,6 +12,13 @@ Particule3D::Particule3D(Vecteur3D position, Vecteur3D quantite_mouv, double mas
 
 Particule3D::Particule3D(Vecteur3D position, double energie, Vecteur3D vitesse, double masse, double charge)
 : Particule(position, energie, vitesse, masse, charge)
+{}
+
+Particule3D::Particule3D(Particule3D const& p)
+: Particule(p)
+{}
+
+Particule3D::~Particule3D()
 {}
 
 void Particule3D::dessine() const

@@ -39,12 +39,15 @@ class Particule
         Particule();                                                                         //constructeur par défaut
         Particule(Vecteur3D position, Vecteur3D quantite_mouv, double masse, double charge); //construit un vecteur a partir de sa position, quantité de mouvement, masse et charge
         Particule(Vecteur3D, double, Vecteur3D, double, double);                             //construit un vecteur a partir de sa position, energie, direction de sa vitesse, masse et charge
+        virtual ~Particule();																 //destructeur virtual
 
 //--------prototypage des méthodes-------------------------------------------------------------------------------
 
         Particule& ajoute_forcemagn(Vecteur3D const&, double); //ajoute une force en prenant un vecteur B du champ magnétique et un intervalle de temps dt
 		Particule& ajoute_forceinter(Particule const&);		   //ajoute la force inter-particules
         Particule& bouger(double);                             //mets a jour la position et la vistesse de la particule pour un pas de temps donné
+        Particule(Particule const&);						   //constructeur de copie
+        virtual void dessine() const = 0;					   //méthode virtuel de dessin en 3D
 
 
 
@@ -62,7 +65,7 @@ class Particule
 
 //--------prototypage des surcharges externes--------------------------------------------------------------------
 
-ostream& operator<<(ostream&, Particule); //permet l'affichage par cout des particules
+ostream& operator<<(ostream&, Particule const&); //permet l'affichage par cout des particules
 
 
 #endif

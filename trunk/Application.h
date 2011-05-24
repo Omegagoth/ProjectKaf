@@ -7,7 +7,7 @@
 #include "TextureManager.h"
 #include "Particule3D.h"
 #include "Dipole3D.h"
-#include "Section_droite3D.h"
+#include "Fodo3D.h"
 #include "Accelerateur.h"
  
 class Application : public wxApp //Héritage
@@ -22,11 +22,15 @@ class Application : public wxApp //Héritage
 	
 		Accelerateur acc;
 		TextureManager texturemanager;
+		FenetreGL* fenetreGL; //On stocke un pointeur, voir remarque plus bas.
+		wxTimer* simulation_timer; //timer de l'évolution de l'accélérateur
+		bool loaded;
 				
 		bool OnInit(); //La fonction OnInit est appelée lors de l'initialisation de l'application.
-		FenetreGL* fenetreGL; //On stocke un pointeur, voir remarque plus bas.
-		bool loaded;
+		
+		
 		void rafraichir();
+		void evolue(wxTimerEvent&); //fonction qui fait évoluer l'accélérateur à chaque événement du timer
 };
 
 DECLARE_APP(Application);

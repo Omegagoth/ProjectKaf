@@ -5,14 +5,22 @@
 #include "Droit3D.h"
 #include "wxIncludes.h"
 
+
+#define QUADRUPOLE_ROUGE 74
+#define QUADRUPOLE_VERT 225
+#define QUADRUPOLE_BLEU 23
+#define QUADRUPOLE_TRANSPARENCE 255
+
+
 class Quadrupole3D : public Droit3D, public Quadrupole
 {
 	public :
 	
 		Quadrupole3D();
-		Quadrupole3D(Vecteur3D, Vecteur3D, double, double, unsigned int, unsigned int, unsigned int, unsigned int);
+		Quadrupole3D(Vecteur3D re, Vecteur3D rs, double R, double i, unsigned int r = QUADRUPOLE_ROUGE, unsigned int v = QUADRUPOLE_VERT,
+					 unsigned int b = QUADRUPOLE_BLEU, unsigned int t = QUADRUPOLE_TRANSPARENCE);
 		Quadrupole3D(Quadrupole3D const&);
-		~Quadrupole3D();
+		virtual ~Quadrupole3D();
 		
 		Quadrupole3D* copie() const;
 	

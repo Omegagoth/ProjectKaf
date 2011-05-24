@@ -34,7 +34,7 @@ class Accelerateur
 
 //--------prototypage des méthodes-------------------------------------------------------------------------------
 
-        Accelerateur& ajoute_particule(Particule const&); //méthode permettant de rajouter une particule à l'accélérateur
+        Accelerateur& ajoute_particule(Particule3D const&); //méthode permettant de rajouter une particule à l'accélérateur
         Accelerateur& ajoute_element(Element const&);     //méthode permettant de rajouter un élément à l'accélérateur
         Accelerateur& clear_particules();                 //méthode permettant de supprimer toutes les particules de l'accélérateur
 		Accelerateur& clear_particules(int unsigned);	  //méthode permettant de supprimer la iéme particule de l'accélérateur

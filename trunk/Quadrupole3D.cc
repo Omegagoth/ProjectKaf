@@ -1,11 +1,5 @@
 #include "Quadrupole3D.h"
 
-#define QUADRUPOLE_ROUGE 74
-#define QUADRUPOLE_VERT 225
-#define QUADRUPOLE_BLEU 23
-#define QUADRUPOLE_TRANSPARENCE 255
-
-
 
 
 
@@ -21,7 +15,7 @@ Quadrupole3D::Quadrupole3D(Quadrupole3D const& q)
 : Element(q), Droit(q), Droit3D(q), Quadrupole(q)
 {}
 
-Quadrupole::~Quadrupole()
+Quadrupole3D::~Quadrupole3D()
 {}
 
 

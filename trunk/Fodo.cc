@@ -79,7 +79,7 @@ void Fodo::setintensite(double i)
 void Fodo::setElement_suivant(Element& e)
 {
     Element_suivant = &e;
-    (*maille[taille-1]).setElement_suivant(e);
+    (*maille[maille.size()-1]).setElement_suivant(e);
 }
 
 void Fodo::settaille(unsigned int t)
@@ -101,7 +101,7 @@ Fodo::Fodo()
 Fodo::Fodo(Vecteur3D e, Vecteur3D s, double r, double l, double i)
 : Droit(e,s,r), longueur_droit(l), intensite(i)
 {
-	for (unsigned int i(0); i < taille; ++i)
+	/*for (unsigned int i(0); i < taille; ++i)
 	{
 		Vecteur3D a(re + getlongueur_quadrupole()*getdirection());
 		maille.push_back(new Quadrupole(e, a, r, i));
@@ -113,13 +113,13 @@ Fodo::Fodo(Vecteur3D e, Vecteur3D s, double r, double l, double i)
     for (int unsigned j(0); j < maille.size()-1; ++j)
     {
         (*maille[j]).setElement_suivant(*maille[j+1]);
-    }
+    }*/
 }
 
 Fodo::Fodo(Fodo const& f)
 : Droit(f), longueur_droit(f.getlongueur_droit()), intensite(f.getintensite())
 {
-    for (int unsigned i(0); i < maille.size(); ++i)
+    for (int unsigned i(0); i < f.getmaille().size(); ++i)
     {
         maille.push_back(f.getmaille(i+1)->copie());
     }
@@ -140,10 +140,10 @@ bool Fodo::heurte_bord(Particule const& p) const
     return maille[0]->heurte_bord(p) || maille[1]->heurte_bord(p) || maille[2]->heurte_bord(p) || maille[3]->heurte_bord(p);
 }
 
-Fodo* Fodo::copie() const
+/*Fodo* Fodo::copie() const
 {
     return new Fodo(*this);
-}
+}*/
 
 void Fodo::affiche(ostream& out) const
 {
@@ -184,7 +184,7 @@ unsigned int Fodo::taille(1);
 
 //--------définition des méthodes privée--------------------------------------------------------------------------
 
-void clear()
+void Fodo::clear()
 {
 	for(unsigned int i(0); i < maille.size(); ++i)
 	{

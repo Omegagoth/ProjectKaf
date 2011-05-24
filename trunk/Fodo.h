@@ -38,7 +38,7 @@ class Fodo : virtual public Droit
 //--------prototypage des méthodes--------------------------------------------------------------------------------
 
         bool heurte_bord(Particule const&) const; //masquage de la fonction qui détermine si la particule à heurter le bord ou non
-        virtual Fodo* copie() const;              //méthode de copie polymorphique
+        //virtual Fodo* copie() const;              //méthode de copie polymorphique
         virtual void affiche(ostream&) const;     //méthode polymorphique d'affichage des mailles Fodo
 
 //--------prototypage des surcharges d'opérateurs-----------------------------------------------------------------

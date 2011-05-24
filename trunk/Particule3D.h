@@ -11,6 +11,8 @@ class Particule3D : public Particule
 		Particule3D();
 		Particule3D(Vecteur3D position, Vecteur3D quantite_mouv, double masse, double charge);
         Particule3D(Vecteur3D, double, Vecteur3D, double, double);
+        Particule3D(Particule3D const&);
+        virtual ~Particule3D();
 	
 		void dessine() const;
 	

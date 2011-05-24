@@ -58,9 +58,9 @@ Accelerateur::~Accelerateur()
 
 //--------définition des méthodes--------------------------------------------------------------------------------
 
-Accelerateur& Accelerateur::ajoute_particule(Particule const& p)
+Accelerateur& Accelerateur::ajoute_particule(Particule3D const& p)
 {
-    particules.push_back(new Particule(p));
+    particules.push_back(new Particule3D(p));
     return (*this);
 }
 
@@ -133,11 +133,11 @@ Accelerateur& Accelerateur::evolue(double dt)
 	{
 		particules[i]->ajoute_forcemagn(particules[i]->getappartient()->getchamps_magnetique(*particules[i]), dt);
 		
-		for (int unsigned j(i+1); j < particules.size(); ++j) 
+		/*for (int unsigned j(i+1); j < particules.size(); ++j) 
 		{
 			particules[j]->ajoute_forceinter(*particules[i]);
 			particules[i]->ajoute_forceinter(*particules[j]);
-		}
+		}*/
 		
 		particules[i]->bouger(dt);
 
@@ -155,10 +155,15 @@ Accelerateur& Accelerateur::evolue(double dt)
 }
 
 void Accelerateur::dessine() const
-{cout << "Commence a desiner" << endl;
+{
 	for(int unsigned i(0); i < elements.size(); ++i)
-	{cout << "Dessine " << *elements[i] << endl;
-		elements[i]->dessine(); cout << "A dessiner " << i << endl;
+	{
+		elements[i]->dessine();
+	}
+	
+	for(unsigned int i(0); i < particules.size(); ++i)
+	{
+		particules[i]->dessine();
 	}
 }
 
