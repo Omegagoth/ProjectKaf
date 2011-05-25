@@ -32,14 +32,14 @@ int main()
     Vecteur3D vv(0, -2.64754e+08, 0);
 	
 	Faccelerateur acc;
-	Fodo F1(v1, v5, 0.1, 1, 1.2);
-	Dipole D1(v5, v6, 0.1, 1, 5.89158);
-	Fodo F2(v6, v10, 0.1, 1, 1.2);
-	Dipole D2(v10, v11, 0.1, 1, 5.89158);
-	Fodo F3(v11, v15, 0.1, 1, 1.2);
-	Dipole D3(v15, v16, 0.1, 1, 5.89158);
-	Fodo F4(v16, v20, 0.1, 1, 1.2);
-	Dipole D4(v20, v1, 0.1, 1, 5.89158);
+	Fodo3D F1(v1, v5, 0.1, 1, 1.2);
+	Dipole3D D1(v5, v6, 0.1, 1, 5.89158);
+	Fodo3D F2(v6, v10, 0.1, 1, 1.2);
+	Dipole3D D2(v10, v11, 0.1, 1, 5.89158);
+	Fodo3D F3(v11, v15, 0.1, 1, 1.2);
+	Dipole3D D3(v15, v16, 0.1, 1, 5.89158);
+	Fodo3D F4(v16, v20, 0.1, 1, 1.2);
+	Dipole3D D4(v20, v1, 0.1, 1, 5.89158);
 	
 	
 	acc.ajoute_element(F1);
@@ -57,8 +57,8 @@ int main()
 	Faisceau Fa1;
 	Faisceau Fa2;
 	
-	Particule P1(vP1, 2, vv, 0.938272, 1.60217653e-19);
-	Particule P2(vP2, 2, vv, 0.938272, 1.60217653e-19);
+	Particule3D P1(vP1, 2, vv, 0.938272, 1.60217653e-19);
+	Particule3D P2(vP2, 2, vv, 0.938272, 1.60217653e-19);
 	
 	Fa1.ajoute_Vpart(P1);
 	Fa2.ajoute_Vpart(P2);
@@ -128,6 +128,8 @@ int main()
 		
 		cout << *(acc.getfaisceaux()[i]->getVpart()[0]->getappartient()) << endl;
     }*/
+
+cout << *(acc.getfaisceaux()[1]->getVpart()[0]->getappartient()) << endl;
 	return 0;
 }
 

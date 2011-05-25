@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Faisceau::Faisceau(Particule r, double l)
+Faisceau::Faisceau(Particule3D r, double l)
 : reference(r), lambda(l) {}
 
 Faisceau::Faisceau(Faisceau const& f)
@@ -17,7 +17,7 @@ Faisceau::~Faisceau() {clear_Vpart();}
 
 //---------------------------------------------------------------
 
-void Faisceau::setreference(Particule const& p)
+void Faisceau::setreference(Particule3D const& p)
 {reference = p;}
 
 void Faisceau::setlambda(double d)
@@ -25,10 +25,10 @@ void Faisceau::setlambda(double d)
 
 //---------------------------------------------------------------
 
-Particule Faisceau::getreference() const
+Particule3D Faisceau::getreference() const
 {return reference;}
 
-double Faisceau::getnb_particule() const
+double Faisceau::getnb_particule3D() const
 {return lambda*Vpart.size();}
 
 double Faisceau::getlambda() const
@@ -36,13 +36,13 @@ double Faisceau::getlambda() const
 
 //---------------------------------------------------------------
 
-vector<Particule*> Faisceau::getVpart() const
+vector<Particule3D*> Faisceau::getVpart() const
 {return Vpart;}
 
 
-Faisceau& Faisceau::ajoute_Vpart(Particule const& p)
+Faisceau& Faisceau::ajoute_Vpart(Particule3D const& p)
 {
-	Vpart.push_back(new Particule(p));
+	Vpart.push_back(new Particule3D(p));
 	return (*this);
 }
 

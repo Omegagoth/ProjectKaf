@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "Particule.h"
+#include "Particule3D.h"
 #include "Element.h"
 
 using namespace std;
@@ -11,32 +11,32 @@ class Faisceau
 	
 	protected :
 	
-	Particule reference;
+	Particule3D reference;
 	double lambda;
-	vector<Particule*> Vpart;
+	vector<Particule3D*> Vpart;
 	
 	public :
 	
-	Faisceau(Particule, double);
+	Faisceau(Particule3D, double);
 	Faisceau(Faisceau const&);
 	Faisceau();
 	~Faisceau();
 	
 	//---------------------------------------------------------------
 	
-	void setreference(Particule const&);
+	void setreference(Particule3D const&);
 	void setlambda(double);
 	
 	//---------------------------------------------------------------
 	
-	Particule getreference() const;
-	double getnb_particule() const;
+	Particule3D getreference() const;
+	double getnb_particule3D() const;
 	double getlambda() const;
-	vector<Particule*> getVpart() const;
+	vector<Particule3D*> getVpart() const;
 	
 	//---------------------------------------------------------------
 	
-	Faisceau& ajoute_Vpart(Particule const&);
+	Faisceau& ajoute_Vpart(Particule3D const&);
 	Faisceau& clear_Vpart();
 	Faisceau& clear_Vpart(int i);
 

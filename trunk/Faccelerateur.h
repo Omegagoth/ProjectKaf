@@ -3,11 +3,11 @@
 
 #include <iostream>
 #include <vector>
-#include "Particule.h"
-#include "Dipole.h"
-#include "Quadrupole.h"
-#include "Section_droite.h"
-#include "Fodo.h"
+#include "Particule3D.h"
+#include "Dipole3D.h"
+#include "Quadrupole3D.h"
+#include "Section_droite3D.h"
+#include "Fodo3D.h"
 #include "Faisceau.h"
 
 using namespace std;
