@@ -4,6 +4,7 @@
 //Headers
 #include "wxIncludes.h"
 #include "FenetreGL.h"
+#include "FenetreControle.h"
 #include "TextureManager.h"
 #include "Particule3D.h"
 #include "Dipole3D.h"
@@ -22,14 +23,15 @@ class Application : public wxApp //Héritage
 	
 		Accelerateur acc;
 		TextureManager texturemanager;
-		FenetreGL* fenetreGL; //On stocke un pointeur, voir remarque plus bas.
+		FenetreGL* fenetreGL; //On stocke un pointeur vers la fenêtre OpenGL
+		FentreControle* fentreControle; //On stocke un pointeur vers la fenêtre de contrôle
 		wxTimer* simulation_timer; //timer de l'évolution de l'accélérateur
 		bool loaded;
 				
 		bool OnInit(); //La fonction OnInit est appelée lors de l'initialisation de l'application.
 		
 		
-		void rafraichir();
+		void rafraichir(); //permet de rafraichir la fenêtre OpenGL
 		void evolue(wxTimerEvent&); //fonction qui fait évoluer l'accélérateur à chaque événement du timer
 };
 

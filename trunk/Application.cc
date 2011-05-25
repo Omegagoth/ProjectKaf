@@ -2,7 +2,10 @@
  
 bool Application::OnInit()
 {
-    //On alloue la fenêtre
+	//On alloue la fenêtre de contrôle
+	fentreControle = new FenetreControle();
+	
+    //On alloue la fenêtre OpenGL
     fenetreGL=new FenetreGL(wxT("Accélérateur"),wxSize(640, 480));
     
     //Définie comme fenêtre principale
