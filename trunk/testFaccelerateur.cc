@@ -131,8 +131,8 @@ int main()
 
 cout << *(acc.getfaisceaux()[1]->getVpart()[0]->getappartient()) << endl;
 
-
-cout  << acc.getfaisceaux()[1]->getenergie_moy() << endl;
+cout << acc.getperimetre();
+/*cout  << acc.getfaisceaux()[1]->getenergie_moy() << endl;
 cout  << acc.getfaisceaux()[1]->getemittancevert() << endl;
 cout  << acc.getfaisceaux()[1]->getemittancehori() << endl;
 cout  << acc.getfaisceaux()[1]->getA11vert() << endl;
@@ -141,7 +141,7 @@ cout  << acc.getfaisceaux()[1]->getA22vert() << endl;
 cout  << acc.getfaisceaux()[1]->getA11hori() << endl;
 cout  << acc.getfaisceaux()[1]->getA12hori() << endl;
 cout  << acc.getfaisceaux()[1]->getA22hori() << endl;
-
+*/
 
 
 	return 0;

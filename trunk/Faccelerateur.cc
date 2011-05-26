@@ -40,6 +40,15 @@ Element* Faccelerateur::getelements(unsigned int i) const
 	}
 }
 
+double Faccelerateur::getperimetre() const
+{
+	double p(0);
+	for (int unsigned i(0); i < faisceaux.size(); ++i)
+	{
+		p += elements[i]->getlongueur();
+	}
+	return p;
+}
 
 
 

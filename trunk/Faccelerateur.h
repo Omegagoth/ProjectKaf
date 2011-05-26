@@ -22,6 +22,7 @@ class Faccelerateur
 	Faisceau* getfaisceaux(unsigned int) const;   //donne un pointeur vers le iËme faisceau de l'accÈlÈrateur
 	vector<Element*> getelements() const;         //donne l'ensemble des ÈlÈments de l'accÈlÈrateur sous forme de tableau dynamique de pointeur
 	Element* getelements(unsigned int) const;     //donne un pointeur vers le iËme ÈlÈment de l'accÈlÈrateur
+	double getperimetre() const;				  //renvoie la longueur totale de l'accelerateur
 
 	//--------prototypage des mÈthodes set----------------------------------------------------------------------------
 	

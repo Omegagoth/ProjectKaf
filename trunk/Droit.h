@@ -9,7 +9,7 @@ class Droit : virtual public Element
 
 //--------prototypage des méthodes get---------------------------------------------------------------------------
 
-        double getlongueur() const;                                         //retourne la longueur de l'élément
+        virtual double getlongueur() const;                                 //retourne la longueur de l'élément
 		virtual Vecteur3D getchamps_magnetique(Particule const&) const = 0;	//methode abstraite qui donne le champs magnetique de l'ŽlŽment
 
 //--------prototypage des constructeurs/destructeur--------------------------------------------------------------

@@ -19,6 +19,10 @@ double Courbe::getangle() const
 	return (re-getcentre()).angle(rs-getcentre());
 }
 
+double Courbe::getlongueur() const
+{
+	return Re*getangle();
+}
 
 
 
