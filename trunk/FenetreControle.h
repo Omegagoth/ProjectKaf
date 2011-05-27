@@ -8,7 +8,7 @@ class FenetreControle : public wxFrame
 	public :
 	
 		FenetreControle();
-		virtual FenetreControle();
+		virtual ~FenetreControle();
 	
 	protected :
 	

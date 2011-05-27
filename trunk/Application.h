@@ -15,16 +15,20 @@ class Application : public wxApp //Héritage
 {
 	public :
 	
+		Application();
+	
 		void dessine();
 		
 		GLuint* getTexture(string fichier, bool mipmap=true);
+		
+		void fermer(); //permet de detruire les deux fenêtres
 	
 	protected :
 	
 		Accelerateur acc;
 		TextureManager texturemanager;
 		FenetreGL* fenetreGL; //On stocke un pointeur vers la fenêtre OpenGL
-		FentreControle* fentreControle; //On stocke un pointeur vers la fenêtre de contrôle
+		FenetreControle* fenetreControle; //On stocke un pointeur vers la fenêtre de contrôle
 		wxTimer* simulation_timer; //timer de l'évolution de l'accélérateur
 		bool loaded;
 				

@@ -8,10 +8,15 @@ class FenetreGL : public wxFrame //Héritage
 {
     public:
         FenetreGL(wxString titre, wxSize taille);
-        void rafraichir();
+        //void rafraichir();
         
     private:
-		VueOpenGL* vueopengl;
+		//VueOpenGL* vueopengl;
+		wxFlexGridSizer* vert;
+		wxBoxSizer* hori;
+		wxStaticText* texte;
+
+		//void ajuster(wxSizeEvent& event);
 };
 
 

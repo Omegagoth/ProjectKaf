@@ -15,6 +15,8 @@ class VueOpenGL: public wxGLCanvas
 		void InitOpenGL();
 		
 		void dessineSol(double);
+		
+		void redimensionne(int largeur, int hauteur);
 
 	protected:
 	

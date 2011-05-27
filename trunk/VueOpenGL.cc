@@ -20,18 +20,16 @@ VueOpenGL::~VueOpenGL()
 
 void VueOpenGL::InitOpenGL()
 {
-	//indique que les instructions OpenGL s'adressent au contexte
-	// OpenGL courant
+	//indique que les instructions OpenGL s'adressent au contexte OpenGL courant
 	SetCurrent();
 	
+	glClearDepth(1.0); //Initialise le tampon de profondeur
 	// Active la gestion de la profondeur
 	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LEQUAL); //Choisi le type de test de la profondeur
 	
-	// Fixe la perspective
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	
-	gluPerspective(65.0, 4./3., 1.0, 1000.0);
+	//On initialise la perspective
+	redimensionne(640, 480);
 	
 	// fixe le fond d'écran à noir
 	glClearColor(0.0, 0.0, 0.0, 1.0);
@@ -64,6 +62,22 @@ void VueOpenGL::dessineSol(double taille)
 	glEnd();
 	
 	glDisable(GL_TEXTURE_2D);
+}
+
+void VueOpenGL::redimensionne(int largeur, int hauteur)
+{
+	//On ajuste la taille de la fenêtre OpenGL à celle de la fenêtre
+	glViewport(0, 0, largeur, hauteur);
+	SetSize(largeur, hauteur);
+	
+	//On réinitialise la matrice de projection
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	//On fixe la perspective pour garder les proportions
+	gluPerspective(65.0, (double)largeur/hauteur, 0.1, 1000.0);
+	
+	//On prépare le travaille sur le modèle
+	glMatrixMode(GL_MODELVIEW);
 }
 
 void VueOpenGL::dessine(wxPaintEvent& event)

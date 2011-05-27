@@ -11,22 +11,20 @@ void VueOpenGL::InitOpenGL()
 	// OpenGL courant
 	SetCurrent();
 	
+	//mise en place du tampon de profondeur
+	glClearDepth(1.0f);
+
+	redimensionne(120, 90);
+	
 	// Active la gestion de la profondeur
 	glEnable(GL_DEPTH_TEST);
 	
-	// Fixe la perspective
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	gluPerspective(65.0, 4./3., 1.0, 1000.0);
+	//meilleur rendu de la perspective mais augmentation du temps de calcul
+	//glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 	
 	// fixe le fond d'écran à noir
 	glClearColor(0.0, 0.0, 0.0, 1.0);
-	
-	// prépare à travailler sur le modèle  
-	// (données de l'application)
-	glMatrixMode(GL_MODELVIEW);
 }
-
 void VueOpenGL::dessine(wxPaintEvent& event)
 {
     // indique que le code est relatif au contexte OPenGL courant
@@ -47,7 +45,7 @@ void VueOpenGL::dessine(wxPaintEvent& event)
                      
      
     //Commandes de dessin ici
-    /*glPushMatrix();
+    	glPushMatrix();
 	glTranslated(1,1,1);
 	glRotated(-20,0,1,0);
 	glScaled(0.5,0.5,0.5);
@@ -95,7 +93,7 @@ void VueOpenGL::dessine(wxPaintEvent& event)
 	glEnd();
 	
 	
-	glPopMatrix();*/
+	glPopMatrix();
 	
 	glPushMatrix();
 	
@@ -106,5 +104,21 @@ void VueOpenGL::dessine(wxPaintEvent& event)
     // Finalement, envoi du dessin à l écran
     glFlush();
     SwapBuffers();
+}
+
+void VueOpenGL::redimensionne(int largeur, int hauteur)
+{
+	glViewport(0,0,largeur, hauteur);
+	
+	SetSize(largeur, hauteur);
+	// Fixe la perspective
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluPerspective(65.0, (double)largeur/hauteur, 1.0, 1000.0);
+
+	// prépare à travailler sur le modèle  
+	// (données de l'application)
+	glMatrixMode(GL_MODELVIEW);
+	Refresh(false);
 }
 

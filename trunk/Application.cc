@@ -1,9 +1,15 @@
 #include "Application.h"
- 
+
+
+Application::Application()
+: wxApp()
+{}
+
+
 bool Application::OnInit()
 {
 	//On alloue la fenêtre de contrôle
-	fentreControle = new FenetreControle();
+	fenetreControle = new FenetreControle();
 	
     //On alloue la fenêtre OpenGL
     fenetreGL=new FenetreGL(wxT("Accélérateur"),wxSize(640, 480));
@@ -48,6 +54,15 @@ void Application::dessine()
 {
 	acc.dessine();
 }
+
+void Application::fermer()
+{
+	fenetreGL->Destroy();
+	fenetreControle->Destroy();
+	
+	ExitMainLoop();
+}
+
 
 void Application::rafraichir()
 {
