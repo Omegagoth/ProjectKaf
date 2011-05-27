@@ -20,7 +20,7 @@ class Faisceau
 	Faisceau(Particule3D, double);
 	Faisceau(Faisceau const&);
 	Faisceau();
-	~Faisceau();
+	virtual ~Faisceau();
 	
 	//---------------------------------------------------------------
 	
