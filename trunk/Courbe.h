@@ -15,6 +15,8 @@ class Courbe : virtual public Element
 		virtual Vecteur3D getchamps_magnetique(Particule const&) const = 0;	//methode abstraite qui donne le champs magnetique de l'element
 		double getangle() const;											//donne l'angle au centre de l'élément courbe
 		virtual double getlongueur() const;									//donne la longueur de l'element		
+		virtual Vecteur3D pos_ideale(double) const;							//donne la position ideale en fonction d'une longueur (a partir de l'entree)
+		virtual Vecteur3D dir_ideale(double) const;							//donne la direction ideale en fonction d'une longueur (a partir de l'entree)
 //--------prototypage des méthodes set---------------------------------------------------------------------------
 
         void setcourbure(double const&); //permet de changer la valeur du rayon de courbure

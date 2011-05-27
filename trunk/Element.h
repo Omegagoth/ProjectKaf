@@ -17,7 +17,9 @@ class Element
         double getRe() const;                                               //donne le rayon de l'élément
         Element* getElement_suivant() const;                                //donne l'élément qui suit l'élément courant
 		virtual Vecteur3D getchamps_magnetique(Particule const&) const = 0;	//méthode abstraite qui donne le champs magnetique de l'élément
-		virtual double getlongueur() const = 0;							//methode abstraite qui donne la longueur de l'element
+		virtual double getlongueur() const = 0;								//methode abstraite qui donne la longueur de l'element
+		virtual Vecteur3D pos_ideale(double) const = 0;						//methode abstraite qui donne la position ideale en fonction d'une longueur (a partir de l'entree)
+		virtual Vecteur3D dir_ideale(double) const = 0;						//methode abstraite qui donne la direction ideale en fonction d'une longueur (a partir de l'entree)
 
 //--------prototypage des méthodes set----------------------------------------------------------------------------
 

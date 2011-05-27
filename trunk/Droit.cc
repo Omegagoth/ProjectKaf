@@ -9,7 +9,15 @@ double Droit::getlongueur() const
     return (rs - re).norme();
 }
 
+Vecteur3D Droit::pos_ideale(double d) const
+{
+	return re + d * getdirection();
+}
 
+Vecteur3D Droit::dir_ideale(double d) const
+{
+	return getdirection();
+}
 
 
 //--------définition des constructeurs---------------------------------------------------------------------------

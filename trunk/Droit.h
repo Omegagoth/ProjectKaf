@@ -11,6 +11,8 @@ class Droit : virtual public Element
 
         virtual double getlongueur() const;                                 //retourne la longueur de l'élément
 		virtual Vecteur3D getchamps_magnetique(Particule const&) const = 0;	//methode abstraite qui donne le champs magnetique de l'ŽlŽment
+		virtual Vecteur3D pos_ideale(double) const;							//donne la position ideale en fonction d'une longueur (a partir de l'entree)
+		virtual Vecteur3D dir_ideale(double) const;							//donne la direction ideale en fonction d'une longueur (a partir de l'entree)
 
 //--------prototypage des constructeurs/destructeur--------------------------------------------------------------
 

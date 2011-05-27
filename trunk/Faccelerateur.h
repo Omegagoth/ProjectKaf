@@ -8,7 +8,7 @@
 #include "Quadrupole3D.h"
 #include "Section_droite3D.h"
 #include "Fodo3D.h"
-#include "Faisceau.h"
+#include "Faisceau.h" 
 
 using namespace std;
 
@@ -36,7 +36,7 @@ class Faccelerateur
 	
 	//--------prototypage des mÈthodes-------------------------------------------------------------------------------
 	
-	Faccelerateur& ajoute_faisceau(Faisceau const&);   //mÈthode permettant de rajouter un faisceau ‡ l'accÈlÈrateur
+	Faccelerateur& ajoute_faisceau(double, Particule3D, double);   //mÈthode permettant de rajouter un faisceau ‡ l'accÈlÈrateur
 	Faccelerateur& ajoute_element(Element const&);     //mÈthode permettant de rajouter un ÈlÈment ‡ l'accÈlÈrateur
 	Faccelerateur& clear_faisceaux();                  //mÈthode permettant de supprimer tout les faisceaux de l'accÈlÈrateur
 	Faccelerateur& clear_faisceaux(int unsigned);	  //mÈthode permettant de supprimer le iÈme faisceau de l'accÈlÈrateur

@@ -1,7 +1,4 @@
 #include "Faccelerateur.h"
-#include <iostream>
-
-using namespace std;
 
 
 
@@ -68,9 +65,23 @@ Faccelerateur::~Faccelerateur()
 
 //--------dÈfinition des mÈthodes--------------------------------------------------------------------------------
 
-Faccelerateur& Faccelerateur::ajoute_faisceau(Faisceau const& p)
+Faccelerateur& Faccelerateur::ajoute_faisceau(double n, Particule3D reference, double lambda)
 {
-    faisceaux.push_back(new Faisceau(p));
+    faisceaux.push_back(new Faisceau(reference, lambda));
+    double c(0);
+    int unsigned j(1);
+    
+    for (int unsigned i(0); i < elements.size() && j <= n; ++i)
+    {
+		while(elements[i]->getlongueur() + c < (j*n)/getperimetre())
+		{
+			Particule3D p(elements[i]->pos_ideale((j*n)/getperimetre()-c), lambda*reference.getenergie(), elements[i]->dir_ideale((j*n)/getperimetre()-c), lambda*reference.getmasse(), lambda*reference.getcharge());
+			faisceaux[faisceaux.size()-1]->ajoute_Vpart(p);
+			++j;
+		}
+		c += elements[i]->getlongueur();
+	}
+	  
     return (*this);
 }
 
@@ -167,7 +178,6 @@ Faccelerateur& Faccelerateur::evolue(double dt)
 	}
 	return (*this);
 }
-
 
 
 

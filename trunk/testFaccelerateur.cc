@@ -54,17 +54,13 @@ int main()
 	acc.ajoute_element(F4);
 	acc.ajoute_element(D4);
 	
-	Faisceau Fa1;
-	Faisceau Fa2;
 	
 	Particule3D P1(vP1, 2, vv, 0.938272, 1.60217653e-19);
 	Particule3D P2(vP2, 2, vv, 0.938272, 1.60217653e-19);
 	
-	Fa1.ajoute_Vpart(P1);
-	Fa2.ajoute_Vpart(P2);
 	
-	acc.ajoute_faisceau(Fa1);
-	acc.ajoute_faisceau(Fa2);
+	acc.ajoute_faisceau(1, P1, 1);
+	acc.ajoute_faisceau(1, P2, 1);
 	
 	//cout << "Prod :::: " << prod_mixte(Vecteur3D(0,0,1), acc.getelements(1)->getre(), acc.getelements(1)->getrs()) << endl;
 	

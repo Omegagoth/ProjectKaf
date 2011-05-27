@@ -24,7 +24,15 @@ double Courbe::getlongueur() const
 	return Re*getangle();
 }
 
+Vecteur3D Courbe::pos_ideale(double d) const
+{
+	return getcentre() + (re - getcentre()).rotation(E3, (d * getangle())/getlongueur());
+}
 
+Vecteur3D Courbe::dir_ideale(double d) const
+{
+	return ~((pos_ideale(d) - getcentre()).rotation(E3, M_PI_2));
+}
 
 //--------définition des méthodes get----------------------------------------------------------------------------
 
