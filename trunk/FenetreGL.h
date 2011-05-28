@@ -14,6 +14,8 @@ class FenetreGL : public wxFrame //Héritage
     private:
     
 		VueOpenGL* vueopengl;
+		wxMenuBar* statusBar;
+		
 		void redimensionne_vueopengl(wxSizeEvent& event);
 		void fermer(wxCloseEvent& event);
 };
