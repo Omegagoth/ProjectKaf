@@ -24,11 +24,18 @@ class Bunch : public Faisceau
 	double gety() const;
 	double getr() const;
 	double getVr() const;
+	double getx_z() const;
+	double gety_z() const;
+	double getz() const;
+	double getVz() const;
 	
 	
 	//-----------------------------------------------------------
 	
+	double gaussienne(double, double);
+	Bunch& creation(double);
 	
+	//-----------------------------------------------------------
 	
 	protected :
 	

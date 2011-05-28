@@ -41,11 +41,11 @@ double Bunch::geta() const
 double Bunch::getb() const
 {return getA11() * pow(sin(gettheta()), 2) - 2 * ( A12 * cos(gettheta()) * sin(gettheta()) ) + A22 * pow(cos(gettheta()), 2);}
 
-double Bunch::getx() const		// A FAIRE //
-{return ;}
+double Bunch::getx() const		
+{return sqrt(gaussienne(0, emittance / geta()));}
 
-double Bunch::gety() const		// A FAIRE //
-{return ;}
+double Bunch::gety() const		
+{return sqrt(gaussienne(0, emittance / getb()));}
 
 double Bunch::getr() const
 {return cos(gettheta()) * getx() + sin(gettheta()) * gety();}
@@ -53,5 +53,66 @@ double Bunch::getr() const
 double Bunch::getVr() const
 {return cos(gettheta()) * gety() - sin(gettheta()) * getx();}
 
+double Bunch::getx_z() const		
+{return sqrt(gaussienne(0, emittance / geta()));}
+
+double Bunch::gety_z() const		
+{return sqrt(gaussienne(0, emittance / getb()));}
+
+double Bunch::getz() const
+{return cos(gettheta()) * getx_z() + sin(gettheta()) * gety_z();}
+
+double Bunch::getVz() const
+{return cos(gettheta()) * gety_z() - sin(gettheta()) * getx_z();}
+
+
+
 //-----------------------------------------------------------
+
+
+double Bunch::gaussienne(double moyenne, double ecart_type)
+{
+	double v1;
+	double v2;
+	double s ;
+	
+	do {
+		v1 = uniforme(-1.0, 1.0);
+		v2 = uniforme(-1.0, 1.0);
+		s = v1*v1 + v2*v2;
+	} while ((s >= 1.0) or (s == 0.0));
+	
+	double x(sqrt(-2.0 * log(s) / s));
+	if (uniforme(0.0, 1.0) > 0.5)
+		x *= v1;
+	else
+		x *= v2;
+	
+	return moyenne + ecart_type * x;
+}
+
+
+Bunch& Bunch::creation(double dt)
+{
+	double debit(getnb_particule3D() / getbunch_longueur());
+	double fraction(debit*dt);
+	int nombre(fraction);
+	fraction -= nombre;
+	if ( uniforme(0.0, 1.0) < fraction ) ++nombre;
+	
+	for (int unsigned i(0); i < Vpart.size(); ++i) 
+	{
+		
+	}
+	
+	return (*this);
+}
+
+
+
+
+
+
+
+
 
