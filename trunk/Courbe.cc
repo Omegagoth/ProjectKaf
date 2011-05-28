@@ -16,12 +16,12 @@ Vecteur3D Courbe::getcentre() const
 
 double Courbe::getangle() const
 {
-	return (re-getcentre()).angle(rs-getcentre());
+	return (getcentre()-re).angle(rs-getcentre());
 }
 
 double Courbe::getlongueur() const
 {
-	return Re*getangle();
+	return (getcentre()-re).norme()*(getangle());
 }
 
 Vecteur3D Courbe::pos_ideale(double d) const

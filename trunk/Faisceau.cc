@@ -259,7 +259,7 @@ ostream& operator<<(ostream& out, Faisceau const& f)
 		
         for (int unsigned i(0); i<(f.getVpart()).size(); ++i)
         {
-            out << *f.getVpart()[i+1] << endl;
+            out << *f.getVpart()[i] << endl;
         }
     }
     else if((f.getVpart()).size() == 1)

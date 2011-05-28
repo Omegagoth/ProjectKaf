@@ -59,17 +59,22 @@ int main()
 	Particule3D P2(vP2, 2, vv, 0.938272, 1.60217653e-19);
 	
 	
-	acc.ajoute_faisceau(1, P1, 1);
-	acc.ajoute_faisceau(1, P2, 1);
+	acc.ajoute_faisceau(50, P1, 1);
+	//acc.ajoute_faisceau(1., P2, 1.);
+	
+	
+	
 	
 	//cout << "Prod :::: " << prod_mixte(Vecteur3D(0,0,1), acc.getelements(1)->getre(), acc.getelements(1)->getrs()) << endl;
 	
-	cout << acc << endl;
+	//cout << acc << endl;
 	
 	/*cout << "Touche le bord "<< acc.getelements(8)->heurte_bord(P1) << endl
 	 << "Sortie? " << acc.getelements(8)->passe_suivant(P1) << endl;*/
 	
 	acc.affecte_element();
+	
+	cout << acc.getfaisceaux()[0]->getVpart().size() << endl;
 	cout << "Avant" << endl << endl;
 	
 	for (int unsigned i(0); i < acc.getfaisceaux().size(); ++i)
@@ -83,7 +88,7 @@ int main()
 	int n(0);
 	int nb(0);
 	
-	for (int i(0); i<100; i++)
+	for (int i(0); i<20; i++)
 	{
 		for (int j(0); j<200; j++)
 		{
@@ -116,7 +121,7 @@ int main()
 	
 	cout << "AprËs" << endl << endl;
 	
-	cout << acc;
+	cout << *(acc.getfaisceaux()[0]);
 	
 	/*for (int unsigned i(0); i < acc.getfaisceaux().size(); ++i)
 	{
@@ -125,19 +130,19 @@ int main()
 		cout << *(acc.getfaisceaux()[i]->getVpart()[0]->getappartient()) << endl;
     }*/
 
-cout << *(acc.getfaisceaux()[1]->getVpart()[0]->getappartient()) << endl;
+//cout << *(acc.getfaisceaux()[0]->getVpart()[0]->getappartient()) << endl;
 
 cout << acc.getperimetre();
-/*cout  << acc.getfaisceaux()[1]->getenergie_moy() << endl;
-cout  << acc.getfaisceaux()[1]->getemittancevert() << endl;
-cout  << acc.getfaisceaux()[1]->getemittancehori() << endl;
-cout  << acc.getfaisceaux()[1]->getA11vert() << endl;
-cout  << acc.getfaisceaux()[1]->getA12vert() << endl;
-cout  << acc.getfaisceaux()[1]->getA22vert() << endl;
-cout  << acc.getfaisceaux()[1]->getA11hori() << endl;
-cout  << acc.getfaisceaux()[1]->getA12hori() << endl;
-cout  << acc.getfaisceaux()[1]->getA22hori() << endl;
-*/
+cout  << acc.getfaisceaux()[0]->getenergie_moy() << endl;
+cout  << acc.getfaisceaux()[0]->getemittancevert() << endl;
+cout  << acc.getfaisceaux()[0]->getemittancehori() << endl;
+cout  << acc.getfaisceaux()[0]->getA11vert() << endl;
+cout  << acc.getfaisceaux()[0]->getA12vert() << endl;
+cout  << acc.getfaisceaux()[0]->getA22vert() << endl;
+cout  << acc.getfaisceaux()[0]->getA11hori() << endl;
+cout  << acc.getfaisceaux()[0]->getA12hori() << endl;
+cout  << acc.getfaisceaux()[0]->getA22hori() << endl;
+
 
 
 	return 0;

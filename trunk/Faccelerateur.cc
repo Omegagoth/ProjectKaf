@@ -40,7 +40,7 @@ Element* Faccelerateur::getelements(unsigned int i) const
 double Faccelerateur::getperimetre() const
 {
 	double p(0);
-	for (int unsigned i(0); i < faisceaux.size(); ++i)
+	for (int unsigned i(0); i < elements.size(); ++i)
 	{
 		p += elements[i]->getlongueur();
 	}
@@ -65,7 +65,7 @@ Faccelerateur::~Faccelerateur()
 
 //--------dÈfinition des mÈthodes--------------------------------------------------------------------------------
 
-Faccelerateur& Faccelerateur::ajoute_faisceau(double n, Particule3D reference, double lambda)
+Faccelerateur& Faccelerateur::ajoute_faisceau(double n, Particule3D const& reference, double lambda)
 {
     faisceaux.push_back(new Faisceau(reference, lambda));
     double c(0);
@@ -73,12 +73,13 @@ Faccelerateur& Faccelerateur::ajoute_faisceau(double n, Particule3D reference, d
     
     for (int unsigned i(0); i < elements.size() && j <= n; ++i)
     {
-		while(elements[i]->getlongueur() + c < (j*n)/getperimetre())
+		while(elements[i]->getlongueur() + c > j*(getperimetre()/n) && j < n)
 		{
-			Particule3D p(elements[i]->pos_ideale((j*n)/getperimetre()-c), lambda*reference.getenergie(), elements[i]->dir_ideale((j*n)/getperimetre()-c), lambda*reference.getmasse(), lambda*reference.getcharge());
+			Particule3D p(elements[i]->pos_ideale(j*(getperimetre()/n)-c), lambda*reference.getenergie(), elements[i]->dir_ideale(j*(getperimetre()/n)-c), lambda*reference.getmasse(), lambda*reference.getcharge());
 			faisceaux[faisceaux.size()-1]->ajoute_Vpart(p);
 			++j;
 		}
+		
 		c += elements[i]->getlongueur();
 	}
 	  
@@ -135,12 +136,12 @@ Faccelerateur& Faccelerateur::affecte_element()
 		for (int i(faisceaux[k]->getVpart().size()-1); i >= 0; --i)
 		{
 			for (int unsigned j(0); j < elements.size() && faisceaux[k]->getVpart()[i]->getappartient() == 0; ++j)
-			{cout << "1 " << (faisceaux[k]->getVpart()[i]) << endl;
+			{
 				if (!(elements[j]->heurte_bord(*(faisceaux[k]->getVpart()[i]))) && !(elements[j]->passe_suivant(*(faisceaux[k]->getVpart()[i]))))
-				{cout << "2" << endl;
+				{
 					faisceaux[k]->getVpart()[i]->setappartient(*elements[j]);
 				}
-			}cout << "3" << endl;
+			}
 			
 			if (faisceaux[k]->getVpart()[i]->getappartient() == 0)
 			{
