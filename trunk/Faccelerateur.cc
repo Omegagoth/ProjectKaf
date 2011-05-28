@@ -69,9 +69,9 @@ Faccelerateur& Faccelerateur::ajoute_faisceau(double n, Particule3D const& refer
 {
     faisceaux.push_back(new Faisceau(reference, lambda));
     double c(0);
-    int unsigned j(1);
+    int unsigned j(0);
     
-    for (int unsigned i(0); i < elements.size() && j <= n; ++i)
+    for (int unsigned i(0); i < elements.size() && j < n; ++i)
     {
 		while(elements[i]->getlongueur() + c > j*(getperimetre()/n) && j < n)
 		{
