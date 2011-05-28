@@ -12,6 +12,7 @@ double uniforme(double a, double b)
 
 int main()
 {
+	srand(3);
 	cout << rand() << endl;
 
 	return 0;
