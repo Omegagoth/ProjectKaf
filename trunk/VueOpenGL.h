@@ -8,6 +8,10 @@
 class VueOpenGL: public wxGLCanvas
 {
 	public:
+	
+		Camera* getcamera() const;
+		
+		void setcamera(Camera const&);
 		
 		VueOpenGL(wxWindow* parent, wxSize const& taille=wxDefaultSize, wxPoint const& position=wxDefaultPosition);
 		virtual ~VueOpenGL();
@@ -20,7 +24,7 @@ class VueOpenGL: public wxGLCanvas
 
 	protected:
 	
-		Camera camera;
+		Camera* camera;
 		
 		void dessine(wxPaintEvent& event);
 		void appuiTouche(wxKeyEvent&);

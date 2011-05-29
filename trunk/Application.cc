@@ -1,6 +1,53 @@
 #include "Application.h"
 
 
+const Accelerateur* Application::getaccelerateur() const
+{
+	return &acc;
+}
+
+unsigned int Application::getvitesse() const
+{
+	return vitesse;
+}
+
+Vue Application::getcamera() const
+{
+	return fenetreGL->getcamera();
+}
+
+bool Application::getmode_fildefer() const
+{
+	return mode_fildefer;
+}
+
+bool Application::getbrouillard() const
+{
+	return brouillard;
+}
+
+
+void Application::setvitesse(unsigned int i)
+{
+	vitesse = 50*pow(10, i/100.);
+}
+
+void Application::setcamera(Vue v)
+{
+	fenetreGL->setcamera(v);
+}
+
+void Application::setmode_fildefer(bool m)
+{
+	mode_fildefer = m;
+}
+
+void Application::setbrouillard(bool b)
+{
+	brouillard = b;
+}
+
+
 Application::Application()
 : wxApp()
 {}
@@ -39,6 +86,12 @@ bool Application::OnInit()
     
     acc.getparticules()[0]->setappartient(*acc.getelements()[0]);
     acc.getparticules()[1]->setappartient(*acc.getelements()[0]);
+    
+    vitesse = 50*pow(10,30./100);
+    setcamera(Libre);
+    mode_fildefer = false;
+    brouillard = false;
+    
 
     //La fonction doit retourner true si elle s'est bien initialisée
     //Si le pointeur est nul, la fenêtre n'a pas pu s'initialiser!
@@ -57,10 +110,10 @@ void Application::dessine()
 
 void Application::fermer()
 {
-	fenetreGL->Destroy();
+	fenetreGL->Destroy(); //On détruit les deux fenêtres
 	fenetreControle->Destroy();
 	
-	ExitMainLoop();
+	ExitMainLoop(); //On sort de la boucle infinie d'évenement
 }
 
 
@@ -71,7 +124,7 @@ void Application::rafraichir()
 
 void Application::evolue(wxTimerEvent& event)
 {
-	for(unsigned int i(0); i < 100; ++i)
+	for(unsigned int i(0); i < vitesse; ++i)
 	{
 		acc.evolue(1e-11);
 	}

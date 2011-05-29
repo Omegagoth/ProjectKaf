@@ -29,6 +29,11 @@ Element* Element::getElement_suivant() const
     return Element_suivant;
 }
 
+Vecteur3D Element::getdirection() const
+{
+    return ~(rs - re);
+}
+
 
 //--------définition des méthodes set----------------------------------------------------------------------------
 
@@ -93,11 +98,6 @@ Vecteur3D Element::E2(0,1,0);
 Vecteur3D Element::E3(0,0,1);
 
 //--------définition des méthodes privée--------------------------------------------------------------------------
-
-Vecteur3D Element::getdirection() const
-{
-    return ~(rs - re);
-}
 
 void Element::orientation()
 {

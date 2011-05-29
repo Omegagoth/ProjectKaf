@@ -72,6 +72,8 @@ Camera.o : Camera.cc Camera.h
 
 Couleurs.o : Couleurs.cc Couleurs.h
 
+Dessinable.o : Dessinable.cc Dessinable.h
+
 Accelerateur.o : Accelerateur.cc Accelerateur.h
 
 ExerciceP11bis.o : ExerciceP11bis.cc

@@ -27,11 +27,13 @@ void Particule3D::dessine() const
 	
 	GLUquadric* particule = gluNewQuadric();
 	
+	glColor4ub(255,0,0,255);
+	
 	glTranslated(position.getx(), position.gety(), position.getz());
 	
 	gluQuadricDrawStyle(particule, GLU_FILL);
 	
-	gluSphere(particule, .05, 5,5);
+	gluSphere(particule, .005, 5,5);
 	
 	gluDeleteQuadric(particule);
 	

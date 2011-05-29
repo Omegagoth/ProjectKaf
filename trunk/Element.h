@@ -20,6 +20,7 @@ class Element
 		virtual double getlongueur() const = 0;								//methode abstraite qui donne la longueur de l'element
 		virtual Vecteur3D pos_ideale(double) const = 0;						//methode abstraite qui donne la position ideale en fonction d'une longueur (a partir de l'entree)
 		virtual Vecteur3D dir_ideale(double) const = 0;						//methode abstraite qui donne la direction ideale en fonction d'une longueur (a partir de l'entree)
+		Vecteur3D getdirection() const;                                		//donne la direction moyenne de l'élément
 
 //--------prototypage des méthodes set----------------------------------------------------------------------------
 
@@ -64,7 +65,6 @@ class Element
 //--------prototypage des méthodes privée------------------------------------------------------------------------
 
         virtual Vecteur3D getpos_relative(Particule const&) const = 0; //donne la position relative d'une particule par rapport à l'entrer de l'élément
-        Vecteur3D getdirection() const;                                //donne la direction moyenne de l'élément
         void orientation();                                            //vérifie que l'élément est correctement orienter (dans le sens horaire) sinon inverse les vecteurs re et rs
 
 };

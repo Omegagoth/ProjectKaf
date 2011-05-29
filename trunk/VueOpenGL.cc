@@ -1,9 +1,20 @@
 #include "VueOpenGL.h"
 #include "Application.h"
 
-VueOpenGL::VueOpenGL(wxWindow* parent, wxSize const& taille, wxPoint const& position)
-:wxGLCanvas(parent, wxID_ANY, position, taille, wxSUNKEN_BORDER), camera(88, 0.61, 0.44), x_souris(0), y_souris(0)
+Camera* VueOpenGL::getcamera() const
 {
+	return camera;
+}
+
+
+void VueOpenGL::setcamera(Camera const& c)
+{
+	camera = c.copie();
+}
+
+VueOpenGL::VueOpenGL(wxWindow* parent, wxSize const& taille, wxPoint const& position)
+:wxGLCanvas(parent, wxID_ANY, position, taille, wxSUNKEN_BORDER), camera(new Camera()), x_souris(0), y_souris(0)
+{	
     Connect(wxEVT_PAINT, wxPaintEventHandler(VueOpenGL::dessine));
     Connect(wxEVT_KEY_DOWN, wxKeyEventHandler(VueOpenGL::appuiTouche));
     Connect(wxEVT_MOTION, wxMouseEventHandler(VueOpenGL::bougeSouris));
@@ -37,6 +48,13 @@ void VueOpenGL::InitOpenGL()
 	// prépare à travailler sur le modèle  
 	// (données de l'application)
 	glMatrixMode(GL_MODELVIEW);
+	
+	//On initialise le brouillard
+	glEnable(GL_FOG);
+	GLfloat couleur[4] = {0.05, 0.05, 0.05, 1.0};
+	glFogi(GL_FOG_MODE, GL_EXP);
+	glFogf (GL_FOG_DENSITY, 0.004);
+	glFogfv(GL_FOG_COLOR, couleur);
 }
 
 void VueOpenGL::dessineSol(double taille)
@@ -86,13 +104,22 @@ void VueOpenGL::dessine(wxPaintEvent& event)
     SetCurrent();
     //initialise les données liées à la couleur et à la gestion de la profondeur
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    
+    if(wxGetApp().getbrouillard()) //On active ou non le brouillard
+    {
+		glEnable(GL_FOG);
+	}
+	else
+	{
+		glDisable(GL_FOG);
+	}
      
     // initialise GL_MODELVIEW
     // place le repère en (0,0,0)
     glLoadIdentity();
- 
+    
     // place la caméra (fixe le point de vue)
-    camera.setVue();
+    camera->setVue();
     
     //Commandes de dessin ici
     /*glPushMatrix();
@@ -162,30 +189,36 @@ void VueOpenGL::appuiTouche(wxKeyEvent& event)
     {
          // décrémente l'angle phi de la caméra lorsque l'on appuie sur la flèche gauche
         case WXK_LEFT:
-            camera.setPhi(camera.getPhi() - 0.1);
+            camera->setPosition(camera->getPosition() - (Vecteur3D(0,0,1)^camera->getdirection())*0.1);
             break;
         // incrémente l'angle phi de la caméra lorsque l'on appuie sur la flèche droite      
         case WXK_RIGHT:
-             camera.setPhi(camera.getPhi() + 0.1);
+             camera->setPosition(camera->getPosition() + (Vecteur3D(0,0,1)^camera->getdirection())*0.1);
              break;
         // décrémente l'angle theta de la caméra lorsque l'on appuie sur la flèche haut       
         case WXK_UP:
-            camera.setTheta(camera.getTheta() - 0.1);
+            camera->setPosition(camera->getPosition() - camera->getdirection()*0.1);
             break;
         // incrémente l'angle theta de éa caméra lorsque l'on appuie sur la flèche bas     
         case WXK_DOWN:
-            camera.setTheta(camera.getTheta() + 0.1);
+            camera->setPosition(camera->getPosition() + camera->getdirection()*0.1);
             break;
         // diminue le rayon de la  caméra si on appuie sur 'W'
-        case 'W': //Attention
-            camera.setRayon(camera.getRayon() - 1);
+        case 'W':
+            camera->setRayon(camera->getRayon() - 1);
             break;
         // augmente le rayon de la caméra si on appuie sur 'S'
         case 'S':
-            camera.setRayon(camera.getRayon() + 1);
+            camera->setRayon(camera->getRayon() + 1);
             break;
         case WXK_SPACE:
-			camera.resetVue();
+			camera->resetVue();
+			break;
+		case WXK_PAGEUP :
+			camera->setPosition(camera->getPosition() - ((Vecteur3D(0,0,1)^camera->getdirection())^camera->getdirection())*0.1);
+			break;
+		case WXK_PAGEDOWN :
+			camera->setPosition(camera->getPosition() + ((Vecteur3D(0,0,1)^camera->getdirection())^camera->getdirection())*0.1);
 			break;
     }
     
@@ -199,8 +232,8 @@ void VueOpenGL::bougeSouris(wxMouseEvent& event)
 		int x(0), y(0);
 		event.GetPosition(&x,&y);
 		
-		camera.setPhi(camera.getPhi() - (x_souris-x)/20.);
-		camera.setTheta(camera.getTheta() + (y_souris-y)/20.);
+		camera->setPhi(camera->getPhi() - (x_souris-x)/50.);
+		camera->setTheta(camera->getTheta() + (y_souris-y)/50.);
 		
 		event.GetPosition(&x_souris, &y_souris);
 		
@@ -215,7 +248,7 @@ void VueOpenGL::clicSouris(wxMouseEvent& event)
 
 void VueOpenGL::moletteSouris(wxMouseEvent& event)
 {
-	camera.setRayon(camera.getRayon() - event.GetWheelRotation()/60.);
+	camera->setRayon(camera->getRayon() - event.GetWheelRotation()/60.);
 	Refresh(false);
 }
 
