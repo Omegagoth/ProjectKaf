@@ -1,4 +1,5 @@
 #include "Faisceau.h"
+#include "Random.h"
 
 
 class Bunch : public Faisceau
@@ -16,7 +17,6 @@ class Bunch : public Faisceau
 	double getA22() const;
 	double getA12() const;
 	double getA11() const;
-	double getbunch_longueur() const;
 	double gettheta() const;
 	double geta() const;
 	double getb() const;
@@ -28,6 +28,7 @@ class Bunch : public Faisceau
 	double gety_z() const;
 	double getz() const;
 	double getVz() const;
+	double getnorme2_vitesse(double);
 	
 	
 	//-----------------------------------------------------------
@@ -43,6 +44,7 @@ class Bunch : public Faisceau
 	double emittance;
 	double A22;
 	double A12;
+	double bunch_longueur;
 	
 	
 };

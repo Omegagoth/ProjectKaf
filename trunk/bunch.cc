@@ -29,9 +29,6 @@ double Bunch::getA12() const
 double Bunch::getA11() const
 {return (1 + (A12*A12)) / A22;}
 
-double Bunch::getbunch_longueur() const
-{return 4 * ecart_type;}
-
 double Bunch::gettheta() const
 {return atan( (2 * A12) / (getA11() - A22));}
 
@@ -65,6 +62,9 @@ double Bunch::getz() const
 double Bunch::getVz() const
 {return cos(gettheta()) * gety_z() - sin(gettheta()) * getx_z();}
 
+double Bunch::getnorme2_vitesse(double d)
+{return gaussienne(reference.getvitesse().norme_carre(), d);}
+
 
 
 //-----------------------------------------------------------
@@ -94,7 +94,7 @@ double Bunch::gaussienne(double moyenne, double ecart_type)
 
 Bunch& Bunch::creation(double dt)
 {
-	double debit(getnb_particule3D() / getbunch_longueur());
+	double debit(getnb_particule3D() / bunch_longueur());
 	double fraction(debit*dt);
 	int nombre(fraction);
 	fraction -= nombre;
@@ -102,7 +102,12 @@ Bunch& Bunch::creation(double dt)
 	
 	for (int unsigned i(0); i < Vpart.size(); ++i) 
 	{
-		
+		Vecteur3D E3(0,0,1);
+		Particule3D p(reference);
+		p.setvitesse(getVr() * p.getappartient().getu() + getVz() * E3 + sqrt( getnorme2_vitesse() - getVr()*getVr() - getVz()*getVz()) * getu() ^ E3);
+		double composante_s(gaussienne(0, bunch_longueur / 4));
+		p.setposition(reference.getposition() + getr() * getu() + getz() * E3 + composante_s * getu() ^ E3);
+		Vpart.push_back(*p);
 	}
 	
 	return (*this);
