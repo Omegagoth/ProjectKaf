@@ -6,6 +6,10 @@
 Bunch::Bunch()
 :Faisceau(), ecart_type(0), emittance(0), A22(0), A11(0) {}
 
+Bunch::Bunch(Particule const& ref, double l, double ecart, double emi, double a12, double a22, double lon)
+:Faisceau(ref, l), ecart_type(ecart), emittance(emi), A12(a12), A22(a22), bunch_longueur(lon)
+{(*this).creation(dt);}
+
 Bunch::Bunch(Bunch const& b)
 :Faisceau(b), ecart_type(b.getecart_type), emittance(b.getemittance), A22(b.getA22), A12(b.getA12) {}
 
@@ -62,8 +66,8 @@ double Bunch::getz() const
 double Bunch::getVz() const
 {return cos(gettheta()) * gety_z() - sin(gettheta()) * getx_z();}
 
-double Bunch::getnorme2_vitesse(double d)
-{return gaussienne(reference.getvitesse().norme_carre(), d);}
+double Bunch::getnorme2_vitesse()
+{return gaussienne(reference.getvitesse().norme_carre(), ecart_type);}
 
 
 
@@ -100,14 +104,14 @@ Bunch& Bunch::creation(double dt)
 	fraction -= nombre;
 	if ( uniforme(0.0, 1.0) < fraction ) ++nombre;
 	
-	for (int unsigned i(0); i < Vpart.size(); ++i) 
+	for (int unsigned i(0); i < nombre; ++i) 
 	{
 		Vecteur3D E3(0,0,1);
 		Particule3D p(reference);
 		p.setvitesse(getVr() * p.getappartient().getu() + getVz() * E3 + sqrt( getnorme2_vitesse() - getVr()*getVr() - getVz()*getVz()) * getu() ^ E3);
 		double composante_s(gaussienne(0, bunch_longueur / 4));
 		p.setposition(reference.getposition() + getr() * getu() + getz() * E3 + composante_s * getu() ^ E3);
-		Vpart.push_back(*p);
+		Vpart.push_back(new Particule3D(p));
 	}
 	
 	return (*this);

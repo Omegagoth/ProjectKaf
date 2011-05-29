@@ -9,6 +9,7 @@
 #include "Section_droite3D.h"
 #include "Fodo3D.h"
 #include "Faisceau.h" 
+#include "bunch.h"
 
 using namespace std;
 

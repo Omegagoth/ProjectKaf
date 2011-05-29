@@ -28,7 +28,7 @@ class Bunch : public Faisceau
 	double gety_z() const;
 	double getz() const;
 	double getVz() const;
-	double getnorme2_vitesse(double);
+	double getnorme2_vitesse();
 	
 	
 	//-----------------------------------------------------------
