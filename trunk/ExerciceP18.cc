@@ -117,17 +117,11 @@ int main()
 			acc.evolue(1e-11);
 			n++;
 			
-		} LAAAAAAA 1*/
-		
-		/*cout << endl << endl << endl << endl << "Coucou" << endl;
-		 for (int unsigned i(0); i < acc.getfaisceaux().size(); ++i)
-		 {
-		 cout << *acc.getfaisceaux()[i] << endl;
-		 }*/
+		}*/
 		
 		
 		
-	/*do				LAAAAAA 2
+	/*do	
 		{
 			n +=1;
 			acc.evolue(1e-11);
@@ -143,29 +137,14 @@ int main()
 	
 	cout << "AprËs" << endl << endl;
 	
-	cout << *(acc.getfaisceaux()[0]);     LAAAAAA 2*/   
+	cout << *(acc.getfaisceaux()[0]);*/   
 	
 	/*for (int unsigned i(0); i < acc.getfaisceaux().size(); ++i)
 	 {
 	 cout << *acc.getfaisceaux()[i] << endl;
 	 
-	 cout << *(acc.getfaisceaux()[i]->getVpart()[0]->getappartient()) << endl;
 	 }*/
 	
-	//cout << *(acc.getfaisceaux()[0]->getVpart()[0]->getappartient()) << endl;
-	
-	/* cout << acc.getperimetre();   LAAAAAA 3
-	cout  << acc.getfaisceaux()[0]->getenergie_moy() << endl;
-	cout  << acc.getfaisceaux()[0]->getemittancevert() << endl;
-	cout  << acc.getfaisceaux()[0]->getemittancehori() << endl;
-	cout  << acc.getfaisceaux()[0]->getA11vert() << endl;
-	cout  << acc.getfaisceaux()[0]->getA12vert() << endl;
-	cout  << acc.getfaisceaux()[0]->getA22vert() << endl;
-	cout  << acc.getfaisceaux()[0]->getA11hori() << endl;
-	cout  << acc.getfaisceaux()[0]->getA12hori() << endl;
-	cout  << acc.getfaisceaux()[0]->getA22hori() << endl;
-	
-	LLLAAAAAAA 3*/
 	
 	return 0;
 }

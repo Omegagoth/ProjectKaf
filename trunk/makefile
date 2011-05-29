@@ -74,6 +74,8 @@ Couleurs.o : Couleurs.cc Couleurs.h
 
 Accelerateur.o : Accelerateur.cc Accelerateur.h
 
+ExerciceP11bis.o : ExerciceP11bis.cc
+
 Application.o : Application.cc Application.h
 
 testFaccelerateur.o : testFaccelerateur.cc
@@ -93,6 +95,7 @@ testFaccelerateur : testFaccelerateur.o Faisceau.o Faccelerateur.o Particule.o F
 
 ExerciceP18 : ExerciceP18.o bunch.o random.o Faisceau.o Faccelerateur.o Particule.o Fodo.o Quadrupole.o Section_droite.o Vecteur3D.o Element.o Droit.o Courbe.o Dipole.o Particule3D.o Element3D.o Courbe3D.o Droit3D.o Dipole3D.o Section_droite3D.o Quadrupole3D.o Fodo3D.o Couleurs.o
 
+ExerciceP11bis : ExerciceP11bis.o Accelerateur.o Particule.o Fodo.o Quadrupole.o Section_droite.o Vecteur3D.o Element.o Droit.o Courbe.o Dipole.o Particule3D.o Element3D.o Courbe3D.o Droit3D.o Dipole3D.o Section_droite3D.o Quadrupole3D.o Fodo3D.o Couleurs.o
 
 clean :
 	rm -f *.o

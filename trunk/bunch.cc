@@ -1,7 +1,7 @@
 #include "bunch.h"
 #include <cmath>
 
-
+//--------------------constructeurs/destructeurs---------------------------------------
 
 Bunch::Bunch()
 :Faisceau(), ecart_type(0), emittance(0), A22(0), A12(0) {}
@@ -17,7 +17,7 @@ Bunch::Bunch(Bunch const& b)
 Bunch::~Bunch() 
 {}
 
-//-----------------------------------------------------------
+//--------------------------methodes get---------------------------------
 
 double Bunch::getecart_type() const
 {return ecart_type;}
@@ -80,7 +80,7 @@ double Bunch::getnorme2_vitesse()
 
 
 
-//-----------------------------------------------------------
+//-------------------------methodes publiques----------------------------------
 
 
 double Bunch::gaussienne(double moyenne, double ecart_type)
@@ -108,23 +108,16 @@ double Bunch::gaussienne(double moyenne, double ecart_type)
 Faisceau& Bunch::creation(double dt)
 {
 	double debit(getnb_particule3D() / bunch_longueur);
-	cout << "nb part  " << nb_particule3D << endl;
-	cout << "longueur bunch : " << bunch_longueur << endl;
-	cout << "debit" << debit << endl;
 	double fraction(debit*dt);
-	cout << "fraction : " << fraction << endl;
 	int nombre(fraction);
-	cout << "nombre : " << nombre << endl;
 	fraction -= nombre;
 	if ( uniforme(0.0, 1.0) < fraction ) ++nombre;
-	cout << "nombre 2 : " << nombre << endl;
 	
 	for (int unsigned i(0); i < nombre; ++i) 
 	{
 		Vecteur3D E3(0,0,1);
 		Particule3D p(reference);
 		p.setvitesse(getVr() * p.getappartient()->getu(reference) + getVz() * E3 + sqrt( getnorme2_vitesse() - getVr()*getVr() - getVz()*getVz()) * p.getappartient()->getu(reference) ^ E3);
-		cout << "o";
 		double composante_s(gaussienne(0, bunch_longueur / 4));
 		
 		p.setposition(reference.getposition() + getr() * p.getappartient()->getu(reference) + getz() * E3 + composante_s * p.getappartient()->getu(reference) ^ E3);

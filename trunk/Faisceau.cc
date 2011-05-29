@@ -4,6 +4,10 @@
 
 using namespace std;
 
+
+//--------------constructeurs/destructeurs-------------------------------------------------
+
+
 Faisceau::Faisceau(Particule3D r, double l)
 : reference(r), lambda(l) {}
 
@@ -23,7 +27,7 @@ Faisceau::Faisceau()
 Faisceau::~Faisceau() {clear_Vpart();}
 
 
-//---------------------------------------------------------------
+//--------------------methodes set-------------------------------------------
 
 void Faisceau::setreference(Particule3D const& p)
 {reference = p;}
@@ -31,7 +35,7 @@ void Faisceau::setreference(Particule3D const& p)
 void Faisceau::setlambda(double d)
 {lambda = d;}
 
-//---------------------------------------------------------------
+//---------------------methodes get------------------------------------------
 
 Particule3D Faisceau::getreference() const
 {return reference;}
@@ -103,7 +107,7 @@ double Faisceau::getemittancehori() const
 }
 
 
-//---------------------------------------------------------------
+//----------------------methodes publiques-----------------------------------------
 
 
 
@@ -182,7 +186,7 @@ double Faisceau::getbunch_longueur() const
 Faisceau& Faisceau::creation(double)
 {return (*this);}
 
-//---------------------------------------------------------------
+//---------------------methodes privees------------------------------------------
 
 
 double Faisceau::getposition2vert_moy() const
@@ -264,7 +268,7 @@ double Faisceau::getpositionvitessehori_moy() const
 	return m/Vpart.size();
 	
 }
-
+//-------------------------surchage de l'operateur << --------------------------------------
 
 ostream& operator<<(ostream& out, Faisceau const& f)
 {
@@ -284,7 +288,7 @@ ostream& operator<<(ostream& out, Faisceau const& f)
     }
 	
 	else {
-		out << "erreur, faisceau vide" << endl;									//Erreur a gérer//
+		out << "erreur, faisceau vide" << endl;	
 	}
 
     out << endl;

@@ -7,7 +7,7 @@
 #include "Dipole3D.h"
 #include "Quadrupole.h"
 #include "Section_droite3D.h"
-#include "Fodo.h"
+#include "Fodo3D.h"
 
 using namespace std;
 
