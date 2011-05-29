@@ -43,9 +43,6 @@ int main()
 	
 	
 	acc.ajoute_element(F1);
-	
-	/*	cout << acc.getelements(1) << endl;*/
-	
 	acc.ajoute_element(D1);
 	acc.ajoute_element(F2);
 	acc.ajoute_element(D2);
@@ -59,18 +56,9 @@ int main()
 	Particule3D P2(vP2, 2, vv, 0.938272, 1.60217653e-19);
 	
 	
-	acc.ajoute_faisceau(50, P1, 1);
-	//acc.ajoute_faisceau(1., P2, 1.);
+	acc.ajoute_faisceau(50, P1, 10);
+	acc.ajoute_faisceau(60, P2, 20);
 	
-	
-	
-	
-	//cout << "Prod :::: " << prod_mixte(Vecteur3D(0,0,1), acc.getelements(1)->getre(), acc.getelements(1)->getrs()) << endl;
-	
-	//cout << acc << endl;
-	
-	/*cout << "Touche le bord "<< acc.getelements(8)->heurte_bord(P1) << endl
-	 << "Sortie? " << acc.getelements(8)->passe_suivant(P1) << endl;*/
 	
 	acc.affecte_element();
 	
@@ -95,23 +83,17 @@ int main()
 			acc.evolue(1e-11);
 			n++;
 			
-		}
-		
-		/*cout << endl << endl << endl << endl << "Coucou" << endl;
-		 for (int unsigned i(0); i < acc.getfaisceaux().size(); ++i)
-		 {
-		 cout << *acc.getfaisceaux()[i] << endl;
-		 }*/
-		
-		
+		}												// fait tourner les particules
 		
 		do
 		{
 			n +=1;
 			acc.evolue(1e-11);
 		}
-		while (acc.getfaisceaux()[0]->getVpart().size() != 0 && (acc.getfaisceaux()[0]->getVpart()[0]->getposition().getx() < 0 || acc.getfaisceaux()[0]->getVpart()[0]->getposition().gety() > 0
-			   || acc.getfaisceaux()[0]->getVpart()[0]->getposition().gety() < -0.1));
+		while ((acc.getfaisceaux()[0]->getVpart().size() != 0 && (acc.getfaisceaux()[0]->getVpart()[0]->getposition().getx() < 0 || acc.getfaisceaux()[0]->getVpart()[0]->getposition().gety() > 0
+			   || acc.getfaisceaux()[0]->getVpart()[0]->getposition().gety() < -0.1))
+			   && (acc.getfaisceaux()[1]->getVpart().size() != 0 && (acc.getfaisceaux()[1]->getVpart()[0]->getposition().getx() < 0 || acc.getfaisceaux()[1]->getVpart()[0]->getposition().gety() > 0
+			   || acc.getfaisceaux()[1]->getVpart()[0]->getposition().gety() < -0.1)));
 		
 		nb++;
 	}
@@ -121,29 +103,8 @@ int main()
 	
 	cout << "AprËs" << endl << endl;
 	
-	cout << *(acc.getfaisceaux()[0]);
-	
-	/*for (int unsigned i(0); i < acc.getfaisceaux().size(); ++i)
-	{
-		cout << *acc.getfaisceaux()[i] << endl;
-		
-		cout << *(acc.getfaisceaux()[i]->getVpart()[0]->getappartient()) << endl;
-    }*/
-
-//cout << *(acc.getfaisceaux()[0]->getVpart()[0]->getappartient()) << endl;
-
-cout << acc.getperimetre();
-cout  << acc.getfaisceaux()[0]->getenergie_moy() << endl;
-cout  << acc.getfaisceaux()[0]->getemittancevert() << endl;
-cout  << acc.getfaisceaux()[0]->getemittancehori() << endl;
-cout  << acc.getfaisceaux()[0]->getA11vert() << endl;
-cout  << acc.getfaisceaux()[0]->getA12vert() << endl;
-cout  << acc.getfaisceaux()[0]->getA22vert() << endl;
-cout  << acc.getfaisceaux()[0]->getA11hori() << endl;
-cout  << acc.getfaisceaux()[0]->getA12hori() << endl;
-cout  << acc.getfaisceaux()[0]->getA22hori() << endl;
-
-
+	cout << *(acc.getfaisceaux()[0]);		// affiche le faisceau apres la simulation
+	cout << *(acc.getfaisceaux()[1]);
 
 	return 0;
 }

@@ -52,8 +52,8 @@ class Fodo : virtual public Droit
 
 //--------définition des attributs-------------------------------------------------------------------------------
 
-        double longueur_droit;
-        double intensite;
+        double longueur_droit;		//longueur de l'element droit
+        double intensite;			//intensite du champs magnetique
         vector<Element*> maille;
 
 //--------définition des statics---------------------------------------------------------------------------------

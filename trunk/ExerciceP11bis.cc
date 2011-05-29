@@ -25,11 +25,11 @@ int main()
     Vecteur3D v17(-1,3,0);
     Vecteur3D v18(0,3,0);
     Vecteur3D v19(1,3,0);
-    Vecteur3D v20(2,3,0);
+    Vecteur3D v20(2,3,0);  
 
     Vecteur3D vP1(3.01, 0, 0);
     Vecteur3D vP2(2.99, 0, 0);
-    Vecteur3D vv(0, -2.64754e+08, 0);
+    Vecteur3D vv(0, -2.64754e+08, 0);		// initialisation des vecteurs
 
 	Accelerateur acc;
 	Fodo F1(v1, v5, 0.1, 1, 1.2);
@@ -39,42 +39,36 @@ int main()
 	Fodo F3(v11, v15, 0.1, 1, 1.2);
 	Dipole D3(v15, v16, 0.1, 1, 5.89158);
 	Fodo F4(v16, v20, 0.1, 1, 1.2);
-	Dipole D4(v20, v1, 0.1, 1, 5.89158);
+	Dipole D4(v20, v1, 0.1, 1, 5.89158);	//initialise les elements
 
 
-	acc.ajoute_element(F1);
-
-	/*	cout << acc.getelements(1) << endl;*/
-
+	acc.ajoute_element(F1);					
 	acc.ajoute_element(D1);
 	acc.ajoute_element(F2);
 	acc.ajoute_element(D2);
 	acc.ajoute_element(F3);
 	acc.ajoute_element(D3);
 	acc.ajoute_element(F4);
-	acc.ajoute_element(D4);
+	acc.ajoute_element(D4);					// ajoute les elements a l'accelerateur
 
 	Particule P1(vP1, 2, vv, 0.938272, 1.60217653e-19);
-	Particule P2(vP2, 2, vv, 0.938272, 1.60217653e-19);
+	Particule P2(vP2, 2, vv, 0.938272, 1.60217653e-19);		//initialise les particules
 
 	acc.ajoute_particule(P1);
-	acc.ajoute_particule(P2);
+	acc.ajoute_particule(P2);				// ajoute les particules dans l'accelerateur
 	
-	cout << "Prod :::: " << prod_mixte(Vecteur3D(0,0,1), acc.getelements(1)->getre(), acc.getelements(1)->getrs()) << endl;
 
-	cout << acc << endl;
+	cout << acc << endl;					// affiche l'accelerateur avant la simulation
 
-	/*cout << "Touche le bord "<< acc.getelements(8)->heurte_bord(P1) << endl
-	<< "Sortie? " << acc.getelements(8)->passe_suivant(P1) << endl;*/
 
-	acc.affecte_element();
+	acc.affecte_element();					// affecte chaque particule a un element
 
 	cout << "Avant" << endl << endl;
 
 	for (int unsigned i(1); i <= acc.getparticules().size(); ++i)
 	{
 	    cout << *acc.getparticules(i) << endl
-	    << *(acc.getparticules(i)->getappartient()) << endl;
+	    << *(acc.getparticules(i)->getappartient()) << endl;		// affiche chaque particule a quel element elle appartient
 	}
 	int n(0);
 	int nb(0);
@@ -84,17 +78,9 @@ int main()
 		{
 			acc.evolue(1e-11);
 			n++;
-		}
+		}									// fait tourner les particules
 
-		/*cout << endl << endl << endl << endl << "Coucou" << endl;
-		for (int unsigned i(1); i <= acc.getparticules().size(); ++i)
-		{
-			cout << *acc.getparticules(i) << endl
-			<< *(acc.getparticules(i)->getappartient()) << endl;
-		}*/
-
-    
-	
+ 
 		do
 		{
 			n +=1;
@@ -109,14 +95,14 @@ int main()
 	cout << "Nombre d'iteration " << n << endl
 	<< "Nombre de tour " << nb << endl << endl << endl;
 
-	cout << "AprËs" << endl << endl;
+	cout << "Apres" << endl << endl;
 
 	for (int unsigned i(1); i <= acc.getparticules().size(); ++i)
 	{
 		cout << *acc.getparticules(i) << endl
-		<< *(acc.getparticules(i)->getappartient()) << endl;
-    }
-	return 0;
+		<< *(acc.getparticules(i)->getappartient()) << endl;		
+    }					
+	return 0;								// affiche chaque particule a quel element elle appartient
 }
 
 

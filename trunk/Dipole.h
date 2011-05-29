@@ -18,7 +18,7 @@ class Dipole : virtual public Courbe
 
 //--------prototypage des méthodes set----------------------------------------------------------------------------
 
-        void setintensite(double);
+        void setintensite(double);								// retourne l'intensite du champ magnetique
 
 //--------prototypage des constructeurs/destructeur---------------------------------------------------------------
 
