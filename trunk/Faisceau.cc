@@ -9,11 +9,16 @@ Faisceau::Faisceau(Particule3D r, double l)
 
 Faisceau::Faisceau(Faisceau const& f)
 : reference(f.getreference()), lambda(f.getlambda()), Vpart(f.getVpart()) {}
+	//for (int unsigned i(0); i < Vpart.size(); ++i)
+	//{Vpart.push_back(new Particule3D(*f.getVpart()[i]));}
+	//reference = new Particule3D(f.getreference());
+
 
 Faisceau::Faisceau()
 : reference(), lambda(0) {}
 
 Faisceau::~Faisceau() {clear_Vpart();}
+//delete reference;}
 
 //---------------------------------------------------------------
 
@@ -166,6 +171,11 @@ double Faisceau::getA22hori() const
 	return getposition2hori_moy()/getemittancehori();
 }
 
+double Faisceau::getbunch_longueur() const
+{return 0;}
+
+Faisceau& Faisceau::creation(double)
+{return (*this);}
 
 //---------------------------------------------------------------
 

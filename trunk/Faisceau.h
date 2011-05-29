@@ -1,3 +1,6 @@
+#ifndef FAISCEAU_H
+#define FAISCEAU_H
+
 #include <iostream>
 #include <vector>
 #include "Particule3D.h"
@@ -65,6 +68,10 @@ class Faisceau
 	
 	double getA22hori() const;
 	
+	virtual double getbunch_longueur() const;
+	
+	virtual Faisceau& creation(double);
+	
 	
 	
 	//---------------------------------------------------------------
@@ -100,3 +107,5 @@ class Faisceau
 
 
 ostream& operator<<(ostream&, Faisceau const&); //surcharge de l'opÈrateur << permettant l'affichage dans le terminale
+
+#endif

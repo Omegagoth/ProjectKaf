@@ -1,13 +1,13 @@
-#include "Bunch.h"
+#include "random.h"
 
 
-double Random::uniforme(double a, double b)
+double uniforme(double a, double b)
 {
 	return a + (rand() / double(RAND_MAX)) * (b-a);
 }
 
 
-void Random::init_hasard(unsigned int graine)
+void init_hasard(unsigned int graine)
 {
 	if (graine == 0)
 	{srand(time(0));}

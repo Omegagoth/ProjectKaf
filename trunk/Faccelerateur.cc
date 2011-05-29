@@ -65,6 +65,13 @@ Faccelerateur::~Faccelerateur()
 
 //--------dÈfinition des mÈthodes--------------------------------------------------------------------------------
 
+Faccelerateur& Faccelerateur::ajoute_bunch(Bunch* const& f)
+{
+	faisceaux.push_back(f);
+	
+	return (*this);
+}
+
 Faccelerateur& Faccelerateur::ajoute_faisceau(double n, Particule3D const& reference, double lambda)
 {
     faisceaux.push_back(new Faisceau(reference, lambda));

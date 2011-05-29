@@ -6,6 +6,8 @@ using namespace std;
 
 int main()
 {
+	init_hasard(0);
+	
     Vecteur3D v1(3,2,0);
     Vecteur3D v2(3,1,0);
     Vecteur3D v3(3,0,0);
@@ -61,9 +63,25 @@ int main()
 	
 	acc.ajoute_faisceau(50, P1, 1);
 	//acc.ajoute_faisceau(1., P2, 1.);
-	for (int unsigned i(0); i < acc.getfaisceaux()[0].size(); ++i) 
+	cout << acc.getfaisceaux()[0]->getVpart().size() << endl;
+	
+	
+	for (int unsigned i(0); i < acc.getfaisceaux()[0]->getVpart().size(); ++i) 
 	{
-		Faisceaux.push_back(new Bunch(b(*(acc.getfaisceaux()[0]->getVpart()[i]))), 1, 1e6, 4e-6, 0,03, 2e-18, 3e-11);
+		Bunch b((*(acc.getfaisceaux()[0]->getVpart()[i])), 1., 1e6, 4e-6, 0.03, 2e-18, 3e-11, 100);
+		acc.ajoute_bunch(new Bunch(b));
+		cout << "AA longueure et nb part : " << acc.getfaisceaux()[i+1]->getbunch_longueur() << "  " << acc.getfaisceaux()[i+1]->getnb_particule3D() << endl;
+	}
+	cout << "Nombre de faisceaux : " << acc.getfaisceaux().size() << endl;
+	
+	for (int unsigned j(0); j < acc.getfaisceaux()[1]->getbunch_longueur(); j = j + 1e-11 )
+	{
+		
+		for (int unsigned i(1); i < acc.getfaisceaux()[0]->getVpart().size(); ++i) 
+			{
+				acc.getfaisceaux()[i]->creation(1e-11);
+			}
+	acc.evolue(1e-11);	
 	}
 	
 	
@@ -78,19 +96,18 @@ int main()
 	
 	acc.affecte_element();
 	
-	cout << "Nombre de faisceaux : " << acc.getfaisceaux().size() << endl;
 	
-	/* cout << "Avant" << endl << endl;        LAAAAAA 1
+	
+	cout << "Avant" << endl << endl;
 	
 	for (int unsigned i(0); i < acc.getfaisceaux().size(); ++i)
 	{
-	    cout << *acc.getfaisceaux()[i] << endl
-	    << *(acc.getfaisceaux()[i]->getVpart()[0]->getappartient()) << endl;
+	    cout << "Faisceau " << i << " nombre de particules : " << acc.getfaisceaux()[i]->getVpart().size() << endl;
 	}
 	
 	cout << "apres : " << endl << endl << endl;
 	
-	int n(0);
+	/*int n(0);
 	int nb(0);
 	
 	for (int i(0); i<20; i++)

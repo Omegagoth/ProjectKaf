@@ -78,6 +78,12 @@ Application.o : Application.cc Application.h
 
 testFaccelerateur.o : testFaccelerateur.cc
 
+random.o : random.cc random.h
+
+bunch.o : bunch.cc bunch.h
+
+ExerciceP18.o : ExerciceP18.cc
+
 
 Application : Application.o Accelerateur.o Faisceau.o Faccelerateur.o Particule.o Fodo.o Quadrupole.o Section_droite.o Vecteur3D.o Element.o Droit.o Courbe.o Dipole.o Particule3D.o Element3D.o Courbe3D.o Droit3D.o Dipole3D.o Section_droite3D.o Quadrupole3D.o Fodo3D.o Couleurs.o FenetreGL.o FenetreControle.o GLUtils.o TextureManager.o VueOpenGL.o Camera.o
 
@@ -85,7 +91,7 @@ Application : Application.o Accelerateur.o Faisceau.o Faccelerateur.o Particule.
 
 testFaccelerateur : testFaccelerateur.o Faisceau.o Faccelerateur.o Particule.o Fodo.o Quadrupole.o Section_droite.o Vecteur3D.o Element.o Droit.o Courbe.o Dipole.o Particule3D.o Element3D.o Courbe3D.o Droit3D.o Dipole3D.o Section_droite3D.o Quadrupole3D.o Fodo3D.o Couleurs.o
 
-
+ExerciceP18 : ExerciceP18.o bunch.o random.o Faisceau.o Faccelerateur.o Particule.o Fodo.o Quadrupole.o Section_droite.o Vecteur3D.o Element.o Droit.o Courbe.o Dipole.o Particule3D.o Element3D.o Courbe3D.o Droit3D.o Dipole3D.o Section_droite3D.o Quadrupole3D.o Fodo3D.o Couleurs.o
 
 
 clean :

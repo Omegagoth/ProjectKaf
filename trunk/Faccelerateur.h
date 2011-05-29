@@ -36,7 +36,7 @@ class Faccelerateur
 	virtual ~Faccelerateur();//prototypage du destructeur
 	
 	//--------prototypage des mÈthodes-------------------------------------------------------------------------------
-	
+	Faccelerateur& ajoute_bunch(Bunch* const&);
 	Faccelerateur& ajoute_faisceau(double, Particule3D const&, double);   //mÈthode permettant de rajouter un faisceau ‡ l'accÈlÈrateur
 	Faccelerateur& ajoute_element(Element const&);     //mÈthode permettant de rajouter un ÈlÈment ‡ l'accÈlÈrateur
 	Faccelerateur& clear_faisceaux();                  //mÈthode permettant de supprimer tout les faisceaux de l'accÈlÈrateur
