@@ -20,7 +20,7 @@ class Bunch : public Faisceau
 	double getecart_type() const;			// retourne l'ecart-type
 	double getemittance() const;			// retourne l'emittance
 	double getbunch_longueur() const;		// retourne la longueur du bunch
-	double getnb_particule3D() const;		// retourne le nombre de particule qu contien le bunch
+	virtual double getnb_particule3D() const;		// retourne le nombre de particule qu contien le bunch
 	double getA22() const;					// retourne A22
 	double getA12() const;					// retourne A12
 	double getA11() const;					// retourne A11

@@ -32,14 +32,14 @@ int main()
     Vecteur3D vv(0, -2.64754e+08, 0);		// initialisation des vecteurs
 
 	Accelerateur acc;
-	Fodo F1(v1, v5, 0.1, 1, 1.2);
-	Dipole D1(v5, v6, 0.1, 1, 5.89158);
-	Fodo F2(v6, v10, 0.1, 1, 1.2);
-	Dipole D2(v10, v11, 0.1, 1, 5.89158);
-	Fodo F3(v11, v15, 0.1, 1, 1.2);
-	Dipole D3(v15, v16, 0.1, 1, 5.89158);
-	Fodo F4(v16, v20, 0.1, 1, 1.2);
-	Dipole D4(v20, v1, 0.1, 1, 5.89158);	//initialise les elements
+	Fodo3D F1(v1, v5, 0.1, 1, 1.2);
+	Dipole3D D1(v5, v6, 0.1, 1, 5.89158);
+	Fodo3D F2(v6, v10, 0.1, 1, 1.2);
+	Dipole3D D2(v10, v11, 0.1, 1, 5.89158);
+	Fodo3D F3(v11, v15, 0.1, 1, 1.2);
+	Dipole3D D3(v15, v16, 0.1, 1, 5.89158);
+	Fodo3D F4(v16, v20, 0.1, 1, 1.2);
+	Dipole3D D4(v20, v1, 0.1, 1, 5.89158);	//initialise les elements
 
 
 	acc.ajoute_element(F1);					
@@ -51,8 +51,8 @@ int main()
 	acc.ajoute_element(F4);
 	acc.ajoute_element(D4);					// ajoute les elements a l'accelerateur
 
-	Particule P1(vP1, 2, vv, 0.938272, 1.60217653e-19);
-	Particule P2(vP2, 2, vv, 0.938272, 1.60217653e-19);		//initialise les particules
+	Particule3D P1(vP1, 2, vv, 0.938272, 1.60217653e-19);
+	Particule3D P2(vP2, 2, vv, 0.938272, 1.60217653e-19);		//initialise les particules
 
 	acc.ajoute_particule(P1);
 	acc.ajoute_particule(P2);				// ajoute les particules dans l'accelerateur

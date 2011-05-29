@@ -8,10 +8,11 @@ Bunch::Bunch()
 
 Bunch::Bunch(Particule3D const& ref, double l, double ecart, double emi, double a12, double a22, double lon, double nb)
 :Faisceau(ref, l), ecart_type(ecart), emittance(emi), A12(a12), A22(a22), bunch_longueur(lon), nb_particule3D(nb)
-{cout << "nb part  " << nb_particule3D << "bunch_longueur : " << bunch_longueur << endl;}
+{}
 
 Bunch::Bunch(Bunch const& b)
-:Faisceau(b), ecart_type(b.getecart_type()), emittance(b.getemittance()), A22(b.getA22()), A12(b.getA12()) {}
+:Faisceau(b), ecart_type(b.getecart_type()), emittance(b.getemittance()), A22(b.getA22()), A12(b.getA12()), bunch_longueur(b.getbunch_longueur()), nb_particule3D(b.getnb_particule3D())
+{}
 
 Bunch::~Bunch() 
 {}
@@ -28,7 +29,9 @@ double Bunch::getbunch_longueur() const
 {return bunch_longueur;}
 
 double Bunch::getnb_particule3D() const
-{return nb_particule3D;}
+{
+	return nb_particule3D;
+}
 
 double Bunch::getA22() const
 {return A22;}
@@ -121,9 +124,13 @@ Faisceau& Bunch::creation(double dt)
 		Vecteur3D E3(0,0,1);
 		Particule3D p(reference);
 		p.setvitesse(getVr() * p.getappartient()->getu(reference) + getVz() * E3 + sqrt( getnorme2_vitesse() - getVr()*getVr() - getVz()*getVz()) * p.getappartient()->getu(reference) ^ E3);
+		cout << "o";
 		double composante_s(gaussienne(0, bunch_longueur / 4));
+		
 		p.setposition(reference.getposition() + getr() * p.getappartient()->getu(reference) + getz() * E3 + composante_s * p.getappartient()->getu(reference) ^ E3);
+		
 		Vpart.push_back(new Particule3D(p));
+		
 	}
 	
 	return (*this);

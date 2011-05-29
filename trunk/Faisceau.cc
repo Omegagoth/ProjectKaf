@@ -8,17 +8,20 @@ Faisceau::Faisceau(Particule3D r, double l)
 : reference(r), lambda(l) {}
 
 Faisceau::Faisceau(Faisceau const& f)
-: reference(f.getreference()), lambda(f.getlambda()), Vpart(f.getVpart()) {}
-	//for (int unsigned i(0); i < Vpart.size(); ++i)
-	//{Vpart.push_back(new Particule3D(*f.getVpart()[i]));}
-	//reference = new Particule3D(f.getreference());
+: reference(f.getreference()), lambda(f.getlambda())
+	{
+		for (int unsigned i(0); i < Vpart.size(); ++i)
+		{
+			Vpart.push_back(new Particule3D(*(f.getVpart()[i])));
+		}
+	}
 
 
 Faisceau::Faisceau()
 : reference(), lambda(0) {}
 
 Faisceau::~Faisceau() {clear_Vpart();}
-//delete reference;}
+
 
 //---------------------------------------------------------------
 
@@ -34,7 +37,9 @@ Particule3D Faisceau::getreference() const
 {return reference;}
 
 double Faisceau::getnb_particule3D() const
-{return lambda*Vpart.size();}
+{
+	return lambda*Vpart.size();
+}
 
 double Faisceau::getlambda() const
 {return lambda;}

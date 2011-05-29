@@ -65,9 +65,9 @@ Faccelerateur::~Faccelerateur()
 
 //--------dÈfinition des mÈthodes--------------------------------------------------------------------------------
 
-Faccelerateur& Faccelerateur::ajoute_bunch(Bunch* const& f)
+Faccelerateur& Faccelerateur::ajoute_bunch(Bunch const& f)
 {
-	faisceaux.push_back(f);
+	faisceaux.push_back(new Bunch(f));
 	
 	return (*this);
 }

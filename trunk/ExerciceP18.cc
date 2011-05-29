@@ -61,24 +61,24 @@ int main()
 	Particule3D P2(vP2, 2, vv, 0.938272, 1.60217653e-19);
 	
 	
-	acc.ajoute_faisceau(50, P1, 1);
+	acc.ajoute_faisceau(2, P1, 1);
 	//acc.ajoute_faisceau(1., P2, 1.);
 	cout << acc.getfaisceaux()[0]->getVpart().size() << endl;
-	
+	acc.affecte_element();
 	
 	for (int unsigned i(0); i < acc.getfaisceaux()[0]->getVpart().size(); ++i) 
 	{
-		Bunch b((*(acc.getfaisceaux()[0]->getVpart()[i])), 1., 1e6, 4e-6, 0.03, 2e-18, 3e-11, 100);
-		acc.ajoute_bunch(new Bunch(b));
-		cout << "AA longueure et nb part : " << acc.getfaisceaux()[i+1]->getbunch_longueur() << "  " << acc.getfaisceaux()[i+1]->getnb_particule3D() << endl;
+		Bunch b((*(acc.getfaisceaux()[0]->getVpart()[i])), 1., 1e6, 4e-6, 0.03, 2e-18, 3e-11, 3);
+		acc.ajoute_bunch(b);
+		
 	}
-	cout << "Nombre de faisceaux : " << acc.getfaisceaux().size() << endl;
+	cout << "Nombre de faisceaux : " << acc.getfaisceaux().size() << endl << acc.getfaisceaux()[acc.getfaisceaux().size()-1]->getnb_particule3D() << endl;
 	
-	for (int unsigned j(0); j < acc.getfaisceaux()[1]->getbunch_longueur(); j = j + 1e-11 )
-	{
+	for (int unsigned j(0); j < 3e-11; j = j + 1e-11 )
+	{cout << "blabla" << endl;
 		
 		for (int unsigned i(1); i < acc.getfaisceaux()[0]->getVpart().size(); ++i) 
-			{
+			{cout << "blublu" << endl;
 				acc.getfaisceaux()[i]->creation(1e-11);
 			}
 	acc.evolue(1e-11);	

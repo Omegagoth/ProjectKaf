@@ -56,8 +56,8 @@ int main()
 	Particule3D P2(vP2, 2, vv, 0.938272, 1.60217653e-19);
 	
 	
-	acc.ajoute_faisceau(50, P1, 10);
-	acc.ajoute_faisceau(60, P2, 20);
+	acc.ajoute_faisceau(50, P1, 1);
+	acc.ajoute_faisceau(60, P2, 1);
 	
 	
 	acc.affecte_element();
@@ -76,7 +76,7 @@ int main()
 	int n(0);
 	int nb(0);
 	
-	for (int i(0); i<20; i++)
+	for (int i(0); i<50; i++)
 	{
 		for (int j(0); j<200; j++)
 		{
