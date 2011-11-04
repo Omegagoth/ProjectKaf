@@ -5,4 +5,3 @@
 #include "wx/glcanvas.h"
 
 #endif
-
